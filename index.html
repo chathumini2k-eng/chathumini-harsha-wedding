@@ -652,32 +652,86 @@
       }
     });
 
-    // ================= EMBEDDED RELIABLE AUDIO SYSTEM =================
-    // Pure Embedded Base64 Audio Data (Works 100% Offline & Mobile)
-    const audioURI = "data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFb4N5e3t7e4B2c3Jzb3B4e3t8fXx8e3t7e4B2c3Jzb3B4e3t8fXx8e3t7e4B2c3Jzb3B4e3t8fXx8e3t7e4B2c3Jzb3B4e3t8fXx8e3t7e4B2c3Jzb3B4e3t8fXx8";
-
-    let bgAudio = new Audio(audioURI);
-    bgAudio.loop = true;
+    // ================= REALISTIC SOFT WEDDING PIANO SYNTHESIZER =================
+    let audioCtx = null;
     let isMusicPlaying = false;
+    let musicLoopId = null;
 
-    function playMusicSystem() {
-      bgAudio.play().then(() => {
-        isMusicPlaying = true;
-        let icon = document.querySelector("#musicBtn i");
-        if (icon) icon.className = "fas fa-pause";
-      }).catch(e => {
-        console.log("Audio Error:", e);
-      });
+    // Beautiful Romantic Wedding Melody
+    const melody = [
+      { f: 392.00, d: 1.2 }, // G4
+      { f: 440.00, d: 0.6 }, // A4
+      { f: 493.88, d: 1.2 }, // B4
+      { f: 523.25, d: 1.8 }, // C5
+      { f: 587.33, d: 1.2 }, // D5
+      { f: 659.25, d: 2.4 }, // E5
+      { f: 587.33, d: 1.2 }, // D5
+      { f: 523.25, d: 1.2 }, // C5
+      { f: 493.88, d: 2.4 }  // B4
+    ];
+
+    function playPianoNote(freq, duration) {
+      if (!audioCtx) return;
+
+      let osc = audioCtx.createOscillator();
+      let gain = audioCtx.createGain();
+
+      osc.type = "sine"; 
+      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+
+      // Soft Piano Decay Envelope
+      gain.gain.setValueAtTime(0, audioCtx.currentTime);
+      gain.gain.linearRampToValueAtTime(0.12, audioCtx.currentTime + 0.05);
+      gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+
+      osc.start();
+      osc.stop(audioCtx.currentTime + duration);
+    }
+
+    function startMelody() {
+      if (isMusicPlaying) return;
+
+      if (!audioCtx) {
+        let AudioContext = window.AudioContext || window.webkitAudioContext;
+        audioCtx = new AudioContext();
+      }
+
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+
+      isMusicPlaying = true;
+      let index = 0;
+
+      function step() {
+        if (!isMusicPlaying) return;
+        let note = melody[index];
+        playPianoNote(note.f, note.d);
+        index = (index + 1) % melody.length;
+        musicLoopId = setTimeout(step, note.d * 750);
+      }
+
+      step();
+
+      let icon = document.querySelector("#musicBtn i");
+      if (icon) icon.className = "fas fa-pause";
+    }
+
+    function stopMelody() {
+      isMusicPlaying = false;
+      if (musicLoopId) clearTimeout(musicLoopId);
+      let icon = document.querySelector("#musicBtn i");
+      if (icon) icon.className = "fas fa-music";
     }
 
     function toggleMusic() {
-      let icon = document.querySelector("#musicBtn i");
       if (isMusicPlaying) {
-        bgAudio.pause();
-        isMusicPlaying = false;
-        if (icon) icon.className = "fas fa-music";
+        stopMelody();
       } else {
-        playMusicSystem();
+        startMelody();
       }
     }
 
@@ -687,8 +741,8 @@
     function openInvite() {
       opened = true;
 
-      // Unlocks and Plays Audio immediately upon User Gesture
-      playMusicSystem();
+      // Start Piano Tune
+      startMelody();
 
       document.querySelector(".envelope").classList.add("open");
 
