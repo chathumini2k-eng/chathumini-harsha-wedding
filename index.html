@@ -6,15 +6,15 @@
     <title>The Wedding of Chathumini & Harsha</title>
     
     <!-- Google Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Great+Vibes&family=Playfair+Display:ital,wght@1,400;1,600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
         :root {
-            --sage-green: #2e4a3b;
-            --cream-bg: #fdfbf7;
-            --gold-accent: #c5a059;
-            --text-dark: #222222;
+            --primary-green: #2e4a3b;
+            --accent-gold: #c5a059;
+            --text-dark: #333333;
+            --bg-cream: #fbf9f5;
         }
 
         * {
@@ -25,7 +25,7 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: #0b0b0b;
+            background-color: #121212;
             color: var(--text-dark);
             display: flex;
             justify-content: center;
@@ -34,29 +34,35 @@
             overflow: hidden;
         }
 
-        /* Mobile Container Frame */
-        .app-container {
+        /* Mobile Frame Structure with Scroll Snap */
+        .mobile-frame {
             width: 100%;
             max-width: 430px;
             height: 100vh;
-            background: var(--cream-bg);
+            background: var(--bg-cream);
             position: relative;
-            box-shadow: 0 0 50px rgba(0,0,0,0.9);
+            box-shadow: 0 0 30px rgba(0,0,0,0.8);
             overflow-y: scroll;
             scroll-snap-type: y mandatory;
             scroll-behavior: smooth;
         }
 
-        /* Hide Scrollbar */
-        .app-container::-webkit-scrollbar {
-            display: none;
-        }
-        .app-container {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
+        /* Section Setup for Snap Scroll */
+        .snap-section {
+            height: 100vh;
+            width: 100%;
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 30px 20px;
         }
 
-        /* Canvas for Petals & Sparkles */
+        /* Animation Canvas Overlay */
         #fxCanvas {
             position: fixed;
             top: 0;
@@ -67,114 +73,174 @@
             z-index: 10;
         }
 
-        /* Full Height Page Sections */
-        .page-section {
-            height: 100vh;
-            width: 100%;
-            scroll-snap-align: start;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 40px 25px;
-            background-color: var(--cream-bg);
-            overflow: hidden;
-        }
-
-        /* SECTION 1: Intro Hero */
-        #sec1 {
-            background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.5)), 
-                        url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1000&auto=format&fit=crop') center/cover;
+        /* Section 1: Cover */
+        .hero-bg {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1000&auto=format&fit=crop') center/cover;
             color: white;
         }
 
-        /* SECTION 2: Floral Gateway */
-        #sec2 {
-            background: linear-gradient(rgba(253,251,247,0.85), rgba(253,251,247,0.9)), 
-                        url('https://images.unsplash.com/photo-1526047932273-341f2a7631f9?q=80&w=1000&auto=format&fit=crop') center/cover;
-        }
-
-        /* SECTION 5: Dark Sage Save Date */
-        #sec5 {
-            background: var(--sage-green);
-            color: white;
-        }
-
-        /* Typography Styles */
-        .title-cursive {
+        .hero-title {
             font-family: 'Great Vibes', cursive;
-            font-size: 3.4rem;
-            color: var(--sage-green);
-            line-height: 1.2;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            font-size: 3.5rem;
         }
 
-        .title-cinzel {
+        .couple-name {
             font-family: 'Cinzel', serif;
-            letter-spacing: 3px;
-            font-size: 1.4rem;
-            text-transform: uppercase;
+            font-size: 1.8rem;
+            letter-spacing: 5px;
             margin: 15px 0;
+            line-height: 1.4;
+        }
+
+        /* Common Styling */
+        .parents-title {
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .sub-heading {
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            color: #777;
+            margin-top: 10px;
+        }
+
+        .guest-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.8rem;
+            color: var(--primary-green);
+            margin: 10px 0;
         }
 
         .gold-divider {
             width: 60px;
             height: 1px;
-            background: var(--gold-accent);
-            margin: 20px auto;
+            background: var(--accent-gold);
+            margin: 15px auto;
         }
 
-        /* Details Card */
-        .info-card {
+        .details-card {
             background: rgba(255, 255, 255, 0.95);
-            border: 1px solid #e8e2d5;
-            padding: 22px 18px;
+            border: 1px solid #e0d8c3;
+            padding: 25px 20px;
             border-radius: 12px;
             width: 100%;
-            margin-top: 15px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.04);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+            margin-top: 10px;
         }
 
-        .detail-lbl {
+        .detail-title {
             font-family: 'Cinzel', serif;
             font-size: 0.75rem;
-            color: var(--sage-green);
-            font-weight: 700;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
+            color: var(--primary-green);
+            margin-top: 10px;
+            font-weight: 600;
         }
 
-        .detail-val {
-            font-size: 0.95rem;
+        .detail-value {
+            font-size: 0.9rem;
             font-weight: 500;
-            margin-bottom: 12px;
-            color: #333;
+            margin-top: 3px;
+            color: #444;
         }
 
-        /* Timer Grid */
+        /* Buttons Style */
+        .btn-action {
+            background-color: var(--primary-green);
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 25px;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            text-decoration: none;
+            margin-top: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+        }
+
+        /* Nav Arrows for Page-by-Page feel */
+        .nav-btn {
+            position: absolute;
+            bottom: 25px;
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid var(--accent-gold);
+            color: var(--primary-green);
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 5;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-8px);}
+            60% {transform: translateY(-4px);}
+        }
+
+        /* Countdown Grid */
+        .countdown-container {
+            background: var(--primary-green);
+            color: white;
+            width: 100%;
+            border-radius: 12px;
+            padding: 25px 15px;
+            margin-top: 15px;
+        }
+
         .timer-grid {
             display: flex;
-            justify-content: space-between;
-            width: 100%;
-            margin-top: 25px;
+            justify-content: space-around;
+            margin-top: 15px;
         }
 
-        .timer-unit {
-            border: 1px solid rgba(255,255,255,0.3);
+        .timer-item {
+            border: 1px solid rgba(255,255,255,0.25);
+            padding: 8px;
             border-radius: 8px;
-            padding: 10px;
-            min-width: 70px;
-            background: rgba(255,255,255,0.06);
+            min-width: 60px;
+            background: rgba(255,255,255,0.05);
         }
 
-        /* Floating Controls */
+        .timer-num {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2rem;
+        }
+
+        .timer-lbl {
+            font-size: 0.55rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Audio Control */
         .music-btn {
             position: fixed;
-            bottom: 25px;
-            right: 25px;
+            bottom: 20px;
+            right: 20px;
             background: white;
-            color: var(--sage-green);
+            color: var(--primary-green);
             width: 45px;
             height: 45px;
             border-radius: 50%;
@@ -184,176 +250,179 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             cursor: pointer;
             z-index: 99;
-        }
-
-        /* Scroll Indicator Arrow */
-        .scroll-down {
-            position: absolute;
-            bottom: 25px;
-            animation: bounce 2s infinite;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            font-family: 'Cinzel', serif;
-            opacity: 0.8;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-8px); }
-            60% { transform: translateY(-4px); }
+            border: 1px solid #ddd;
         }
     </style>
 </head>
-<body onclick="enableMusicOnFirstTouch()">
+<body>
 
-    <!-- Fixed Floating Controls -->
+    <!-- Floating Audio Control -->
     <div class="music-btn" onclick="toggleMusic(event)">
         <i class="fas fa-music" id="musicIcon"></i>
     </div>
-
-    <!-- Romantic Wedding Background Music -->
     <audio id="bgMusic" loop>
         <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-wedding-112188.mp3" type="audio/mpeg">
     </audio>
 
-    <div class="app-container" id="scrollContainer">
-        <!-- Live Animation Canvas -->
+    <div class="mobile-frame" id="frame">
         <canvas id="fxCanvas"></canvas>
 
-        <!-- SECTION 1: Intro Cover -->
-        <section class="page-section" id="sec1">
-            <div class="title-cursive" style="color: white;">The Wedding of</div>
-            <div class="title-cinzel" style="color: white; font-size: 1.8rem;">CHATHUMINI<br>&<br>HARSHA</div>
+        <!-- Page 1: Hero Cover -->
+        <div class="snap-section hero-bg" id="sec1">
+            <div class="hero-title">The Wedding of</div>
+            <div class="couple-name">CHATHUMINI<br>&<br>HARSHA</div>
             <div class="gold-divider"></div>
-            <p style="font-size: 0.75rem; letter-spacing: 3px; font-family: 'Cinzel', serif;">30 . 10 . 2026</p>
-            <div class="scroll-down">SWIPE DOWN <span>↓</span></div>
-        </section>
-
-        <!-- SECTION 2: Floral Gateway -->
-        <section class="page-section" id="sec2">
-            <div class="title-cursive">Wedding Invitation</div>
-            <div class="gold-divider"></div>
-            <div class="title-cinzel">CHATHUMINI<br>&<br>HARSHA</div>
-            <p style="font-size: 0.8rem; color: #666; margin-top: 10px; font-style: italic;">Where tradition meets new beginnings</p>
-            <div class="scroll-down" style="color: var(--sage-green);">SCROLL FOR INVITATION <span>↓</span></div>
-        </section>
-
-        <!-- SECTION 3: Dynamic Guest Invitation Page -->
-        <section class="page-section" id="sec3">
-            <p style="font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 2px; color: #777;">TOGETHER WITH OUR FAMILIES</p>
+            <p style="font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 3px;">30 . 10 . 2026</p>
             
-            <!-- Dynamic Guest Name -->
-            <div class="title-cursive" id="guestNameDisplay" style="font-size: 2.6rem; margin: 15px 0;">DEAR GUEST</div>
-            
-            <p style="font-size: 0.82rem; line-height: 1.8; color: #555; text-transform: uppercase; letter-spacing: 1px;">
-                WE WARMLY INVITE YOU TO CELEBRATE THE JOYOUS MARRIAGE OF OUR CHILDREN
+            <button class="btn-action" onclick="scrollToSec('sec2'); playMusic();">
+                OPEN INVITATION <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="nav-btn" onclick="scrollToSec('sec2'); playMusic();">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+
+        <!-- Page 2: Parents & Guest Name -->
+        <div class="snap-section" id="sec2">
+            <p class="parents-title">
+                MR. & MRS. UDAYAKANTHA<br>&<br>MR. & MRS. NANAYAKKARA
             </p>
-
+            <div class="sub-heading">CORDIALLY INVITE</div>
+            <div class="guest-title" id="guestNameDisplay">DEAR GUEST</div>
+            <p style="font-size: 0.75rem; color: #555; line-height: 1.6; text-transform: uppercase; letter-spacing: 1px;">
+                TO CELEBRATE THE JOYOUS MARRIAGE OF THEIR CHILDREN
+            </p>
             <div class="gold-divider"></div>
-            <div class="title-cinzel" style="color: var(--sage-green); font-size: 1.3rem;">CHATHUMINI & HARSHA</div>
-            <div class="scroll-down" style="color: var(--sage-green);">VENUE & TIME <span>↓</span></div>
-        </section>
-
-        <!-- SECTION 4: Venue & Location Map -->
-        <section class="page-section" id="sec4">
-            <div class="title-cursive" style="font-size: 2.3rem;">Event Details</div>
             
-            <div class="info-card">
-                <p class="detail-lbl">DATE</p>
-                <p class="detail-val">Friday, 30th October 2026</p>
-
-                <p class="detail-lbl">TIME</p>
-                <p class="detail-val">From 9:00 AM Onwards</p>
-
-                <p class="detail-lbl">VENUE</p>
-                <p class="detail-val" style="margin-bottom: 2px;">Ligness Green Odyssey</p>
-                <p style="font-size: 0.8rem; color: #666;">Wanduramba Road, Galle</p>
-
-                <a href="https://maps.app.goo.gl/cx6cqKQioFv8L9QH7" target="_blank" style="display: block; background: var(--sage-green); color: white; text-decoration: none; padding: 12px; border-radius: 6px; font-family: 'Cinzel', serif; font-size: 0.75rem; margin-top: 15px; letter-spacing: 1.5px;">LAUNCH DIGITAL MAP</a>
+            <button class="btn-action" onclick="scrollToSec('sec3')">
+                EVENT DETAILS <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="nav-btn" onclick="scrollToSec('sec3')">
+                <i class="fas fa-chevron-down"></i>
             </div>
-            <div class="scroll-down" style="color: var(--sage-green);">COUNTDOWN <span>↓</span></div>
-        </section>
+        </div>
 
-        <!-- SECTION 5: Save Date & Live Countdown -->
-        <section class="page-section" id="sec5">
-            <div class="title-cinzel" style="font-size: 1.2rem; letter-spacing: 3px;">SAVE THE DATE</div>
-            <div style="font-family: 'Great Vibes', cursive; font-size: 3rem; color: var(--gold-accent);">30 . 10 . 2026</div>
+        <!-- Page 3: Event Details & Location Map -->
+        <div class="snap-section" id="sec3">
+            <div class="sub-heading">WEDDING DETAILS</div>
+            <div class="details-card">
+                <div class="detail-title">BRIDE & GROOM</div>
+                <div class="detail-value" style="font-family: 'Great Vibes', cursive; font-size: 2.2rem; color: var(--primary-green);">
+                    Chathumini & Harsha
+                </div>
 
-            <div class="timer-grid">
-                <div class="timer-unit">
-                    <div style="font-family: 'Great Vibes', cursive; font-size: 2rem;" id="days">00</div>
-                    <div style="font-size: 0.6rem; letter-spacing: 1px;">DAYS</div>
-                </div>
-                <div class="timer-unit">
-                    <div style="font-family: 'Great Vibes', cursive; font-size: 2rem;" id="hours">00</div>
-                    <div style="font-size: 0.6rem; letter-spacing: 1px;">HOURS</div>
-                </div>
-                <div class="timer-unit">
-                    <div style="font-family: 'Great Vibes', cursive; font-size: 2rem;" id="minutes">00</div>
-                    <div style="font-size: 0.6rem; letter-spacing: 1px;">MINS</div>
-                </div>
-                <div class="timer-unit">
-                    <div style="font-family: 'Great Vibes', cursive; font-size: 2rem;" id="seconds">00</div>
-                    <div style="font-size: 0.6rem; letter-spacing: 1px;">SECS</div>
-                </div>
+                <div class="detail-title">DATE & TIME</div>
+                <div class="detail-value">Friday, 30th October 2026</div>
+                <div class="detail-value" style="font-size:0.8rem; color:#666;">From 9:00 AM Onwards</div>
+
+                <div class="detail-title">VENUE</div>
+                <div class="detail-value">Ligness Green Odyssey</div>
+                <div style="font-size: 0.75rem; color: #777; margin-top: 2px;">Wanduramba Road, Galle</div>
             </div>
 
-            <p style="margin-top: 40px; font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 3px; color: var(--gold-accent);">WAIT FOR THE MAGIC</p>
-        </section>
+            <a href="https://maps.app.goo.gl/R1imJcV7K6Mtu2rc6" target="_blank" class="btn-action" style="margin-top:15px;">
+                <i class="fas fa-map-marker-alt"></i> GOOGLE MAP LOCATION
+            </a>
+
+            <div class="nav-btn" onclick="scrollToSec('sec4')">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+
+        <!-- Page 4: RSVP & Countdown -->
+        <div class="snap-section" id="sec4">
+            <div class="sub-heading">CONFIRM YOUR PRESENCE</div>
+            <a href="https://wa.me/?text=Hi%20Chathumini%20%26%20Harsha,%20I%20will%20be%20attending%20your%20wedding!" target="_blank" class="btn-action btn-whatsapp">
+                <i class="fab fa-whatsapp"></i> RSVP VIA WHATSAPP
+            </a>
+
+            <div class="countdown-container">
+                <div class="sub-heading" style="color: #ccc; margin-top: 0;">SAVE THE DATE</div>
+                <div style="font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: var(--accent-gold);">30 . 10 . 2026</div>
+
+                <div class="timer-grid">
+                    <div class="timer-item">
+                        <div class="timer-num" id="days">00</div>
+                        <div class="timer-lbl">Days</div>
+                    </div>
+                    <div class="timer-item">
+                        <div class="timer-num" id="hours">00</div>
+                        <div class="timer-lbl">Hours</div>
+                    </div>
+                    <div class="timer-item">
+                        <div class="timer-num" id="minutes">00</div>
+                        <div class="timer-lbl">Mins</div>
+                    </div>
+                    <div class="timer-item">
+                        <div class="timer-num" id="seconds">00</div>
+                        <div class="timer-lbl">Secs</div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn-action" onclick="scrollToSec('sec1')" style="background:#555; margin-top: 20px;">
+                <i class="fas fa-arrow-up"></i> BACK TO TOP
+            </button>
+        </div>
     </div>
 
-    <!-- Script Logic -->
     <script>
+        // Smooth Navigation Function for Buttons
+        function scrollToSec(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
         // Dynamic Guest Name Logic
         const urlParams = new URLSearchParams(window.location.search);
         const prefix = urlParams.get('prefix') || '';
         const name = urlParams.get('name') || '';
 
         if (name) {
-            document.getElementById('guestNameDisplay').innerText = (prefix ? prefix + ' ' : '') + name;
+            const fullName = (prefix ? prefix + ' ' : '') + name;
+            document.getElementById('guestNameDisplay').innerText = fullName;
         } else {
             document.getElementById('guestNameDisplay').innerText = "Special Guest";
         }
 
-        // Live Countdown
+        // Live Countdown Logic
         const targetDate = new Date("October 30, 2026 09:00:00").getTime();
         setInterval(function() {
             const now = new Date().getTime();
-            const diff = targetDate - now;
-            if (diff > 0) {
-                document.getElementById("days").innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
-                document.getElementById("hours").innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                document.getElementById("minutes").innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                document.getElementById("seconds").innerText = Math.floor((diff % (1000 * 60)) / 1000);
+            const difference = targetDate - now;
+
+            if (difference > 0) {
+                document.getElementById("days").innerText = Math.floor(difference / (1000 * 60 * 60 * 24));
+                document.getElementById("hours").innerText = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                document.getElementById("minutes").innerText = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                document.getElementById("seconds").innerText = Math.floor((difference % (1000 * 60)) / 1000);
             }
         }, 1000);
 
-        // Music Logic (Autoplay on first touch/scroll)
+        // Music Controls
         const music = document.getElementById("bgMusic");
-        let isMusicPlaying = false;
+        let isPlaying = false;
 
-        function enableMusicOnFirstTouch() {
-            if (!isMusicPlaying) {
-                music.play().then(() => {
-                    isMusicPlaying = true;
-                    document.getElementById("musicIcon").className = "fas fa-pause";
-                }).catch(() => {});
+        function playMusic() {
+            if(!isPlaying) {
+                music.play();
+                isPlaying = true;
+                document.getElementById("musicIcon").className = "fas fa-pause";
             }
         }
 
         function toggleMusic(e) {
-            e.stopPropagation();
-            if (isMusicPlaying) {
+            if (e) e.stopPropagation();
+            if (isPlaying) {
                 music.pause();
                 document.getElementById("musicIcon").className = "fas fa-music";
             } else {
                 music.play();
                 document.getElementById("musicIcon").className = "fas fa-pause";
             }
-            isMusicPlaying = !isMusicPlaying;
+            isPlaying = !isPlaying;
         }
 
-        // Elegant Petals & Sparkles Canvas Animation
+        // Rose Petals & Gold Sparkles Animation
         const canvas = document.getElementById('fxCanvas');
         const ctx = canvas.getContext('2d');
         
@@ -365,11 +434,11 @@
         window.addEventListener('resize', resizeCanvas);
 
         const particles = [];
-        for (let i = 0; i < 30; i++) {
+        for (let i = 0; i < 25; i++) {
             particles.push({
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,
-                size: Math.random() * 6 + 3,
+                size: Math.random() * 5 + 3,
                 speedY: Math.random() * 1.2 + 0.4,
                 speedX: Math.random() * 0.8 - 0.4,
                 opacity: Math.random() * 0.6 + 0.3,
@@ -383,10 +452,10 @@
             particles.forEach(p => {
                 ctx.beginPath();
                 if (p.type === 'petal') {
-                    ctx.fillStyle = `rgba(235, 175, 185, ${p.opacity})`; // Soft Rose Petal
+                    ctx.fillStyle = `rgba(235, 175, 185, ${p.opacity})`;
                     ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
                 } else {
-                    ctx.fillStyle = `rgba(197, 160, 89, ${p.opacity})`; // Gold Sparkle
+                    ctx.fillStyle = `rgba(197, 160, 89, ${p.opacity})`;
                     ctx.arc(p.x, p.y, p.size / 2, 0, Math.PI * 2);
                 }
                 ctx.fill();
