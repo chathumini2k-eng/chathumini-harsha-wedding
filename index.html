@@ -1,550 +1,1480 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Wedding of Chathumini & Harsha</title>
-    
-    <!-- Google Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-    <style>
-        :root {
-            --primary-green: #1b3b2b;
-            --accent-gold: #d4af37;
-            --light-gold: #f3e5ab;
-            --text-dark: #1a1a1a;
-            --bg-cream: #faf8f5;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<title>The Wedding of Chathumini & Harsha</title>
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #050b08;
-            color: var(--text-dark);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            overflow: hidden;
-        }
 
-        /* Mobile Container Frame */
-        .mobile-frame {
-            width: 100%;
-            max-width: 430px;
-            height: 100vh;
-            background: var(--bg-cream);
-            position: relative;
-            box-shadow: 0 0 50px rgba(0,0,0,0.9);
-            overflow-y: hidden; /* Locked initially */
-            scroll-snap-type: y mandatory;
-            scroll-behavior: smooth;
-        }
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
-        .mobile-frame.unlocked {
-            overflow-y: scroll;
-        }
 
-        /* Heart Animation Canvas */
-        #fxCanvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 10;
-        }
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-        /* Snap Sections */
-        .snap-section {
-            height: 100vh;
-            width: 100%;
-            scroll-snap-align: start;
-            scroll-snap-stop: always;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 35px 25px;
-            background: var(--bg-cream);
-            overflow: hidden;
-        }
 
-        /* Page 1 Cover */
-        #sec1 {
-            background: linear-gradient(rgba(10, 25, 18, 0.65), rgba(10, 25, 18, 0.75)), 
-                        url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1000&auto=format&fit=crop') center/cover;
-            color: white;
-        }
+<style>
 
-        /* PAGE 2: Flower Arch Background */
-        #sec2 {
-            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.65)), 
-                        url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=1000&auto=format&fit=crop') center/cover;
-            color: #1a1a1a;
-        }
+:root{
 
-        /* Typography */
-        .hero-title {
-            font-family: 'Great Vibes', cursive;
-            font-size: 3.8rem;
-            color: #ffffff;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-        }
+--green:#123524;
+--dark-green:#081b12;
+--gold:#d4af37;
+--cream:#faf7f0;
+--light-gold:#f6e7a8;
 
-        .couple-name {
-            font-family: 'Cinzel', serif;
-            font-size: 1.8rem;
-            letter-spacing: 5px;
-            margin: 15px 0;
-            line-height: 1.4;
-            color: var(--light-gold);
-        }
+}
 
-        .gold-divider {
-            width: 70px;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
-            margin: 15px auto;
-        }
 
-        .sub-heading {
-            font-family: 'Cinzel', serif;
-            font-size: 0.75rem;
-            letter-spacing: 3px;
-            color: var(--primary-green);
-            margin-bottom: 8px;
-            font-weight: 700;
-        }
+*{
 
-        .guest-title {
-            font-family: 'Great Vibes', cursive;
-            font-size: 3.2rem;
-            color: var(--primary-green);
-            margin: 10px 0;
-            text-shadow: 0 2px 8px rgba(255, 255, 255, 0.8);
-        }
+margin:0;
+padding:0;
+box-sizing:border-box;
 
-        /* Card Frame */
-        .details-card {
-            background: rgba(255, 255, 255, 0.95);
-            border: 1px solid rgba(212, 175, 55, 0.4);
-            padding: 22px 18px;
-            border-radius: 15px;
-            width: 100%;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            margin-top: 10px;
-            position: relative;
-        }
+}
 
-        .detail-title {
-            font-family: 'Cinzel', serif;
-            font-size: 0.75rem;
-            letter-spacing: 2px;
-            color: var(--primary-green);
-            margin-top: 10px;
-            font-weight: 700;
-        }
 
-        .detail-value {
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-top: 2px;
-            color: #333;
-        }
+body{
 
-        /* Buttons */
-        .btn-action {
-            background: linear-gradient(135deg, var(--primary-green), #0f241a);
-            color: var(--light-gold);
-            border: 1px solid var(--accent-gold);
-            padding: 13px 30px;
-            border-radius: 30px;
-            font-family: 'Cinzel', serif;
-            letter-spacing: 2px;
-            font-size: 0.8rem;
-            text-decoration: none;
-            margin-top: 18px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-        }
+font-family:'Montserrat',sans-serif;
+background:#050805;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
 
-        /* Inputs & RSVP */
-        .input-field {
-            width: 100%;
-            padding: 10px;
-            margin-top: 8px;
-            border: 1px solid #d4af37;
-            border-radius: 8px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.85rem;
-            outline: none;
-            background: #fff;
-        }
+}
 
-        select.input-field {
-            height: 40px;
-        }
 
-        /* Timer Grid */
-        .timer-grid {
-            display: flex;
-            justify-content: space-around;
-            width: 100%;
-            margin-top: 25px;
-        }
 
-        .timer-item {
-            border: 1px solid rgba(212, 175, 55, 0.5);
-            padding: 10px;
-            border-radius: 10px;
-            min-width: 65px;
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(5px);
-        }
+.mobile-frame{
 
-        /* Floating Audio Control */
-        .music-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--primary-green);
-            color: var(--accent-gold);
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-            cursor: pointer;
-            z-index: 99;
-            border: 1px solid var(--accent-gold);
-        }
+width:100%;
+max-width:430px;
+height:100vh;
+overflow-y:auto;
+scroll-snap-type:y mandatory;
+background:var(--cream);
 
-        .scroll-down {
-            position: absolute;
-            bottom: 20px;
-            animation: bounce 2s infinite;
-            font-size: 0.7rem;
-            letter-spacing: 2px;
-            font-family: 'Cinzel', serif;
-            color: var(--primary-green);
-            font-weight: 700;
-        }
+}
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-            40% {transform: translateY(-8px);}
-            60% {transform: translateY(-4px);}
-        }
-    </style>
+
+
+.section{
+
+height:100vh;
+scroll-snap-align:start;
+
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+
+padding:30px;
+
+text-align:center;
+
+position:relative;
+overflow:hidden;
+
+}
+
+
+
+/* COVER PAGE */
+
+#cover{
+
+
+background:
+
+linear-gradient(
+rgba(5,20,12,.65),
+rgba(5,20,12,.85)
+),
+
+url("https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200")
+center/cover;
+
+
+color:white;
+
+}
+
+
+
+
+.main-title{
+
+
+font-family:'Great Vibes',cursive;
+font-size:3.5rem;
+
+color:white;
+
+}
+
+
+.names{
+
+
+font-family:'Cinzel',serif;
+
+font-size:1.5rem;
+
+letter-spacing:6px;
+
+color:var(--light-gold);
+
+margin:15px;
+
+
+}
+
+
+
+.divider{
+
+
+width:100px;
+height:2px;
+
+background:linear-gradient(
+90deg,
+transparent,
+var(--gold),
+transparent
+);
+
+margin:15px auto;
+
+
+}
+
+
+
+
+.gold-text{
+
+
+color:var(--gold);
+
+font-family:'Cinzel',serif;
+
+letter-spacing:3px;
+
+font-size:.8rem;
+
+
+}
+
+
+
+.input-box{
+
+
+width:100%;
+max-width:300px;
+
+padding:12px;
+
+border-radius:30px;
+
+border:1px solid var(--gold);
+
+margin-top:15px;
+
+text-align:center;
+
+font-size:.9rem;
+
+}
+
+
+
+
+.button{
+
+
+margin-top:20px;
+
+padding:14px 35px;
+
+border-radius:40px;
+
+border:1px solid var(--gold);
+
+background:linear-gradient(
+135deg,
+var(--green),
+#020802
+);
+
+
+color:var(--light-gold);
+
+font-family:'Cinzel',serif;
+
+letter-spacing:2px;
+
+cursor:pointer;
+
+}
+
+
+
+/* WELCOME PAGE */
+
+
+#welcome{
+
+
+background:
+
+linear-gradient(
+rgba(255,255,255,.55),
+rgba(255,255,255,.75)
+),
+
+url("https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=1200")
+
+center/cover;
+
+
+}
+
+
+
+.heading{
+
+
+font-family:'Cinzel',serif;
+
+font-size:.75rem;
+
+letter-spacing:3px;
+
+color:var(--green);
+
+font-weight:bold;
+
+
+}
+
+
+
+.guest-name{
+
+
+font-family:'Great Vibes',cursive;
+
+font-size:3.2rem;
+
+color:var(--green);
+
+margin:15px;
+
+
+}
+
+
+
+.description{
+
+
+font-size:.75rem;
+
+line-height:2;
+
+letter-spacing:1px;
+
+font-weight:600;
+
+}
+
+
+
+/* DETAILS */
+
+
+#details{
+
+
+background:
+
+linear-gradient(
+rgba(250,247,240,.85),
+rgba(250,247,240,.95)
+),
+
+url("https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?q=80&w=1200")
+
+center/cover;
+
+
+}
+
+
+
+.card{
+
+
+background:white;
+
+padding:25px;
+
+border-radius:20px;
+
+width:100%;
+
+border:1px solid rgba(212,175,55,.5);
+
+box-shadow:0 15px 40px rgba(0,0,0,.15);
+
+
+}
+
+
+
+.label{
+
+
+font-family:'Cinzel',serif;
+
+font-size:.7rem;
+
+color:var(--green);
+
+font-weight:bold;
+
+margin-top:15px;
+
+
+}
+
+
+
+.value{
+
+
+font-size:.9rem;
+
+margin-top:5px;
+
+color:#333;
+
+}
+
+
+
+.map-btn{
+
+
+display:inline-block;
+
+margin-top:20px;
+
+padding:12px 25px;
+
+background:var(--green);
+
+color:var(--gold);
+
+border-radius:30px;
+
+text-decoration:none;
+
+font-size:.75rem;
+
+font-family:'Cinzel',serif;
+
+
+}
+
+
+
+/* COUNTDOWN */
+
+
+#countdown{
+
+
+background:
+
+linear-gradient(
+rgba(10,30,20,.9),
+rgba(10,30,20,.95)
+),
+
+url("https://images.unsplash.com/photo-1507504031003-b417219a0fde?q=80&w=1200")
+
+center/cover;
+
+
+color:white;
+
+
+}
+
+
+
+.date{
+
+
+font-family:'Great Vibes',cursive;
+
+font-size:3rem;
+
+color:var(--gold);
+
+}
+
+
+
+.timer{
+
+
+display:flex;
+
+gap:10px;
+
+margin-top:30px;
+
+
+}
+
+
+
+.time-box{
+
+
+width:65px;
+
+padding:12px 5px;
+
+border:1px solid var(--gold);
+
+border-radius:12px;
+
+background:rgba(255,255,255,.1);
+
+
+}
+
+
+
+.number{
+
+
+font-family:'Great Vibes',cursive;
+
+font-size:2rem;
+
+color:var(--light-gold);
+
+
+}
+
+
+.small{
+
+
+font-size:.55rem;
+
+color:var(--gold);
+
+letter-spacing:2px;
+
+
+}
+
+/* EXTRA LUXURY ANIMATION */
+
+
+.section{
+
+animation:fade 1.5s ease;
+
+}
+
+
+@keyframes fade{
+
+
+from{
+
+opacity:0;
+
+transform:translateY(40px);
+
+}
+
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+
+}
+
+
+
+
+/* RSVP BACKGROUND */
+
+
+#rsvp{
+
+
+background:
+
+linear-gradient(
+rgba(255,255,255,.85),
+rgba(255,255,255,.9)
+),
+
+url("https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=1200")
+
+center/cover;
+
+
+}
+
+
+
+
+/* WISH BACKGROUND */
+
+
+#wishes{
+
+
+background:
+
+linear-gradient(
+rgba(255,255,255,.85),
+rgba(255,255,255,.95)
+),
+
+url("https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1200")
+
+center/cover;
+
+
+}
+
+
+
+
+/* THANK YOU BACKGROUND */
+
+
+#thankyou{
+
+
+background:
+
+linear-gradient(
+rgba(255,255,255,.8),
+rgba(255,255,255,.95)
+),
+
+url("https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?q=80&w=1200")
+
+center/cover;
+
+
+}
+
+
+</style>
+
 </head>
+
+
 <body>
 
-    <!-- Floating Audio Control -->
-    <div class="music-btn" onclick="toggleMusic(event)">
-        <i class="fas fa-music" id="musicIcon"></i>
-    </div>
+
+<div class="mobile-frame" id="mainContainer">
+
+
+
+<section class="section" id="cover">
+
+
+<div class="gold-text">
+THE WEDDING INVITATION
+</div>
+
+
+<div class="main-title">
+Chathumini & Harsha
+</div>
+
+
+<div class="divider"></div>
+
+
+<div class="names">
+30 OCTOBER 2026
+</div>
+
+
+<input 
+class="input-box"
+id="guestInput"
+placeholder="Enter your name">
+
+
+<button class="button" onclick="openInvite()">
+
+OPEN INVITATION ❤️
+
+</button>
+
+
+</section>
+
+
+
+
+<section class="section" id="welcome">
+
+
+<div class="heading">
+TOGETHER WITH OUR FAMILIES
+</div>
+
+
+<div class="guest-name" id="guestDisplay">
+
+Special Guest
+
+</div>
+
+
+<p class="description">
+
+WE CORDIALLY INVITE YOU<br>
+TO CELEBRATE THE WEDDING CEREMONY OF
+
+<br><br>
+
+<strong>
+CHATHUMINI & HARSHA
+</strong>
+
+</p>
+
+
+<div class="divider"></div>
+
+
+</section>
+
+
+
+
+<section class="section" id="details">
+
+
+<div class="heading">
+WEDDING DETAILS
+</div>
+
+
+<div class="card">
+
+
+<div class="label">
+DATE
+</div>
+
+<div class="value">
+Friday, 30th October 2026
+</div>
+
+
+<div class="label">
+TIME
+</div>
+
+<div class="value">
+9.00 AM onwards
+</div>
+
+
+<div class="label">
+VENUE
+</div>
+
+<div class="value">
+Ligness Green Odyssey<br>
+Wanduramba Road, Galle
+</div>
+
+
+<a class="map-btn"
+href="https://maps.app.goo.gl/RTsLkZBuABoMxdEFA"
+target="_blank">
+
+<i class="fa fa-location-dot"></i>
+GET LOCATION
+
+</a>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+<section class="section" id="countdown">
+
+
+<div class="heading" style="color:#d4af37">
+SAVE THE DATE
+</div>
+
+
+<div class="date">
+30.10.2026
+</div>
+
+
+<div class="timer">
+
+<div class="time-box">
+<div class="number" id="days">00</div>
+<div class="small">DAYS</div>
+</div>
+
+
+<div class="time-box">
+<div class="number" id="hours">00</div>
+<div class="small">HOURS</div>
+</div>
+
+
+<div class="time-box">
+<div class="number" id="mins">00</div>
+<div class="small">MINS</div>
+</div>
+
+
+<div class="time-box">
+<div class="number" id="secs">00</div>
+<div class="small">SECS</div>
+</div>
+
+
+</div>
+
+
+</section>
     
-    <!-- Romantic Wedding Background Audio -->
-    <audio id="bgMusic" loop preload="auto" crossorigin="anonymous">
-        <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-wedding-piano-116231.mp3" type="audio/mpeg">
-    </audio>
+    <!-- ================= RSVP PAGE ================= -->
 
-    <div class="mobile-frame" id="frame">
-        <canvas id="fxCanvas"></canvas>
 
-        <!-- PAGE 1: Cover (Locked Scroll) -->
-        <div class="snap-section" id="sec1">
-            <div class="hero-title">The Wedding of</div>
-            <div class="couple-name">CHATHUMINI<br>&<br>HARSHA</div>
-            <div class="gold-divider"></div>
-            <p style="font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 3px; color: var(--light-gold);">30 . 10 . 2026</p>
-            
-            <button class="btn-action" onclick="unlockAndStart();">
-                OPEN INVITATION <i class="fas fa-heart"></i>
-            </button>
-        </div>
+<section class="section" id="rsvp">
 
-        <!-- PAGE 2: Guest Invitation (WITH FLOWER ARCH) -->
-        <div class="snap-section" id="sec2">
-            <div class="sub-heading">TOGETHER WITH OUR FAMILIES</div>
-            <p style="font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 1px; color: #222; font-weight: 600;">WE CORDIALLY INVITE YOU</p>
-            
-            <div class="guest-title" id="guestNameDisplay">Special Guest</div>
-            
-            <p style="font-size: 0.75rem; color: #333; line-height: 1.8; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">
-                TO CELEBRATE THE JOYOUS WEDDING CEREMONY OF
-            </p>
-            <div class="gold-divider"></div>
-            <div style="font-family: 'Cinzel', serif; font-size: 1.4rem; color: var(--primary-green); font-weight: 700; text-shadow: 0 1px 5px rgba(255,255,255,0.8);">
-                CHATHUMINI & HARSHA
-            </div>
-            
-            <div class="scroll-down">SCROLL DOWN <span>↓</span></div>
-        </div>
 
-        <!-- PAGE 3: Venue & Details -->
-        <div class="snap-section" id="sec3">
-            <div class="sub-heading">WEDDING DETAILS</div>
-            <div class="details-card">
-                <div class="detail-title">DATE</div>
-                <div class="detail-value">Friday, 30th October 2026</div>
+<div class="heading">
+R.S.V.P
+</div>
 
-                <div class="detail-title">TIME</div>
-                <div class="detail-value">From 9:00 AM Onwards</div>
 
-                <div class="detail-title">LOCATION</div>
-                <div class="detail-value">Ligness Green Odyssey</div>
-                <div style="font-size: 0.75rem; color: #666; margin-top: 2px;">Wanduramba Road, Galle</div>
+<div class="guest-name" style="font-size:2.5rem;">
+Confirm Attendance
+</div>
 
-                <a href="https://maps.app.goo.gl/cx6cqKQioFv8L9QH7" target="_blank" class="btn-action" style="margin-top: 15px; font-size: 0.7rem;">
-                    <i class="fas fa-map-marker-alt"></i> GET LOCATION MAP
-                </a>
-            </div>
-            <div class="scroll-down">SAVE THE DATE <span>↓</span></div>
-        </div>
 
-        <!-- PAGE 4: Save the Date & Countdown -->
-        <div class="snap-section" id="sec4" style="background: var(--primary-green); color: white;">
-            <div class="sub-heading" style="color: var(--accent-gold);">SAVE THE DATE</div>
-            <div style="font-family: 'Great Vibes', cursive; font-size: 3.2rem; color: var(--accent-gold);">30 . 10 . 2026</div>
+<p class="description">
+Please confirm before 20th October 2026
+</p>
 
-            <div class="timer-grid">
-                <div class="timer-item">
-                    <div style="font-family: 'Great Vibes', cursive; font-size: 2.2rem; color: var(--light-gold);" id="days">00</div>
-                    <div style="font-size: 0.6rem; letter-spacing: 1px; color: var(--accent-gold);">DAYS</div>
-                </div>
-                <div class="timer-item">
-                    <div style="font-family: 'Great Vibes', cursive; font-size: 2.2rem; color: var(--light-gold);" id="hours">00</div>
-                    <div style="font-size: 0.6rem; letter-spacing: 1px; color: var(--accent-gold);">HOURS</div>
-                </div>
-                <div class="timer-item">
-                    <div style="font-family: 'Great Vibes', cursive; font-size: 2.2rem; color: var(--light-gold);" id="minutes">00</div>
-                    <div style="font-size: 0.6rem; letter-spacing: 1px; color: var(--accent-gold);">MINS</div>
-                </div>
-                <div class="timer-item">
-                    <div style="font-family: 'Great Vibes', cursive; font-size: 2.2rem; color: var(--light-gold);" id="seconds">00</div>
-                    <div style="font-size: 0.6rem; letter-spacing: 1px; color: var(--accent-gold);">SECS</div>
-                </div>
-            </div>
 
-            <p style="margin-top: 30px; font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 2px; color: var(--light-gold);">COUNTING DOWN TO OUR FOREVER</p>
-            <div class="scroll-down" style="color: white;">RSVP <span>↓</span></div>
-        </div>
 
-        <!-- PAGE 5: RSVP Page -->
-        <div class="snap-section" id="sec5">
-            <div class="sub-heading">R.S.V.P</div>
-            <div style="font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: var(--primary-green);">Confirm Attendance</div>
-            
-            <p style="font-size: 0.75rem; color: #c5221f; font-weight: 600; margin-top: 5px; letter-spacing: 0.5px;">
-                * Please confirm your presence before <br><strong>20th October 2026</strong>
-            </p>
+<div class="card">
 
-            <div class="details-card" style="margin-top: 12px; padding: 15px;">
-                <label style="font-size: 0.7rem; font-family: 'Cinzel', serif; display: block; text-align: left; font-weight:600;">WILL YOU ATTEND?</label>
-                <select id="rsvpStatus" class="input-field">
-                    <option value="Joyfully Accepts">Joyfully Accepts</option>
-                    <option value="Regretfully Declines">Regretfully Declines</option>
-                </select>
 
-                <label style="font-size: 0.7rem; font-family: 'Cinzel', serif; display: block; text-align: left; margin-top: 10px; font-weight:600;">NUMBER OF GUESTS</label>
-                <input type="number" id="rsvpCount" class="input-field" value="1" min="1" max="5">
+<div class="label">
+ATTENDANCE STATUS
+</div>
 
-                <button class="btn-action" onclick="sendRSVPWhatsApp()" style="background: #25D366; width: 100%; justify-content: center; margin-top: 15px;">
-                    <i class="fab fa-whatsapp"></i> CONFIRM VIA WHATSAPP
-                </button>
-            </div>
-            <div class="scroll-down">BEST WISHES <span>↓</span></div>
-        </div>
 
-        <!-- PAGE 6: Best Wishes Page -->
-        <div class="snap-section" id="sec6">
-            <div class="sub-heading">SEND YOUR LOVE</div>
-            <div style="font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: var(--primary-green);">Best Wishes</div>
-            <p style="font-size: 0.75rem; color: #666; margin-bottom: 5px;">Leave a heartwarming message for the couple!</p>
+<select class="input-box" id="status">
 
-            <div style="width: 100%;">
-                <textarea id="wishText" class="input-field" style="height: 90px; resize: none;" placeholder="Write your sweet blessing here..."></textarea>
-                <button class="btn-action" onclick="sendWishWhatsApp()" style="background: var(--primary-green); width: 100%; justify-content: center; margin-top: 10px;">
-                    <i class="fas fa-heart"></i> SEND BLESSINGS
-                </button>
-            </div>
-            <div class="scroll-down">THANK YOU <span>↓</span></div>
-        </div>
+<option>
+Joyfully Accepts
+</option>
 
-        <!-- PAGE 7: Final Thank You Page -->
-        <div class="snap-section" id="sec7">
-            <div style="font-family: 'Great Vibes', cursive; font-size: 3.8rem; color: var(--primary-green);">Thank You</div>
-            <div class="gold-divider"></div>
-            <p style="font-size: 0.85rem; color: #555; line-height: 1.8; max-width: 85%;">
-                YOUR PRESENCE AND PRAYERS WILL MAKE OUR SPECIAL DAY TRULY UNFORGETTABLE. WE CAN'T WAIT TO CELEBRATE WITH YOU!
-            </p>
-            <div style="font-family: 'Cinzel', serif; font-size: 1.1rem; color: var(--primary-green); margin-top: 25px; font-weight: 700;">
-                CHATHUMINI & HARSHA
-            </div>
-            <button class="btn-action" onclick="scrollToSec('sec1')" style="background:#444; margin-top: 25px; font-size: 0.7rem;">
-                <i class="fas fa-arrow-up"></i> BACK TO TOP
-            </button>
-        </div>
+<option>
+Regretfully Declines
+</option>
 
-    </div>
+</select>
 
+
+
+<div class="label">
+NUMBER OF GUESTS
+</div>
+
+
+<input 
+class="input-box"
+type="number"
+id="guestCount"
+value="1"
+min="1"
+max="5">
+
+
+
+<button class="button"
+onclick="sendRSVP()">
+
+<i class="fab fa-whatsapp"></i>
+CONFIRM RSVP
+
+</button>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+<!-- ================= WISH PAGE ================= -->
+
+
+<section class="section" id="wishes">
+
+
+<div class="heading">
+SEND YOUR LOVE
+</div>
+
+
+<div class="guest-name" style="font-size:2.5rem;">
+Best Wishes
+</div>
+
+
+
+<p class="description">
+
+Leave your beautiful blessing message
+
+</p>
+
+
+
+<textarea 
+id="wish"
+class="input-box"
+style="
+height:120px;
+border-radius:15px;
+resize:none;
+"
+placeholder="Write your message here..."></textarea>
+
+
+
+
+<button class="button"
+onclick="sendWish()">
+
+❤️ SEND BLESSINGS
+
+</button>
+
+
+</section>
+
+
+
+
+
+<!-- ================= THANK YOU PAGE ================= -->
+
+
+<section class="section" id="thankyou">
+
+
+<div class="guest-name">
+
+Thank You
+
+</div>
+
+
+<div class="divider"></div>
+
+
+
+<p class="description">
+
+
+YOUR PRESENCE AND BLESSINGS<br>
+WILL MAKE OUR SPECIAL DAY<br>
+TRULY UNFORGETTABLE.
+
+
+</p>
+
+
+
+<br>
+
+
+<div class="names">
+
+CHATHUMINI
+&
+HARSHA
+
+</div>
+
+
+
+<button class="button"
+onclick="document.getElementById('mainContainer').scrollTo({top:0,behavior:'smooth'})">
+
+↑ BACK TO TOP
+
+</button>
+
+
+</section>
+
+
+</div>
+
+
+
+
+<!-- ================= MUSIC BUTTON ================= -->
+
+
+<div id="musicButton"
+onclick="toggleMusic()"
+style="
+
+position:fixed;
+right:20px;
+bottom:20px;
+
+width:55px;
+height:55px;
+
+border-radius:50%;
+
+background:#123524;
+
+border:2px solid #d4af37;
+
+color:#d4af37;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+font-size:20px;
+
+z-index:99;
+
+cursor:pointer;
+
+">
+
+<i class="fa fa-music"></i>
+
+</div>
+
+
+
+
+<!-- ================= AUDIO ================= -->
+
+
+<audio id="music" loop>
+
+<source src="https://cdn.pixabay.com/audio/2022/05/27/audio_1808fbf07a.mp3">
+
+</audio>
+
+
+
+
+
+
+<!-- ================= GOLD PARTICLE CANVAS ================= -->
+
+
+<canvas id="canvas"
+
+style="
+
+position:fixed;
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+pointer-events:none;
+
+z-index:50;
+
+">
+
+</canvas>
+
+
+
+
+    
     <script>
-        const music = document.getElementById("bgMusic");
-        let isPlaying = false;
 
-        function unlockAndStart() {
-            const frame = document.getElementById('frame');
-            frame.classList.add('unlocked');
-            scrollToSec('sec2');
-            
-            music.play().then(() => {
-                isPlaying = true;
-                document.getElementById("musicIcon").className = "fas fa-pause";
-            }).catch(err => {
-                console.log("Audio play allowed on user click");
-            });
-        }
 
-        function scrollToSec(id) {
-            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-        }
+// ================= GUEST NAME & OPEN INVITATION =================
 
-        // Dynamic Guest Name Handler
-        const urlParams = new URLSearchParams(window.location.search);
-        const prefix = urlParams.get('prefix') || '';
-        const name = urlParams.get('name') || '';
 
-        if (name) {
-            const fullName = (prefix ? prefix + ' ' : '') + name;
-            document.getElementById('guestNameDisplay').innerText = fullName;
-        } else {
-            document.getElementById('guestNameDisplay').innerText = "Special Guest";
-        }
+let guestName = "Special Guest";
 
-        // Countdown Timer
-        const targetDate = new Date("October 30, 2026 09:00:00").getTime();
-        setInterval(function() {
-            const now = new Date().getTime();
-            const difference = targetDate - now;
 
-            if (difference > 0) {
-                document.getElementById("days").innerText = Math.floor(difference / (1000 * 60 * 60 * 24));
-                document.getElementById("hours").innerText = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                document.getElementById("minutes").innerText = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-                document.getElementById("seconds").innerText = Math.floor((difference % (1000 * 60)) / 1000);
-            }
-        }, 1000);
+function openInvite(){
 
-        // Music Controls Toggle Button
-        function toggleMusic(e) {
-            if (e) e.stopPropagation();
-            if (isPlaying) {
-                music.pause();
-                document.getElementById("musicIcon").className = "fas fa-music";
-            } else {
-                music.play();
-                document.getElementById("musicIcon").className = "fas fa-pause";
-            }
-            isPlaying = !isPlaying;
-        }
 
-        // RSVP WhatsApp Sender
-        function sendRSVPWhatsApp() {
-            const status = document.getElementById('rsvpStatus').value;
-            const count = document.getElementById('rsvpCount').value;
-            const guest = name ? (prefix + ' ' + name) : "Guest";
-            
-            const text = encodeURIComponent(`Hi Chathumini & Harsha! 💍\n\n*RSVP Confirmation*\n• Guest Name: ${guest}\n• Status: ${status}\n• Guest Count: ${count}\n\nLooking forward to celebrating with you!`);
-            window.open(`https://wa.me/?text=${text}`, '_blank');
-        }
+let name = document.getElementById("guestInput").value.trim();
 
-        // Send Wish WhatsApp
-        function sendWishWhatsApp() {
-            const wish = document.getElementById('wishText').value;
-            if (!wish.trim()) {
-                alert("Please write a wish message before sending!");
-                return;
-            }
-            const guest = name ? (prefix + ' ' + name) : "Guest";
-            const text = encodeURIComponent(`Hi Chathumini & Harsha! 💖\n\n${wish}\n\nWith Love,\n${guest}`);
-            window.open(`https://wa.me/?text=${text}`, '_blank');
-        }
 
-        // Falling Gold Hearts Canvas Animation
-        const canvas = document.getElementById('fxCanvas');
-        const ctx = canvas.getContext('2d');
-        
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
+if(name){
 
-        const hearts = [];
-        for (let i = 0; i < 22; i++) {
-            hearts.push({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                size: Math.random() * 10 + 8,
-                speedY: Math.random() * 1.2 + 0.4,
-                speedX: Math.random() * 0.6 - 0.3,
-                opacity: Math.random() * 0.5 + 0.3
-            });
-        }
+guestName = name;
 
-        function drawHeart(x, y, size, opacity) {
-            ctx.save();
-            ctx.beginPath();
-            ctx.translate(x, y);
-            
-            const topCurveHeight = size * 0.3;
-            ctx.moveTo(0, topCurveHeight);
-            ctx.bezierCurveTo(0, 0, -size / 2, 0, -size / 2, topCurveHeight);
-            ctx.bezierCurveTo(-size / 2, (size + topCurveHeight) / 2, 0, size, 0, size);
-            ctx.bezierCurveTo(0, size, size / 2, (size + topCurveHeight) / 2, size / 2, topCurveHeight);
-            ctx.bezierCurveTo(size / 2, 0, 0, 0, 0, topCurveHeight);
-            
-            ctx.fillStyle = `rgba(212, 175, 55, ${opacity})`;
-            ctx.shadowColor = 'rgba(212, 175, 55, 0.4)';
-            ctx.shadowBlur = 6;
-            ctx.fill();
-            ctx.restore();
-        }
+}
 
-        function animateHearts() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            hearts.forEach(h => {
-                drawHeart(h.x, h.y, h.size, h.opacity);
 
-                h.y += h.speedY;
-                h.x += h.speedX;
+document.getElementById("guestDisplay").innerHTML = guestName;
 
-                if (h.y > canvas.height + 20) {
-                    h.y = -20;
-                    h.x = Math.random() * canvas.width;
-                }
-            });
-            requestAnimationFrame(animateHearts);
-        }
-        animateHearts();
-    </script>
+
+
+// Start music
+
+let audio=document.getElementById("music");
+
+
+audio.play().then(() => {
+    playing = true;
+    document.querySelector("#musicButton i").className = "fa fa-pause";
+}).catch(()=>{});
+
+
+// Auto scroll to Welcome page
+document.getElementById("welcome").scrollIntoView({ behavior: 'smooth' });
+
+}
+
+
+
+
+// ================= COUNTDOWN =================
+
+
+let weddingDate = new Date(
+"October 30, 2026 09:00:00"
+).getTime();
+
+
+
+setInterval(function(){
+
+
+let now = new Date().getTime();
+
+
+let distance = weddingDate - now;
+
+
+
+if(distance>0){
+
+
+let days = Math.floor(
+distance/(1000*60*60*24)
+);
+
+
+let hours = Math.floor(
+(distance%(1000*60*60*24))
+/
+(1000*60*60)
+);
+
+
+let mins = Math.floor(
+(distance%(1000*60*60))
+/
+(1000*60)
+);
+
+
+let secs = Math.floor(
+(distance%(1000*60))
+/
+1000
+);
+
+
+
+document.getElementById("days").innerHTML=days;
+
+document.getElementById("hours").innerHTML=hours;
+
+document.getElementById("mins").innerHTML=mins;
+
+document.getElementById("secs").innerHTML=secs;
+
+
+}
+
+
+},1000);
+
+
+
+
+
+
+// ================= RSVP WHATSAPP =================
+
+
+
+function sendRSVP(){
+
+
+let status =
+document.getElementById("status").value;
+
+
+let count =
+document.getElementById("guestCount").value;
+
+
+
+let message =
+
+`Hi Chathumini & Harsha 💍
+
+RSVP Confirmation
+
+Guest Name : ${guestName}
+
+Status : ${status}
+
+Number of Guests : ${count}
+
+
+Looking forward to celebrating with you ❤️`;
+
+
+
+let url =
+"https://wa.me/?text="
++
+encodeURIComponent(message);
+
+
+
+window.open(url,"_blank");
+
+
+}
+
+
+
+
+
+
+
+// ================= WISH MESSAGE =================
+
+
+
+function sendWish(){
+
+
+let wish =
+document.getElementById("wish").value;
+
+
+
+if(wish.trim()==""){
+
+
+alert(
+"Please write your blessing message"
+);
+
+
+return;
+
+
+}
+
+
+
+let message =
+
+`Hi Chathumini & Harsha ❤️
+
+
+${wish}
+
+
+With Love,
+${guestName}`;
+
+
+
+window.open(
+
+"https://wa.me/?text="
++
+encodeURIComponent(message),
+
+"_blank"
+
+);
+
+
+
+}
+
+
+
+
+
+
+
+// ================= MUSIC CONTROL =================
+
+
+
+let playing=false;
+
+
+
+function toggleMusic(){
+
+
+let audio =
+document.getElementById("music");
+
+
+
+if(playing){
+
+
+audio.pause();
+
+
+document.querySelector("#musicButton i")
+.className="fa fa-music";
+
+
+}
+
+else{
+
+
+audio.play();
+
+
+document.querySelector("#musicButton i")
+.className="fa fa-pause";
+
+
+}
+
+
+
+playing=!playing;
+
+
+
+}
+
+
+
+
+
+
+
+// ================= GOLD PARTICLES =================
+
+
+
+const canvas =
+document.getElementById("canvas");
+
+
+const ctx =
+canvas.getContext("2d");
+
+
+
+function resize(){
+
+
+canvas.width =
+window.innerWidth;
+
+
+canvas.height =
+window.innerHeight;
+
+
+}
+
+
+
+resize();
+
+
+window.addEventListener(
+"resize",
+resize
+);
+
+
+
+
+
+let particles=[];
+
+
+
+for(let i=0;i<70;i++){
+
+
+particles.push({
+
+
+x:Math.random()*canvas.width,
+
+y:Math.random()*canvas.height,
+
+size:
+Math.random()*3+1,
+
+
+speed:
+Math.random()*0.8+0.2
+
+
+
+});
+
+
+}
+
+
+
+
+
+
+function drawParticles(){
+
+
+ctx.clearRect(
+0,
+0,
+canvas.width,
+canvas.height
+);
+
+
+
+particles.forEach(p=>{
+
+
+ctx.beginPath();
+
+
+ctx.arc(
+p.x,
+p.y,
+p.size,
+0,
+Math.PI*2
+);
+
+
+
+ctx.fillStyle=
+"rgba(212,175,55,0.7)";
+
+
+ctx.fill();
+
+
+
+p.y -= p.speed;
+
+
+
+if(p.y<0){
+
+p.y=canvas.height;
+
+p.x=Math.random()*canvas.width;
+
+}
+
+
+
+});
+
+
+
+requestAnimationFrame(
+drawParticles
+);
+
+
+}
+
+
+
+drawParticles();
+
+
+
+
+</script>
+
+
 </body>
+
 </html>
