@@ -87,6 +87,13 @@
             color: white;
         }
 
+        /* PAGE 2: Flower Arch Background */
+        #sec2 {
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.65)), 
+                        url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=1000&auto=format&fit=crop') center/cover;
+            color: #1a1a1a;
+        }
+
         /* Typography */
         .hero-title {
             font-family: 'Great Vibes', cursive;
@@ -115,16 +122,17 @@
             font-family: 'Cinzel', serif;
             font-size: 0.75rem;
             letter-spacing: 3px;
-            color: var(--accent-gold);
+            color: var(--primary-green);
             margin-bottom: 8px;
-            font-weight: 600;
+            font-weight: 700;
         }
 
         .guest-title {
             font-family: 'Great Vibes', cursive;
-            font-size: 3rem;
+            font-size: 3.2rem;
             color: var(--primary-green);
             margin: 10px 0;
+            text-shadow: 0 2px 8px rgba(255, 255, 255, 0.8);
         }
 
         /* Card Frame */
@@ -235,6 +243,7 @@
             letter-spacing: 2px;
             font-family: 'Cinzel', serif;
             color: var(--primary-green);
+            font-weight: 700;
         }
 
         @keyframes bounce {
@@ -251,9 +260,8 @@
         <i class="fas fa-music" id="musicIcon"></i>
     </div>
     
-    <!-- Ultra Calm Romantic Wedding Piano & Strings Music (CORS Free CDN Source) -->
+    <!-- Romantic Wedding Background Audio -->
     <audio id="bgMusic" loop preload="auto" crossorigin="anonymous">
-        <source src="https://actions.google.com/sounds/v1/ambiences/outdoor_park_gentle_wind.ogg" type="audio/ogg">
         <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-wedding-piano-116231.mp3" type="audio/mpeg">
     </audio>
 
@@ -272,18 +280,20 @@
             </button>
         </div>
 
-        <!-- PAGE 2: Guest Invitation -->
+        <!-- PAGE 2: Guest Invitation (WITH FLOWER ARCH) -->
         <div class="snap-section" id="sec2">
             <div class="sub-heading">TOGETHER WITH OUR FAMILIES</div>
-            <p style="font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 1px; color: #555;">WE CORDIALLY INVITE YOU</p>
+            <p style="font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 1px; color: #222; font-weight: 600;">WE CORDIALLY INVITE YOU</p>
             
             <div class="guest-title" id="guestNameDisplay">Special Guest</div>
             
-            <p style="font-size: 0.80rem; color: #555; line-height: 1.8; text-transform: uppercase; letter-spacing: 1px;">
+            <p style="font-size: 0.75rem; color: #333; line-height: 1.8; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">
                 TO CELEBRATE THE JOYOUS WEDDING CEREMONY OF
             </p>
             <div class="gold-divider"></div>
-            <div style="font-family: 'Cinzel', serif; font-size: 1.3rem; color: var(--primary-green); font-weight: 700;">CHATHUMINI & HARSHA</div>
+            <div style="font-family: 'Cinzel', serif; font-size: 1.4rem; color: var(--primary-green); font-weight: 700; text-shadow: 0 1px 5px rgba(255,255,255,0.8);">
+                CHATHUMINI & HARSHA
+            </div>
             
             <div class="scroll-down">SCROLL DOWN <span>↓</span></div>
         </div>
@@ -311,7 +321,7 @@
 
         <!-- PAGE 4: Save the Date & Countdown -->
         <div class="snap-section" id="sec4" style="background: var(--primary-green); color: white;">
-            <div class="sub-heading">SAVE THE DATE</div>
+            <div class="sub-heading" style="color: var(--accent-gold);">SAVE THE DATE</div>
             <div style="font-family: 'Great Vibes', cursive; font-size: 3.2rem; color: var(--accent-gold);">30 . 10 . 2026</div>
 
             <div class="timer-grid">
@@ -399,18 +409,16 @@
         const music = document.getElementById("bgMusic");
         let isPlaying = false;
 
-        // Unlock Scroll & Smooth Play
         function unlockAndStart() {
             const frame = document.getElementById('frame');
             frame.classList.add('unlocked');
             scrollToSec('sec2');
             
-            // Interaction triggers audio start smoothly
             music.play().then(() => {
                 isPlaying = true;
                 document.getElementById("musicIcon").className = "fas fa-pause";
             }).catch(err => {
-                console.log("Audio ready for click play");
+                console.log("Audio play allowed on user click");
             });
         }
 
