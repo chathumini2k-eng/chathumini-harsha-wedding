@@ -251,9 +251,9 @@
         <i class="fas fa-music" id="musicIcon"></i>
     </div>
     
-    <!-- Working Romantic Piano & Violin Audio -->
+    <!-- Ultra Reliable Romantic Wedding Piano Music -->
     <audio id="bgMusic" loop preload="auto">
-        <source src="https://assets.mixkit.co/music/preview/mixkit-wedding-in-the-garden-1132.mp3" type="audio/mpeg">
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
     </audio>
 
     <div class="mobile-frame" id="frame">
@@ -395,19 +395,21 @@
     </div>
 
     <script>
-        // Unlock Scroll & Play Music
+        const music = document.getElementById("bgMusic");
+        let isPlaying = false;
+
+        // Unlock Scroll & Force Play Music
         function unlockAndStart() {
             const frame = document.getElementById('frame');
             frame.classList.add('unlocked');
             scrollToSec('sec2');
             
-            // Audio Play logic
-            const music = document.getElementById("bgMusic");
+            // Explicit user action allows browser autoplay
             music.play().then(() => {
                 isPlaying = true;
                 document.getElementById("musicIcon").className = "fas fa-pause";
-            }).catch(e => {
-                console.log("Audio play error: ", e);
+            }).catch(err => {
+                console.log("Playback failed: ", err);
             });
         }
 
@@ -441,10 +443,7 @@
             }
         }, 1000);
 
-        // Music Controls Toggle
-        const music = document.getElementById("bgMusic");
-        let isPlaying = false;
-
+        // Music Controls Toggle Button
         function toggleMusic(e) {
             if (e) e.stopPropagation();
             if (isPlaying) {
@@ -479,7 +478,7 @@
             window.open(`https://wa.me/?text=${text}`, '_blank');
         }
 
-        // Falling Hearts Canvas Animation
+        // Falling Gold Hearts Canvas Animation
         const canvas = document.getElementById('fxCanvas');
         const ctx = canvas.getContext('2d');
         
@@ -515,7 +514,7 @@
             ctx.bezierCurveTo(0, size, size / 2, (size + topCurveHeight) / 2, size / 2, topCurveHeight);
             ctx.bezierCurveTo(size / 2, 0, 0, 0, 0, topCurveHeight);
             
-            ctx.fillStyle = `rgba(212, 175, 55, ${opacity})`; // Elegant Gold Hearts
+            ctx.fillStyle = `rgba(212, 175, 55, ${opacity})`;
             ctx.shadowColor = 'rgba(212, 175, 55, 0.4)';
             ctx.shadowBlur = 6;
             ctx.fill();
