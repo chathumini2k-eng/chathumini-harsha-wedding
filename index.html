@@ -2393,7 +2393,6 @@ Thank You
 
 
 
-
 <div class="divider"></div>
 
 
@@ -2419,7 +2418,6 @@ TRULY UNFORGETTABLE
 
 
 
-
 <div class="final-couple">
 
 
@@ -2439,7 +2437,6 @@ CHATHUMINI
 
 
 
-
 <div>
 
 HARSHA
@@ -2447,8 +2444,8 @@ HARSHA
 </div>
 
 
-</div>
 
+</div>
 
 
 
@@ -2467,8 +2464,6 @@ onclick="closeInvite()">
 
 
 </section>
-
-
 
 
 
@@ -2510,7 +2505,7 @@ background:
 
 linear-gradient(
 
-rgba(5,20,12,.75),
+rgba(5,20,12,.78),
 
 rgba(5,20,12,.95)
 
@@ -2530,30 +2525,38 @@ center/cover;
 
 
 
+/* UPDATED COUPLE FONT */
+
+
 .final-couple{
 
 
 font-family:'Great Vibes',cursive;
 
 
-font-size:4rem;
+font-size:2.8rem;
 
 
 color:#d4af37;
 
 
-line-height:1.3;
+line-height:1.2;
 
 
-margin-top:30px;
+margin-top:25px;
+
+
+letter-spacing:2px;
 
 
 text-shadow:
 
-0 0 20px rgba(212,175,55,.8);
+0 0 15px rgba(212,175,55,.7);
 
 
 }
+
+
 
 
 
@@ -2566,13 +2569,13 @@ display:block;
 font-family:'Cinzel',serif;
 
 
-font-size:2rem;
+font-size:1.4rem;
 
 
 color:white;
 
 
-margin:10px;
+margin:8px;
 
 
 }
@@ -2580,6 +2583,10 @@ margin:10px;
 
 
 
+
+
+
+/* MUSIC BUTTON */
 
 
 #musicBtn{
@@ -2640,183 +2647,8 @@ box-shadow:
 
 
 
-
-
-
-/* PETALS */
-
-
-.jasmine-petal{
-
-
-position:fixed;
-
-
-top:-40px;
-
-
-background:
-
-radial-gradient(
-
-circle,
-
-#ffffff,
-
-#f1eee5
-
-);
-
-
-border-radius:
-
-80% 20% 80% 20%;
-
-
-opacity:.9;
-
-
-z-index:100;
-
-
-pointer-events:none;
-
-
-animation:
-
-jasmineFall linear infinite;
-
-
-}
-
-
-
-
-@keyframes jasmineFall{
-
-
-0%{
-
-transform:
-
-translateY(-50px)
-
-translateX(0)
-
-rotate(0deg);
-
-}
-
-
-
-50%{
-
-transform:
-
-translateY(50vh)
-
-translateX(var(--swing))
-
-rotate(180deg);
-
-}
-
-
-
-100%{
-
-transform:
-
-translateY(110vh)
-
-translateX(0)
-
-rotate(360deg);
-
-opacity:.1;
-
-}
-
-
-}
-
-
-
-
-
-
-
-.sparkle{
-
-
-position:fixed;
-
-
-width:5px;
-
-
-height:5px;
-
-
-background:#d4af37;
-
-
-border-radius:50%;
-
-
-box-shadow:
-
-0 0 10px #d4af37;
-
-
-z-index:90;
-
-
-animation:
-
-sparkleMove 4s linear;
-
-
-}
-
-
-
-@keyframes sparkleMove{
-
-
-0%{
-
-transform:translateY(0);
-
-opacity:1;
-
-}
-
-
-
-100%{
-
-transform:translateY(-100px);
-
-opacity:0;
-
-}
-
-
-}
-
-
-
 </style>
-
-
-
-
-
-
-
-
-
+  
 <script>
 
 
@@ -2828,18 +2660,15 @@ opacity:0;
 let guestName="Special Guest";
 
 
-
 window.addEventListener("load",()=>{
 
 
-const params=
-
-new URLSearchParams(window.location.search);
-
+const params = new URLSearchParams(
+window.location.search
+);
 
 
 let name=params.get("guest");
-
 
 
 if(name){
@@ -2850,11 +2679,7 @@ guestName=name.replace(/\+/g," ");
 
 
 
-
-let display=
-
-document.getElementById("guestDisplay");
-
+let display=document.getElementById("guestDisplay");
 
 
 if(display){
@@ -2866,7 +2691,6 @@ display.innerHTML=guestName;
 
 
 });
-
 
 
 
@@ -2892,24 +2716,19 @@ opened=true;
 
 
 document.querySelector(".envelope")
-
 .classList.add("open");
-
 
 
 
 setTimeout(()=>{
 
 
-
 document.getElementById("frame")
-
 .classList.add("opened");
 
 
 
 document.getElementById("closeBtn")
-
 .style.display="block";
 
 
@@ -2944,23 +2763,23 @@ playMusic();
 function closeInvite(){
 
 
+
 opened=false;
 
 
 
 document.getElementById("frame")
-
 .classList.remove("opened");
 
 
 
 document.getElementById("closeBtn")
-
 .style.display="none";
 
 
 
 goPage("cover");
+
 
 
 }
@@ -3036,11 +2855,7 @@ if(distance>0){
 
 document.getElementById("days").innerHTML=
 
-Math.floor(
-
-distance/(1000*60*60*24)
-
-);
+Math.floor(distance/(1000*60*60*24));
 
 
 
@@ -3050,7 +2865,9 @@ Math.floor(
 
 (distance%(1000*60*60*24))
 
-/(1000*60*60)
+/
+
+(1000*60*60)
 
 );
 
@@ -3062,7 +2879,9 @@ Math.floor(
 
 (distance%(1000*60*60))
 
-/(1000*60)
+/
+
+(1000*60)
 
 );
 
@@ -3074,14 +2893,11 @@ Math.floor(
 
 (distance%(1000*60))
 
-/1000
-
-);
+/1000);
 
 
 
 }
-
 
 
 },1000);
@@ -3094,29 +2910,108 @@ Math.floor(
 
 
 
+
 // ===============================
-// MUSIC
+// NEW ROMANTIC MUSIC + FADE
 // ===============================
 
 
 let musicPlaying=false;
 
 
-
 let music=new Audio();
 
 
+// Romantic piano wedding background
 
 music.src=
-
-"https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3";
-
+"https://cdn.pixabay.com/download/audio/2023/02/28/audio_3f8f6d8f0f.mp3";
 
 
 music.loop=true;
 
 
-music.volume=0.35;
+music.volume=0;
+
+
+
+
+
+
+function fadeInMusic(){
+
+
+let volume=0;
+
+
+
+let fade=setInterval(()=>{
+
+
+if(volume < 0.35){
+
+
+volume+=0.02;
+
+
+music.volume=volume;
+
+
+}
+
+else{
+
+
+clearInterval(fade);
+
+
+}
+
+
+},200);
+
+
+
+}
+
+
+
+
+
+
+function fadeOutMusic(){
+
+
+
+let fade=setInterval(()=>{
+
+
+if(music.volume>0.02){
+
+
+music.volume-=0.02;
+
+
+}
+
+else{
+
+
+music.pause();
+
+
+clearInterval(fade);
+
+
+}
+
+
+},200);
+
+
+
+}
+
 
 
 
@@ -3136,22 +3031,26 @@ music.play()
 musicPlaying=true;
 
 
+fadeInMusic();
+
+
 
 document.querySelector("#musicBtn i")
 
 .className="fas fa-pause";
 
 
-})
 
+})
 
 .catch(()=>{
 
 
-console.log("Music waiting");
+console.log("Music waiting for user action");
 
 
 });
+
 
 
 }
@@ -3171,8 +3070,8 @@ function toggleMusic(){
 if(musicPlaying){
 
 
-music.pause();
 
+fadeOutMusic();
 
 
 musicPlaying=false;
@@ -3190,7 +3089,11 @@ document.querySelector("#musicBtn i")
 else{
 
 
+
 music.play();
+
+
+fadeInMusic();
 
 
 
@@ -3203,13 +3106,11 @@ document.querySelector("#musicBtn i")
 .className="fas fa-pause";
 
 
-}
-
-
 
 }
 
 
+}
 
 
 
@@ -3223,6 +3124,7 @@ document.querySelector("#musicBtn i")
 
 
 function sendRSVP(){
+
 
 
 let status=
@@ -3240,6 +3142,7 @@ document.getElementById("guestCount").value;
 
 let message=`
 
+
 Hi Chathumini & Harsha 💍
 
 
@@ -3251,9 +3154,11 @@ Guest Name:
 ${guestName}
 
 
+
 Attendance:
 
 ${status}
+
 
 
 Number of Guests:
@@ -3261,10 +3166,11 @@ Number of Guests:
 ${count}
 
 
+
 Looking forward to celebrating with you ❤️
 
-`;
 
+`;
 
 
 
@@ -3279,6 +3185,7 @@ window.open(
 );
 
 
+
 }
 
 
@@ -3290,7 +3197,7 @@ window.open(
 
 
 // ===============================
-// WISHES
+// WISH MESSAGE
 // ===============================
 
 
@@ -3317,6 +3224,7 @@ return;
 
 
 
+
 let message=`
 
 
@@ -3324,6 +3232,7 @@ Hi Chathumini & Harsha ❤️
 
 
 ${wish}
+
 
 
 With Love,
@@ -3347,6 +3256,7 @@ window.open(
 );
 
 
+
 }
 
 
@@ -3356,32 +3266,27 @@ window.open(
 
 
 
-
 // ===============================
-// PETALS
+// JASMINE PETALS
 // ===============================
 
 
 function createJasmine(){
 
 
+
 if(!opened)return;
 
 
 
-let petal=
-
-document.createElement("div");
-
+let petal=document.createElement("div");
 
 
 petal.className="jasmine-petal";
 
 
 
-let size=
-
-8+Math.random()*12;
+let size=8+Math.random()*12;
 
 
 
@@ -3432,6 +3337,7 @@ petal.remove();
 
 
 
+
 setInterval(createJasmine,500);
 
 
@@ -3443,7 +3349,7 @@ setInterval(createJasmine,500);
 
 
 // ===============================
-// SPARKLES
+// GOLD SPARKLES
 // ===============================
 
 
@@ -3455,9 +3361,7 @@ if(!opened)return;
 
 
 
-let sparkle=
-
-document.createElement("div");
+let sparkle=document.createElement("div");
 
 
 
@@ -3504,9 +3408,8 @@ setInterval(createSparkle,700);
 
 
 
-
 // ===============================
-// LOCK COVER
+// LOCK COVER SCROLL
 // ===============================
 
 
@@ -3528,8 +3431,8 @@ e.preventDefault();
 
 {passive:false}
 
-);
 
+);
 
 
 
@@ -3551,6 +3454,7 @@ e.preventDefault();
 
 {passive:false}
 
+
 );
 
 
@@ -3558,7 +3462,9 @@ e.preventDefault();
 </script>
 
 
+
 </div>
+
 
 </body>
 
