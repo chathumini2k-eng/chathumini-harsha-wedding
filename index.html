@@ -52,7 +52,7 @@
             overflow-y: scroll;
         }
 
-        /* White Lotus Canvas Overlay */
+        /* Heart Animation Canvas */
         #fxCanvas {
             position: fixed;
             top: 0;
@@ -127,7 +127,7 @@
             margin: 10px 0;
         }
 
-        /* Elegant Card Frame */
+        /* Card Frame */
         .details-card {
             background: rgba(255, 255, 255, 0.95);
             border: 1px solid rgba(212, 175, 55, 0.4);
@@ -172,7 +172,6 @@
             align-items: center;
             gap: 10px;
             cursor: pointer;
-            transition: all 0.3s ease;
         }
 
         /* Inputs & RSVP */
@@ -252,9 +251,9 @@
         <i class="fas fa-music" id="musicIcon"></i>
     </div>
     
-    <!-- Grand Piano & Violin Romantic Wedding Instrumental Audio -->
+    <!-- Working Romantic Piano & Violin Audio -->
     <audio id="bgMusic" loop preload="auto">
-        <source src="https://cdn.pixabay.com/download/audio/2021/09/06/audio_8217d8487e.mp3?filename=wedding-piano-violin-10332.mp3" type="audio/mpeg">
+        <source src="https://assets.mixkit.co/music/preview/mixkit-wedding-in-the-garden-1132.mp3" type="audio/mpeg">
     </audio>
 
     <div class="mobile-frame" id="frame">
@@ -268,7 +267,7 @@
             <p style="font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 3px; color: var(--light-gold);">30 . 10 . 2026</p>
             
             <button class="btn-action" onclick="unlockAndStart();">
-                OPEN INVITATION <i class="fas fa-envelope-open-text"></i>
+                OPEN INVITATION <i class="fas fa-heart"></i>
             </button>
         </div>
 
@@ -396,18 +395,20 @@
     </div>
 
     <script>
-        // Unlock Scroll & Autoplay Music
+        // Unlock Scroll & Play Music
         function unlockAndStart() {
             const frame = document.getElementById('frame');
             frame.classList.add('unlocked');
             scrollToSec('sec2');
             
-            // Audio Start
+            // Audio Play logic
             const music = document.getElementById("bgMusic");
             music.play().then(() => {
                 isPlaying = true;
                 document.getElementById("musicIcon").className = "fas fa-pause";
-            }).catch(e => console.log("Audio play blocked"));
+            }).catch(e => {
+                console.log("Audio play error: ", e);
+            });
         }
 
         function scrollToSec(id) {
@@ -426,7 +427,7 @@
             document.getElementById('guestNameDisplay').innerText = "Special Guest";
         }
 
-        // Live Countdown
+        // Countdown Timer
         const targetDate = new Date("October 30, 2026 09:00:00").getTime();
         setInterval(function() {
             const now = new Date().getTime();
@@ -440,7 +441,7 @@
             }
         }, 1000);
 
-        // Music Controls
+        // Music Controls Toggle
         const music = document.getElementById("bgMusic");
         let isPlaying = false;
 
@@ -462,7 +463,7 @@
             const count = document.getElementById('rsvpCount').value;
             const guest = name ? (prefix + ' ' + name) : "Guest";
             
-            const text = encodeURIComponent(`Hi Chathumini & Harsha! 💍\n\n*RSVP Confirmation*\n• Guest Name: ${guest}\n• Status: ${status}\n• Guest Count: ${count}\n\nLooking forward to the celebration!`);
+            const text = encodeURIComponent(`Hi Chathumini & Harsha! 💍\n\n*RSVP Confirmation*\n• Guest Name: ${guest}\n• Status: ${status}\n• Guest Count: ${count}\n\nLooking forward to celebrating with you!`);
             window.open(`https://wa.me/?text=${text}`, '_blank');
         }
 
@@ -470,15 +471,15 @@
         function sendWishWhatsApp() {
             const wish = document.getElementById('wishText').value;
             if (!wish.trim()) {
-                alert("Please enter a message before sending!");
+                alert("Please write a wish message before sending!");
                 return;
             }
             const guest = name ? (prefix + ' ' + name) : "Guest";
-            const text = encodeURIComponent(`Hi Chathumini & Harsha! 🌸\n\n${wish}\n\nWith Love,\n${guest}`);
+            const text = encodeURIComponent(`Hi Chathumini & Harsha! 💖\n\n${wish}\n\nWith Love,\n${guest}`);
             window.open(`https://wa.me/?text=${text}`, '_blank');
         }
 
-        // White Lotus Petals Falling Animation
+        // Falling Hearts Canvas Animation
         const canvas = document.getElementById('fxCanvas');
         const ctx = canvas.getContext('2d');
         
@@ -489,55 +490,54 @@
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
 
-        const petals = [];
-        for (let i = 0; i < 20; i++) {
-            petals.push({
+        const hearts = [];
+        for (let i = 0; i < 22; i++) {
+            hearts.push({
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,
-                size: Math.random() * 8 + 6,
-                speedY: Math.random() * 1.0 + 0.3,
+                size: Math.random() * 10 + 8,
+                speedY: Math.random() * 1.2 + 0.4,
                 speedX: Math.random() * 0.6 - 0.3,
-                angle: Math.random() * 360,
-                spin: Math.random() * 0.02 - 0.01,
-                opacity: Math.random() * 0.5 + 0.4
+                opacity: Math.random() * 0.5 + 0.3
             });
         }
 
-        function drawLotusPetal(x, y, size, angle, opacity) {
+        function drawHeart(x, y, size, opacity) {
             ctx.save();
-            ctx.translate(x, y);
-            ctx.rotate(angle);
             ctx.beginPath();
+            ctx.translate(x, y);
             
-            // White Lotus Petal Oval Shape
-            ctx.ellipse(0, 0, size, size * 1.8, 0, 0, Math.PI * 2);
+            // Draw Heart Shape
+            const topCurveHeight = size * 0.3;
+            ctx.moveTo(0, topCurveHeight);
+            ctx.bezierCurveTo(0, 0, -size / 2, 0, -size / 2, topCurveHeight);
+            ctx.bezierCurveTo(-size / 2, (size + topCurveHeight) / 2, 0, size, 0, size);
+            ctx.bezierCurveTo(0, size, size / 2, (size + topCurveHeight) / 2, size / 2, topCurveHeight);
+            ctx.bezierCurveTo(size / 2, 0, 0, 0, 0, topCurveHeight);
             
-            // Pure White with subtle gold/pinkish glow
-            ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
-            ctx.shadowColor = 'rgba(212, 175, 55, 0.3)';
-            ctx.shadowBlur = 4;
+            ctx.fillStyle = `rgba(212, 175, 55, ${opacity})`; // Elegant Gold Hearts
+            ctx.shadowColor = 'rgba(212, 175, 55, 0.4)';
+            ctx.shadowBlur = 6;
             ctx.fill();
-            
             ctx.restore();
         }
 
-        function animatePetals() {
+        function animateHearts() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            petals.forEach(p => {
-                drawLotusPetal(p.x, p.y, p.size, p.angle, p.opacity);
+            hearts.forEach(h => {
+                drawHeart(h.x, h.y, h.size, h.opacity);
 
-                p.y += p.speedY;
-                p.x += p.speedX;
-                p.angle += p.spin;
+                h.y += h.speedY;
+                h.x += h.speedX;
 
-                if (p.y > canvas.height + 20) {
-                    p.y = -20;
-                    p.x = Math.random() * canvas.width;
+                if (h.y > canvas.height + 20) {
+                    h.y = -20;
+                    h.x = Math.random() * canvas.width;
                 }
             });
-            requestAnimationFrame(animatePetals);
+            requestAnimationFrame(animateHearts);
         }
-        animatePetals();
+        animateHearts();
     </script>
 </body>
 </html>
