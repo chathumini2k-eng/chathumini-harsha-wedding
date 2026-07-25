@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wedding of Chathumini & Harsha</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-green: #2d5a27;
+            --sage-green: #52796f;
+            --soft-bg: #f8f6f0;
+            --card-bg: #ffffff;
+            --gold-accent: #c5a059;
+            --dark-text: #2b2b2b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--soft-bg);
+            color: var(--dark-text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Mobile Container Frame */
+        .mobile-container {
+            width: 100%;
+            max-width: 450px;
+            background: #ffffff;
+            min-height: 100vh;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            overflow-x: hidden;
+            border-left: 1px solid #eaeaea;
+            border-right: 1px solid #eaeaea;
+        }
+
+        /* Hero / Intro Screen */
+        .hero-screen {
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), 
+                        url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1000&auto=format&fit=crop') center/cover no-repeat;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+
+        .hero-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .couple-names {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            letter-spacing: 4px;
+            margin: 15px 0;
+            text-transform: uppercase;
+        }
+
+        .btn-main {
+            background-color: #84a98c;
+            color: white;
+            padding: 14px 28px;
+            border: none;
+            border-radius: 30px;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+
+        /* Main Invitation Details */
+        .section {
+            padding: 40px 25px;
+            text-align: center;
+            background-color: var(--soft-bg);
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .guest-box {
+            background: white;
+            padding: 25px 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin: 20px 0;
+            border: 1px solid #e2ebd8;
+        }
+
+        .guest-name {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.2rem;
+            color: var(--primary-green);
+            margin: 10px 0;
+        }
+
+        .invitation-text {
+            font-size: 0.85rem;
+            line-height: 1.8;
+            color: #555;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Date & Venue Box */
+        .details-card {
+            background: white;
+            padding: 30px 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+        }
+
+        .detail-item {
+            margin-bottom: 20px;
+        }
+
+        .detail-item h4 {
+            font-family: 'Cinzel', serif;
+            color: var(--sage-green);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+
+        .detail-item p {
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        /* Countdown Timer */
+        .countdown-section {
+            background-color: var(--primary-green);
+            color: white;
+            padding: 35px 20px;
+            text-align: center;
+        }
+
+        .countdown-title {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 3px;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .timer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .timer-box {
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 8px;
+            padding: 10px 5px;
+            background: rgba(255,255,255,0.05);
+        }
+
+        .timer-number {
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.8rem;
+        }
+
+        .timer-label {
+            font-size: 0.6rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .btn-map {
+            display: inline-block;
+            background-color: var(--primary-green);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
+            font-family: 'Cinzel', serif;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="mobile-container">
+        <!-- Hero Screen -->
+        <div class="hero-screen">
+            <h1 class="hero-title">The Wedding of</h1>
+            <div class="couple-names">CHATHUMINI<br>&<br>HARSHA</div>
+            <a href="#invitation" class="btn-main">VIEW INVITATION</a>
+        </div>
+
+        <!-- Invitation Main Section -->
+        <div id="invitation" class="section">
+            <p class="invitation-text">WITH HEARTS FULL OF LOVE, WE REQUEST THE HONOUR OF THE PRESENCE OF</p>
+            
+            <!-- Dynamic Guest Name Box -->
+            <div class="guest-box">
+                <div class="guest-name" id="guestNameDisplay">HONORED GUEST</div>
+            </div>
+
+            <p class="invitation-text">TO CELEBRATE THE JOYOUS MARRIAGE OF OUR CHILDREN</p>
+            <p style="font-family: 'Cinzel', serif; font-weight: 600; margin-top: 15px; letter-spacing: 2px;">CHATHUMINI & HARSHA</p>
+        </div>
+
+        <!-- Date & Time Details -->
+        <div class="section" style="background: #fff;">
+            <h2 style="font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: var(--primary-green);">Save The Date</h2>
+            <p style="font-family: 'Cinzel', serif; letter-spacing: 3px; font-size: 1.1rem; margin-bottom: 20px;">30 . 10 . 2026</p>
+
+            <div class="details-card">
+                <div class="detail-item">
+                    <h4>DATE</h4>
+                    <p>Friday, 30th October 2026</p>
+                </div>
+                <div class="detail-item">
+                    <h4>TIME</h4>
+                    <p>From 9:00 AM Onwards</p>
+                </div>
+                <div class="detail-item">
+                    <h4>VENUE</h4>
+                    <p>Ligness Green Odyssey</p>
+                    <p style="font-size: 0.8rem; color: #666;">Wanduramba Road, Galle</p>
+                </div>
+                <a href="https://maps.app.goo.gl/cx6cqKQioFv8L9QH7" target="_blank" class="btn-map">LAUNCH DIGITAL MAP</a>
+            </div>
+        </div>
+
+        <!-- Countdown Timer -->
+        <div class="countdown-section">
+            <div class="countdown-title">COUNTDOWN TO OUR BIG DAY</div>
+            <div class="timer-grid">
+                <div class="timer-box">
+                    <div class="timer-number" id="days">00</div>
+                    <div class="timer-label">Days</div>
+                </div>
+                <div class="timer-box">
+                    <div class="timer-number" id="hours">00</div>
+                    <div class="timer-label">Hours</div>
+                </div>
+                <div class="timer-box">
+                    <div class="timer-number" id="minutes">00</div>
+                    <div class="timer-label">Mins</div>
+                </div>
+                <div class="timer-box">
+                    <div class="timer-number" id="seconds">00</div>
+                    <div class="timer-label">Secs</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript logic -->
+    <script>
+        // Dynamic Guest Name Logic
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        const prefix = getQueryParam('prefix') || '';
+        const name = getQueryParam('name') || '';
+
+        if (name) {
+            const fullName = (prefix ? prefix + ' ' : '') + name;
+            document.getElementById('guestNameDisplay').innerText = fullName.toUpperCase();
+        } else {
+            document.getElementById('guestNameDisplay').innerText = "OUR SPECIAL GUEST";
+        }
+
+        // Countdown Timer Logic (Target Date: Oct 30, 2026)
+        const targetDate = new Date("October 30, 2026 09:00:00").getTime();
+
+        setInterval(function() {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            if (difference > 0) {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                document.getElementById("days").innerText = days;
+                document.getElementById("hours").innerText = hours;
+                document.getElementById("minutes").innerText = minutes;
+                document.getElementById("seconds").innerText = seconds;
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
