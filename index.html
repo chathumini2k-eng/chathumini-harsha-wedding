@@ -251,9 +251,9 @@
         <i class="fas fa-music" id="musicIcon"></i>
     </div>
     
-    <!-- Ultra Reliable Romantic Wedding Piano Music -->
+    <!-- Sihilel Wu Sihineka Romantic Song Track -->
     <audio id="bgMusic" loop preload="auto">
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        <source src="https://ia801602.us.archive.org/27/items/sihilel-wu-sihineka/Sihilel%20Wu%20Sihineka.mp3" type="audio/mpeg">
     </audio>
 
     <div class="mobile-frame" id="frame">
@@ -398,18 +398,17 @@
         const music = document.getElementById("bgMusic");
         let isPlaying = false;
 
-        // Unlock Scroll & Force Play Music
+        // Unlock Scroll & Force Play Song
         function unlockAndStart() {
             const frame = document.getElementById('frame');
             frame.classList.add('unlocked');
             scrollToSec('sec2');
             
-            // Explicit user action allows browser autoplay
             music.play().then(() => {
                 isPlaying = true;
                 document.getElementById("musicIcon").className = "fas fa-pause";
             }).catch(err => {
-                console.log("Playback failed: ", err);
+                console.log("Playback blocked by browser: ", err);
             });
         }
 
