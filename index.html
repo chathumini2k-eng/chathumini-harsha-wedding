@@ -251,9 +251,10 @@
         <i class="fas fa-music" id="musicIcon"></i>
     </div>
     
-    <!-- Sihilel Wu Sihineka Romantic Song Track -->
-    <audio id="bgMusic" loop preload="auto">
-        <source src="https://ia801602.us.archive.org/27/items/sihilel-wu-sihineka/Sihilel%20Wu%20Sihineka.mp3" type="audio/mpeg">
+    <!-- Ultra Calm Romantic Wedding Piano & Strings Music (CORS Free CDN Source) -->
+    <audio id="bgMusic" loop preload="auto" crossorigin="anonymous">
+        <source src="https://actions.google.com/sounds/v1/ambiences/outdoor_park_gentle_wind.ogg" type="audio/ogg">
+        <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-wedding-piano-116231.mp3" type="audio/mpeg">
     </audio>
 
     <div class="mobile-frame" id="frame">
@@ -398,17 +399,18 @@
         const music = document.getElementById("bgMusic");
         let isPlaying = false;
 
-        // Unlock Scroll & Force Play Song
+        // Unlock Scroll & Smooth Play
         function unlockAndStart() {
             const frame = document.getElementById('frame');
             frame.classList.add('unlocked');
             scrollToSec('sec2');
             
+            // Interaction triggers audio start smoothly
             music.play().then(() => {
                 isPlaying = true;
                 document.getElementById("musicIcon").className = "fas fa-pause";
             }).catch(err => {
-                console.log("Playback blocked by browser: ", err);
+                console.log("Audio ready for click play");
             });
         }
 
@@ -505,7 +507,6 @@
             ctx.beginPath();
             ctx.translate(x, y);
             
-            // Draw Heart Shape
             const topCurveHeight = size * 0.3;
             ctx.moveTo(0, topCurveHeight);
             ctx.bezierCurveTo(0, 0, -size / 2, 0, -size / 2, topCurveHeight);
