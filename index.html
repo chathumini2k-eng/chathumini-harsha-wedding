@@ -17,7 +17,6 @@
 
 <style>
 
-
 :root{
 
 --green:#123524;
@@ -27,7 +26,6 @@
 --whitegold:#f5e6a8;
 
 }
-
 
 
 *{
@@ -60,13 +58,9 @@ font-family:'Montserrat',sans-serif;
 
 
 
-
-
-/* MAIN APP */
-
+/* MAIN MOBILE FRAME */
 
 .mobile-frame{
-
 
 width:100%;
 
@@ -82,24 +76,21 @@ position:relative;
 
 scroll-snap-type:y mandatory;
 
-
 }
 
 
 
 .mobile-frame.opened{
 
-
 overflow-y:auto;
-
 
 }
 
 
 
 
-.section{
 
+.section{
 
 height:100vh;
 
@@ -113,21 +104,15 @@ justify-content:center;
 
 align-items:center;
 
-
 text-align:center;
 
-
 padding:30px 25px;
-
 
 position:relative;
 
 overflow:hidden;
 
-
 }
-
-
 
 
 
@@ -137,54 +122,39 @@ overflow:hidden;
 
 #closeBtn{
 
-
 display:none;
-
 
 position:fixed;
 
-
 top:18px;
-
 
 right:18px;
 
-
 width:45px;
-
 
 height:45px;
 
-
 border-radius:50%;
-
 
 background:var(--green);
 
-
 border:2px solid var(--gold);
-
 
 color:var(--gold);
 
-
 font-size:25px;
 
-
 z-index:200;
-
 
 }
 
 
 
 
-
-/* COMMON */
+/* TEXT STYLES */
 
 
 .heading{
-
 
 font-family:'Cinzel',serif;
 
@@ -196,34 +166,27 @@ font-weight:bold;
 
 color:var(--green);
 
-
 }
-
 
 
 
 .main-title{
 
-
 font-family:'Great Vibes',cursive;
 
 font-size:3.5rem;
 
-
 color:white;
-
 
 text-shadow:
 
 0 5px 20px #000;
-
 
 }
 
 
 
 .names{
-
 
 font-family:'Cinzel',serif;
 
@@ -235,6 +198,37 @@ line-height:1.8;
 
 color:var(--whitegold);
 
+}
+
+
+
+
+.guest-name{
+
+font-family:'Great Vibes',cursive;
+
+font-size:3.2rem;
+
+color:var(--green);
+
+margin:15px;
+
+}
+
+
+
+
+.description{
+
+font-size:.75rem;
+
+line-height:2;
+
+letter-spacing:1px;
+
+font-weight:600;
+
+color:#444;
 
 }
 
@@ -243,15 +237,11 @@ color:var(--whitegold);
 
 .divider{
 
-
 height:2px;
-
 
 width:100px;
 
-
 margin:15px auto;
-
 
 background:
 
@@ -267,26 +257,23 @@ transparent
 
 );
 
-
 }
 
 
 
 
-.button{
+/* BUTTON */
 
+
+.button{
 
 margin-top:20px;
 
-
 padding:14px 35px;
-
 
 border-radius:40px;
 
-
 border:1px solid var(--gold);
-
 
 background:
 
@@ -300,24 +287,17 @@ var(--green),
 
 );
 
-
 color:var(--whitegold);
-
 
 font-family:'Cinzel',serif;
 
-
 letter-spacing:2px;
-
 
 font-size:.75rem;
 
-
 cursor:pointer;
 
-
 text-decoration:none;
-
 
 }
 
@@ -350,25 +330,17 @@ center/cover;
 
 
 
-
 .small-text{
-
 
 font-family:'Cinzel',serif;
 
-
 font-size:.7rem;
-
 
 letter-spacing:3px;
 
-
 color:var(--whitegold);
 
-
 }
-
-
 
 
 
@@ -377,32 +349,23 @@ color:var(--whitegold);
 
 .envelope{
 
-
 width:230px;
-
 
 height:150px;
 
-
 background:var(--green);
-
 
 border-radius:12px;
 
-
 position:relative;
 
-
 margin:30px;
-
 
 box-shadow:
 
 0 20px 50px rgba(0,0,0,.6);
 
-
 cursor:pointer;
-
 
 }
 
@@ -410,108 +373,74 @@ cursor:pointer;
 
 .envelope .paper{
 
-
 position:absolute;
-
 
 width:170px;
 
-
 height:110px;
-
 
 background:white;
 
-
 top:25px;
-
 
 left:30px;
 
-
 border-radius:5px;
-
 
 display:flex;
 
-
 justify-content:center;
-
 
 align-items:center;
 
-
 font-size:40px;
 
-
 }
-
-
 
 
 
 .envelope .flap{
 
-
 position:absolute;
-
 
 top:0;
 
-
 left:0;
-
 
 width:0;
 
-
 height:0;
-
 
 border-left:115px solid transparent;
 
-
 border-right:115px solid transparent;
-
 
 border-top:85px solid var(--gold);
 
-
 transform-origin:top;
-
 
 transition:1s;
 
-
 z-index:2;
 
-
 }
-
 
 
 
 .envelope.open .flap{
 
-
 transform:rotateX(180deg);
-
 
 }
 
 
 
-
-
-/* ================= WELCOME ================= */
-
+/* ================= WELCOME PAGE ================= */
 
 
 #welcome{
 
-
 background:
-
 
 linear-gradient(
 
@@ -521,219 +450,83 @@ rgba(255,255,255,.85)
 
 ),
 
-
 url("https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=1200")
 
 center/cover;
 
-
 }
 
 
 
 
-.guest-name{
+/* COMMON CARD */
 
 
-font-family:'Great Vibes',cursive;
+.card{
 
+width:100%;
 
-font-size:3.2rem;
+background:white;
 
+padding:25px;
 
-color:var(--green);
+border-radius:20px;
 
+border:1px solid rgba(212,175,55,.5);
 
-margin:15px;
+box-shadow:
 
-
-}
-
-
-
-
-.description{
-
-
-font-size:.75rem;
-
-
-line-height:2;
-
-
-letter-spacing:1px;
-
-
-font-weight:600;
-
-
-color:#444;
-
+0 15px 40px rgba(0,0,0,.15);
 
 }
 
 
+.detail-icon i{
 
-</style>
+font-size:32px;
 
-</head>
+color:#d4af37;
 
+filter:drop-shadow(0 0 8px rgba(212,175,55,.6));
 
+}
 
-<body>
 
+.detail-title{
 
+font-family:'Cinzel',serif;
 
-<button id="closeBtn" onclick="closeInvite()">
+font-size:.7rem;
 
-×
+font-weight:bold;
 
-</button>
+color:#123524;
 
+margin-top:8px;
 
+}
 
 
-<div class="mobile-frame" id="frame">
+.detail-value{
 
+font-size:.85rem;
 
+line-height:1.6;
 
+color:#555;
 
+}
 
-<!-- COVER PAGE -->
 
+hr{
 
-<section class="section" id="cover">
+border:0;
 
+border-top:1px solid #eee;
 
-<div class="small-text">
+margin:15px 0;
 
-WITH LOVE AND BLESSINGS
-
-</div>
-
-
-
-<div class="main-title">
-
-Wedding Invitation
-
-</div>
-
-
-
-<div class="names">
-
-CHATHUMINI
-
-<br>
-
-&
-
-<br>
-
-HARSHA
-
-</div>
-
-
-
-<div class="divider"></div>
-
-
-
-
-<div class="envelope" onclick="openInvite()">
-
-
-
-<div class="flap"></div>
-
-
-
-<div class="paper">
-
-💍
-
-</div>
-
-
-</div>
-
-
-
-<div class="small-text">
-
-TAP TO OPEN INVITATION
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-<!-- WELCOME PAGE -->
-
-
-<section class="section" id="welcome">
-
-
-<div class="heading">
-
-TOGETHER WITH OUR FAMILIES
-
-</div>
-
-
-
-<div class="guest-name" id="guestDisplay">
-
-Special Guest
-
-</div>
-
-
-
-<p class="description">
-
-
-WE CORDIALLY INVITE YOU
-
-<br>
-
-TO CELEBRATE THE WEDDING CEREMONY OF
-
-<br><br>
-
-
-<b>
-
-CHATHUMINI & HARSHA
-
-</b>
-
-
-</p>
-
-
-
-<button class="button"
-
-onclick="goPage('details')">
-
-NEXT →
-
-</button>
-
-
-
-
-</section>
-
+}
 <!-- ================= WEDDING DETAILS ================= -->
 
 
@@ -747,16 +540,21 @@ WEDDING DETAILS
 </div>
 
 
+
 <div class="card">
 
 
 <div class="detail-icon">
-📅
+
+<i class="fa-solid fa-calendar-days"></i>
+
 </div>
 
 
 <div class="detail-title">
+
 DATE
+
 </div>
 
 
@@ -774,12 +572,16 @@ Friday<br>
 
 
 <div class="detail-icon">
-⏰
+
+<i class="fa-solid fa-clock"></i>
+
 </div>
 
 
 <div class="detail-title">
+
 TIME
+
 </div>
 
 
@@ -791,18 +593,21 @@ TIME
 
 
 
-
 <hr>
 
 
 
 <div class="detail-icon">
-💒
+
+<i class="fa-solid fa-church"></i>
+
 </div>
 
 
 <div class="detail-title">
+
 VENUE
+
 </div>
 
 
@@ -838,6 +643,9 @@ onclick="goPage('location')">
 
 
 </section>
+
+
+
 
 
 
@@ -915,6 +723,88 @@ CONTINUE →
 
 
 
+
+
+<!-- ================= LOCATION CSS ================= -->
+
+
+<style>
+
+
+#details{
+
+
+background:
+
+linear-gradient(
+
+rgba(250,247,240,.82),
+
+rgba(250,247,240,.92)
+
+),
+
+url("https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?q=80&w=1200")
+
+center/cover;
+
+}
+
+
+
+
+#location{
+
+
+background:
+
+linear-gradient(
+
+rgba(255,255,255,.78),
+
+rgba(250,247,240,.92)
+
+),
+
+url("https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=1200")
+
+center/cover;
+
+
+}
+
+
+
+
+
+.map-container{
+
+width:100%;
+
+margin:15px 0;
+
+}
+
+
+
+.map-container iframe{
+
+
+width:100%;
+
+height:260px;
+
+border:0;
+
+border-radius:20px;
+
+
+}
+
+
+
+
+</style>
 <!-- ================= COUNTDOWN ================= -->
 
 
@@ -1042,6 +932,8 @@ VIEW PROGRAM →
 
 
 
+
+
 <!-- ================= PROGRAM TIMELINE ================= -->
 
 
@@ -1060,6 +952,7 @@ WEDDING PROGRAM
 Our Special Day
 
 </div>
+
 
 
 
@@ -1162,6 +1055,7 @@ Traditional Sinhala Poruwa ceremony with blessings and rituals
 
 
 
+
 <div class="event">
 
 
@@ -1255,6 +1149,7 @@ Beginning a new chapter of our forever journey
 
 
 
+
 <button class="button"
 
 onclick="goPage('rsvp')">
@@ -1273,427 +1168,7 @@ RSVP →
 
 
 
-<style>
 
-
-/* DETAILS CARD */
-
-
-.card{
-
-
-width:100%;
-
-background:white;
-
-padding:25px;
-
-border-radius:20px;
-
-border:1px solid rgba(212,175,55,.5);
-
-box-shadow:
-
-0 15px 40px rgba(0,0,0,.15);
-
-}
-
-
-.detail-icon{
-
-font-size:28px;
-
-margin-top:8px;
-
-}
-
-
-.detail-title{
-
-
-font-family:'Cinzel',serif;
-
-font-size:.7rem;
-
-font-weight:bold;
-
-color:#123524;
-
-margin-top:8px;
-
-
-}
-
-
-
-.detail-value{
-
-font-size:.85rem;
-
-line-height:1.6;
-
-color:#555;
-
-
-}
-
-
-
-hr{
-
-border:0;
-
-border-top:1px solid #eee;
-
-margin:15px 0;
-
-}
-
-
-
-/* MAP */
-
-
-.map-container{
-
-width:100%;
-
-margin:15px 0;
-
-}
-
-
-
-.map-container iframe{
-
-
-width:100%;
-
-height:260px;
-
-border:0;
-
-border-radius:20px;
-
-
-}
-
-
-
-/* COUNTDOWN */
-
-
-#countdown{
-
-
-background:
-
-linear-gradient(
-
-rgba(10,30,20,.9),
-
-rgba(10,30,20,.95)
-
-);
-
-
-color:white;
-
-}
-
-
-
-.timer{
-
-display:flex;
-
-gap:8px;
-
-margin-top:20px;
-
-}
-
-
-
-.time-box{
-
-
-width:65px;
-
-padding:12px 5px;
-
-border:1px solid #d4af37;
-
-border-radius:12px;
-
-
-}
-
-
-
-.time-box div{
-
-
-font-family:'Great Vibes';
-
-font-size:2rem;
-
-color:#f5e6a8;
-
-
-}
-
-
-
-.time-box span{
-
-
-font-size:.55rem;
-
-color:#d4af37;
-
-letter-spacing:1px;
-
-
-}
-
-
-
-
-/* PERFECT TIMELINE */
-
-
-#program{
-
-
-background:#faf7f0;
-
-
-}
-
-
-
-.timeline{
-
-
-width:100%;
-
-position:relative;
-
-margin-top:20px;
-
-
-}
-
-
-
-.timeline::before{
-
-
-content:"";
-
-position:absolute;
-
-
-left:50%;
-
-
-top:0;
-
-bottom:0;
-
-
-width:2px;
-
-
-background:#d4af37;
-
-
-transform:translateX(-50%);
-
-
-}
-
-
-
-.event{
-
-
-display:grid;
-
-
-grid-template-columns:1fr 30px 1fr;
-
-
-align-items:center;
-
-
-margin-bottom:25px;
-
-
-}
-
-
-
-.time{
-
-
-text-align:right;
-
-padding-right:15px;
-
-
-font-family:'Cinzel',serif;
-
-
-font-size:.7rem;
-
-font-weight:bold;
-
-
-color:#123524;
-
-
-}
-
-
-
-
-.dot{
-
-
-width:16px;
-
-height:16px;
-
-
-background:#d4af37;
-
-
-border-radius:50%;
-
-
-border:3px solid white;
-
-
-box-shadow:0 0 10px #d4af37;
-
-
-z-index:2;
-
-
-justify-self:center;
-
-
-}
-
-
-
-.poruwa-dot{
-
-
-background:white;
-
-
-font-size:12px;
-
-
-width:25px;
-
-
-height:25px;
-
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-
-}
-
-
-
-.event-card{
-
-
-background:white;
-
-
-padding:14px;
-
-
-margin-left:15px;
-
-
-border-radius:15px;
-
-
-text-align:left;
-
-
-border:1px solid rgba(212,175,55,.4);
-
-
-}
-
-
-
-.event-card h3{
-
-
-font-family:'Cinzel',serif;
-
-
-font-size:.75rem;
-
-color:#123524;
-
-
-}
-
-
-
-.event-card p{
-
-
-font-size:.65rem;
-
-
-line-height:1.5;
-
-
-color:#666;
-
-
-}
-
-
-
-.poruwa{
-
-
-background:
-
-linear-gradient(
-
-135deg,
-
-#fff,
-
-#fff4c7
-
-);
-
-
-border:2px solid #d4af37;
-
-
-}
-
-
-</style>
 
 <!-- ================= RSVP PAGE ================= -->
 
@@ -1761,6 +1236,7 @@ Regretfully Declines
 
 
 
+
 <div class="detail-title">
 
 NUMBER OF GUESTS
@@ -1818,7 +1294,6 @@ SEND WISHES →
 
 
 </section>
-
 
 
 
@@ -1911,6 +1386,426 @@ CONTINUE →
 
 
 
+
+<style>
+
+
+/* COUNTDOWN BACKGROUND */
+
+
+#countdown{
+
+
+background:
+
+linear-gradient(
+
+rgba(10,30,20,.88),
+
+rgba(10,30,20,.95)
+
+),
+
+url("https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=1200")
+
+center/cover;
+
+
+color:white;
+
+}
+
+
+
+
+.timer{
+
+display:flex;
+
+gap:8px;
+
+margin-top:20px;
+
+}
+
+
+
+.time-box{
+
+
+width:65px;
+
+padding:12px 5px;
+
+border:1px solid #d4af37;
+
+border-radius:12px;
+
+
+}
+
+
+
+.time-box div{
+
+
+font-family:'Great Vibes';
+
+font-size:2rem;
+
+color:#f5e6a8;
+
+
+}
+
+
+
+.time-box span{
+
+
+font-size:.55rem;
+
+color:#d4af37;
+
+letter-spacing:1px;
+
+
+}
+
+
+
+
+/* PROGRAM BACKGROUND */
+
+
+#program{
+
+
+background:
+
+linear-gradient(
+
+rgba(250,247,240,.85),
+
+rgba(250,247,240,.95)
+
+),
+
+url("https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1200")
+
+center/cover;
+
+
+}
+
+
+
+
+.timeline{
+
+
+width:100%;
+
+position:relative;
+
+margin-top:20px;
+
+
+}
+
+
+
+.timeline::before{
+
+
+content:"";
+
+position:absolute;
+
+
+left:50%;
+
+
+top:0;
+
+bottom:0;
+
+
+width:2px;
+
+
+background:#d4af37;
+
+
+transform:translateX(-50%);
+
+
+}
+
+
+
+.event{
+
+
+display:grid;
+
+
+grid-template-columns:1fr 30px 1fr;
+
+
+align-items:center;
+
+
+margin-bottom:25px;
+
+
+}
+
+
+
+.time{
+
+
+text-align:right;
+
+padding-right:15px;
+
+
+font-family:'Cinzel',serif;
+
+
+font-size:.7rem;
+
+font-weight:bold;
+
+
+color:#123524;
+
+
+}
+
+
+
+.dot{
+
+
+width:16px;
+
+height:16px;
+
+
+background:#d4af37;
+
+
+border-radius:50%;
+
+
+border:3px solid white;
+
+
+box-shadow:0 0 10px #d4af37;
+
+
+z-index:2;
+
+
+justify-self:center;
+
+
+}
+
+
+
+.poruwa-dot{
+
+
+background:white;
+
+
+font-size:12px;
+
+
+width:25px;
+
+
+height:25px;
+
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+
+}
+
+
+
+
+.event-card{
+
+
+background:white;
+
+
+padding:14px;
+
+
+margin-left:15px;
+
+
+border-radius:15px;
+
+
+text-align:left;
+
+
+border:1px solid rgba(212,175,55,.4);
+
+
+}
+
+
+
+.event-card h3{
+
+
+font-family:'Cinzel',serif;
+
+
+font-size:.75rem;
+
+color:#123524;
+
+
+}
+
+
+
+.event-card p{
+
+
+font-size:.65rem;
+
+
+line-height:1.5;
+
+
+color:#666;
+
+
+}
+
+
+
+.poruwa{
+
+
+background:
+
+linear-gradient(
+
+135deg,
+
+#fff,
+
+#fff4c7
+
+);
+
+
+border:2px solid #d4af37;
+
+
+}
+
+
+
+
+/* RSVP & WISHES BACKGROUND */
+
+
+#rsvp,
+#wishes{
+
+
+background:
+
+linear-gradient(
+
+rgba(255,255,255,.82),
+
+rgba(250,247,240,.95)
+
+),
+
+url("https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200")
+
+center/cover;
+
+
+}
+
+
+
+.input-box{
+
+
+width:100%;
+
+
+padding:12px;
+
+
+margin-top:10px;
+
+
+border-radius:12px;
+
+
+border:1px solid #d4af37;
+
+
+font-family:'Montserrat',sans-serif;
+
+
+outline:none;
+
+
+}
+
+
+
+
+.whatsapp{
+
+
+background:
+
+linear-gradient(
+
+135deg,
+
+#25D366,
+
+#128C7E
+
+);
+
+
+color:white;
+
+
+border:none;
+
+
+}
+
+
+
+</style>
+
 <!-- ================= THANK YOU PAGE ================= -->
 
 
@@ -1922,7 +1817,6 @@ CONTINUE →
 Thank You
 
 </div>
-
 
 
 
@@ -1951,24 +1845,32 @@ TRULY UNFORGETTABLE
 
 
 
+<div class="final-couple">
 
-<div class="names"
 
-style="margin-top:30px">
-
+<span>
 
 CHATHUMINI
 
-<br>
+</span>
+
+
+<div>
 
 &
 
-<br>
+</div>
+
+
+<span>
 
 HARSHA
 
+</span>
+
 
 </div>
+
 
 
 
@@ -1982,7 +1884,6 @@ onclick="closeInvite()">
 
 
 </button>
-
 
 
 
@@ -2015,16 +1916,12 @@ onclick="toggleMusic()">
 
 
 
-
 <style>
 
 
+/* THANK YOU BACKGROUND */
 
-/* RSVP / WISHES */
 
-
-#rsvp,
-#wishes,
 #thankyou{
 
 
@@ -2032,67 +1929,55 @@ background:
 
 linear-gradient(
 
-rgba(255,255,255,.92),
+rgba(10,25,15,.75),
 
-rgba(250,247,240,.95)
+rgba(10,25,15,.92)
 
-);
+),
 
+url("https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=1200")
 
-}
-
-
-
-
-
-.input-box{
-
-
-width:100%;
-
-
-padding:12px;
-
-
-margin-top:10px;
-
-
-border-radius:12px;
-
-
-border:1px solid #d4af37;
-
-
-font-family:'Montserrat',sans-serif;
-
-
-outline:none;
+center/cover;
 
 
 }
 
 
 
-.whatsapp{
 
 
-background:
+.final-couple{
 
-linear-gradient(
 
-135deg,
+font-family:'Great Vibes',cursive;
 
-#25D366,
+font-size:4rem;
 
-#128C7E
+color:#d4af37;
 
-);
+line-height:1.2;
 
+margin-top:30px;
+
+text-shadow:
+
+0 0 20px rgba(212,175,55,.8);
+
+
+}
+
+
+
+.final-couple div{
+
+
+font-family:'Cinzel',serif;
+
+font-size:2rem;
 
 color:white;
 
-
-border:none;
+margin:8px;
 
 
 }
@@ -2100,7 +1985,7 @@ border:none;
 
 
 
-/* MUSIC BUTTON */
+
 
 
 #musicBtn{
@@ -2160,219 +2045,21 @@ cursor:pointer;
 
 
 
-
-
-
-
-/* ================= WHITE JASMINE PETALS ================= */
-
-
-
-.jasmine-petal{
-
-
-position:fixed;
-
-
-top:-40px;
-
-
-background:
-
-
-radial-gradient(
-
-circle,
-
-#ffffff,
-
-#f1eee5
-
-);
-
-
-border-radius:
-
-80% 20% 80% 20%;
-
-
-box-shadow:
-
-
-0 0 8px rgba(255,255,255,.9);
-
-
-opacity:.9;
-
-
-z-index:100;
-
-
-pointer-events:none;
-
-
-animation:
-
-
-jasmineFall linear infinite;
-
-
-}
-
-
-
-
-
-@keyframes jasmineFall{
-
-
-0%{
-
-
-transform:
-
-
-translateY(-50px)
-
-translateX(0)
-
-rotate(0deg);
-
-
-}
-
-
-
-
-50%{
-
-
-transform:
-
-
-translateY(50vh)
-
-translateX(var(--swing))
-
-rotate(180deg);
-
-
-}
-
-
-
-
-100%{
-
-
-transform:
-
-
-translateY(110vh)
-
-translateX(0)
-
-rotate(360deg);
-
-
-opacity:.1;
-
-
-}
-
-
-}
-
-
-
-
-
-
-/* GOLD SPARKLES */
-
-
-.sparkle{
-
-
-position:fixed;
-
-
-width:5px;
-
-
-height:5px;
-
-
-background:#d4af37;
-
-
-border-radius:50%;
-
-
-box-shadow:
-
-0 0 10px #d4af37;
-
-
-z-index:90;
-
-
-pointer-events:none;
-
-
-animation:
-
-sparkleMove 4s linear;
-
-
-}
-
-
-
-@keyframes sparkleMove{
-
-
-0%{
-
-
-transform:
-
-translateY(0);
-
-
-opacity:1;
-
-
-}
-
-
-
-100%{
-
-
-transform:
-
-translateY(-100px);
-
-
-opacity:0;
-
-
-}
-
-
-
-}
-
-
-
 </style>
+
+
+
+
+
+
+
+
 <script>
 
 
-// =====================================
-// URL GUEST NAME SYSTEM
-// =====================================
+// ===============================
+// GUEST NAME SYSTEM
+// ===============================
 
 
 let guestName="Special Guest";
@@ -2398,6 +2085,7 @@ guestName=name.replace(/\+/g," ");
 
 
 document.getElementById("guestDisplay").innerHTML=
+
 guestName;
 
 
@@ -2408,9 +2096,11 @@ guestName;
 
 
 
-// =====================================
+
+
+// ===============================
 // OPEN INVITATION
-// =====================================
+// ===============================
 
 
 let opened=false;
@@ -2425,6 +2115,7 @@ opened=true;
 
 
 document.querySelector(".envelope")
+
 .classList.add("open");
 
 
@@ -2433,16 +2124,19 @@ setTimeout(()=>{
 
 
 document.getElementById("frame")
+
 .classList.add("opened");
 
 
 
 document.getElementById("closeBtn")
+
 .style.display="block";
 
 
 
 goPage("welcome");
+
 
 
 playMusic();
@@ -2462,13 +2156,13 @@ playMusic();
 
 
 
-// =====================================
+
+// ===============================
 // CLOSE INVITATION
-// =====================================
+// ===============================
 
 
 function closeInvite(){
-
 
 
 opened=false;
@@ -2476,17 +2170,18 @@ opened=false;
 
 
 document.getElementById("frame")
+
 .classList.remove("opened");
 
 
 
 document.getElementById("closeBtn")
+
 .style.display="none";
 
 
 
 goPage("cover");
-
 
 
 }
@@ -2498,9 +2193,10 @@ goPage("cover");
 
 
 
-// =====================================
+
+// ===============================
 // PAGE SCROLL
-// =====================================
+// ===============================
 
 
 function goPage(id){
@@ -2526,13 +2222,16 @@ behavior:"smooth"
 
 
 
-// =====================================
-// COUNTDOWN TIMER
-// =====================================
+
+// ===============================
+// COUNTDOWN
+// ===============================
 
 
 let weddingDate =
+
 new Date("October 30, 2026 09:00:00")
+
 .getTime();
 
 
@@ -2541,13 +2240,10 @@ new Date("October 30, 2026 09:00:00")
 setInterval(()=>{
 
 
-let now =
-new Date().getTime();
+let now=new Date().getTime();
 
 
-
-let distance =
-weddingDate-now;
+let distance=weddingDate-now;
 
 
 
@@ -2555,33 +2251,40 @@ if(distance>0){
 
 
 
-document.getElementById("days").innerHTML =
-Math.floor(
+days.innerHTML=Math.floor(
+
 distance/(1000*60*60*24)
+
 );
 
 
 
-document.getElementById("hours").innerHTML =
-Math.floor(
+hours.innerHTML=Math.floor(
+
 (distance%(1000*60*60*24))
+
 /(1000*60*60)
+
 );
 
 
 
-document.getElementById("minutes").innerHTML =
-Math.floor(
+minutes.innerHTML=Math.floor(
+
 (distance%(1000*60*60))
+
 /(1000*60)
+
 );
 
 
 
-document.getElementById("seconds").innerHTML =
-Math.floor(
+seconds.innerHTML=Math.floor(
+
 (distance%(1000*60))
+
 /1000
+
 );
 
 
@@ -2599,25 +2302,27 @@ Math.floor(
 
 
 
-// =====================================
-// ROMANTIC MUSIC
-// =====================================
+
+// ===============================
+// FINAL WEDDING MUSIC
+// ===============================
 
 
-let musicPlaying=false;
+let music = new Audio();
 
 
-
-let music=new Audio();
-
-
-music.src=
-"https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3";
+music.src="wedding.mp3";
 
 
 music.loop=true;
 
+
 music.volume=0.35;
+
+
+
+let musicPlaying=false;
+
 
 
 
@@ -2634,10 +2339,12 @@ musicPlaying=true;
 
 
 document.querySelector("#musicBtn i")
+
 .className="fas fa-pause";
 
 
 })
+
 
 .catch(()=>{
 
@@ -2649,6 +2356,7 @@ console.log("Music waiting for user action");
 
 
 }
+
 
 
 
@@ -2668,8 +2376,8 @@ music.pause();
 musicPlaying=false;
 
 
-
 document.querySelector("#musicBtn i")
+
 .className="fas fa-music";
 
 
@@ -2684,15 +2392,14 @@ music.play();
 musicPlaying=true;
 
 
-
 document.querySelector("#musicBtn i")
+
 .className="fas fa-pause";
 
 
 }
 
 
-
 }
 
 
@@ -2703,24 +2410,24 @@ document.querySelector("#musicBtn i")
 
 
 
-// =====================================
+// ===============================
 // RSVP WHATSAPP
-// =====================================
-
+// ===============================
 
 
 function sendRSVP(){
 
 
 
-let status =
+let status=
+
 document.getElementById("status").value;
 
 
 
-let count =
-document.getElementById("guestCount").value;
+let count=
 
+document.getElementById("guestCount").value;
 
 
 
@@ -2733,14 +2440,17 @@ RSVP Confirmation
 
 
 Guest Name:
+
 ${guestName}
 
 
 Attendance:
+
 ${status}
 
 
 Number of Guests:
+
 ${count}
 
 
@@ -2755,8 +2465,8 @@ Looking forward to celebrating with you ❤️
 window.open(
 
 "https://wa.me/?text="
-+
-encodeURIComponent(message),
+
++encodeURIComponent(message),
 
 "_blank"
 
@@ -2773,18 +2483,19 @@ encodeURIComponent(message),
 
 
 
-// =====================================
-// WISH MESSAGE WHATSAPP
-// =====================================
 
+// ===============================
+// WISH MESSAGE
+// ===============================
 
 
 function sendWish(){
 
 
-let wish =
-document.getElementById("wish").value;
 
+let wish=
+
+document.getElementById("wish").value;
 
 
 
@@ -2803,7 +2514,9 @@ return;
 
 let message=`
 
+
 Hi Chathumini & Harsha ❤️
+
 
 
 ${wish}
@@ -2814,6 +2527,7 @@ With Love,
 
 ${guestName}
 
+
 `;
 
 
@@ -2822,8 +2536,8 @@ ${guestName}
 window.open(
 
 "https://wa.me/?text="
-+
-encodeURIComponent(message),
+
++encodeURIComponent(message),
 
 "_blank"
 
@@ -2840,16 +2554,15 @@ encodeURIComponent(message),
 
 
 
-
-// =====================================
-// WHITE JASMINE PETALS
-// =====================================
+// ===============================
+// JASMINE PETALS
+// ===============================
 
 
 function createJasmine(){
 
 
-if(!opened) return;
+if(!opened)return;
 
 
 
@@ -2860,23 +2573,25 @@ petal.className="jasmine-petal";
 
 
 
-let size =
-8 + Math.random()*12;
+let size=8+Math.random()*12;
 
 
 
 petal.style.width=size+"px";
 
+
 petal.style.height=size+"px";
 
 
 
-petal.style.left =
+petal.style.left=
+
 Math.random()*100+"%";
 
 
 
-petal.style.animationDuration =
+petal.style.animationDuration=
+
 (7+Math.random()*6)+"s";
 
 
@@ -2888,7 +2603,6 @@ petal.style.setProperty(
 (Math.random()*80-40)+"px"
 
 );
-
 
 
 
@@ -2905,7 +2619,6 @@ petal.remove();
 },14000);
 
 
-
 }
 
 
@@ -2920,11 +2633,9 @@ setInterval(createJasmine,500);
 
 
 
-
-
-// =====================================
+// ===============================
 // GOLD SPARKLES
-// =====================================
+// ===============================
 
 
 function createSparkle(){
@@ -2940,11 +2651,13 @@ let sparkle=document.createElement("div");
 sparkle.className="sparkle";
 
 
-sparkle.style.left =
+sparkle.style.left=
+
 Math.random()*100+"%";
 
 
-sparkle.style.top =
+sparkle.style.top=
+
 60+Math.random()*30+"%";
 
 
@@ -2962,6 +2675,7 @@ sparkle.remove();
 },4000);
 
 
+
 }
 
 
@@ -2974,12 +2688,14 @@ setInterval(createSparkle,700);
 
 
 
-// =====================================
+
+// ===============================
 // LOCK COVER SCROLL
-// =====================================
+// ===============================
 
 
 document.addEventListener(
+
 "wheel",
 
 (e)=>{
@@ -2997,12 +2713,12 @@ e.preventDefault();
 {passive:false}
 
 
-
 );
 
 
 
 document.addEventListener(
+
 "touchmove",
 
 (e)=>{
@@ -3020,13 +2736,11 @@ e.preventDefault();
 {passive:false}
 
 
-
 );
 
 
 
 </script>
-
 
 
 </body>
