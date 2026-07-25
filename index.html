@@ -653,40 +653,53 @@
       }
     });
 
-    // ================= RICH PIANO CHORD SYNTHESIZER =================
+    // ================= UPBEAT DYNAMIC PIANO SYNTHESIZER =================
     let audioCtx = null;
     let isMusicPlaying = false;
     let musicLoopId = null;
 
-    // Harmonic Soft Piano Chords Melody
-    const chordsSequence = [
-      { notes: [261.63, 329.63, 392.00, 523.25], duration: 2.2 }, // C Major
-      { notes: [220.00, 261.63, 329.63, 440.00], duration: 2.2 }, // A Minor
-      { notes: [174.61, 220.00, 261.63, 349.23], duration: 2.2 }, // F Major
-      { notes: [196.00, 246.94, 293.66, 392.00], duration: 2.2 }  // G Major
+    // Fast Romantic Piano Arpeggio Melody
+    const fastMelody = [
+      { f: 523.25, d: 0.25 }, // C5
+      { f: 659.25, d: 0.25 }, // E5
+      { f: 783.99, d: 0.25 }, // G5
+      { f: 1046.50, d: 0.5 }, // C6
+
+      { f: 440.00, d: 0.25 }, // A4
+      { f: 523.25, d: 0.25 }, // C5
+      { f: 659.25, d: 0.25 }, // E5
+      { f: 880.00, d: 0.5 },  // A5
+
+      { f: 349.23, d: 0.25 }, // F4
+      { f: 440.00, d: 0.25 }, // A4
+      { f: 523.25, d: 0.25 }, // C5
+      { f: 698.46, d: 0.5 },  // F5
+
+      { f: 392.00, d: 0.25 }, // G4
+      { f: 493.88, d: 0.25 }, // B4
+      { f: 587.33, d: 0.25 }, // D5
+      { f: 783.99, d: 0.5 }   // G5
     ];
 
-    function playChord(notes, duration) {
+    function playFastNote(freq, duration) {
       if (!audioCtx) return;
 
-      notes.forEach((freq) => {
-        let osc = audioCtx.createOscillator();
-        let gain = audioCtx.createGain();
+      let osc = audioCtx.createOscillator();
+      let gain = audioCtx.createGain();
 
-        osc.type = "sine";
-        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
 
-        // Soft Piano Envelope
-        gain.gain.setValueAtTime(0, audioCtx.currentTime);
-        gain.gain.linearRampToValueAtTime(0.08, audioCtx.currentTime + 0.1);
-        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+      // Fast Piano Attack & Crisp Decay
+      gain.gain.setValueAtTime(0, audioCtx.currentTime);
+      gain.gain.linearRampToValueAtTime(0.1, audioCtx.currentTime + 0.02);
+      gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
 
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
 
-        osc.start();
-        osc.stop(audioCtx.currentTime + duration);
-      });
+      osc.start();
+      osc.stop(audioCtx.currentTime + duration);
     }
 
     function startMelody() {
@@ -706,10 +719,10 @@
 
       function step() {
         if (!isMusicPlaying) return;
-        let chord = chordsSequence[index];
-        playChord(chord.notes, chord.duration);
-        index = (index + 1) % chordsSequence.length;
-        musicLoopId = setTimeout(step, chord.duration * 950);
+        let note = fastMelody[index];
+        playFastNote(note.f, note.d + 0.15);
+        index = (index + 1) % fastMelody.length;
+        musicLoopId = setTimeout(step, note.d * 1000); // Speed control
       }
 
       step();
