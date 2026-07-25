@@ -11,10 +11,11 @@
 
     <style>
         :root {
-            --primary-green: #2e4a3b;
-            --accent-gold: #c5a059;
-            --text-dark: #222222;
-            --bg-cream: #fbf9f5;
+            --primary-green: #1b3b2b;
+            --accent-gold: #d4af37;
+            --light-gold: #f3e5ab;
+            --text-dark: #1a1a1a;
+            --bg-cream: #faf8f5;
         }
 
         * {
@@ -25,7 +26,7 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: #0d0d0d;
+            background-color: #050b08;
             color: var(--text-dark);
             display: flex;
             justify-content: center;
@@ -41,8 +42,8 @@
             height: 100vh;
             background: var(--bg-cream);
             position: relative;
-            box-shadow: 0 0 40px rgba(0,0,0,0.8);
-            overflow-y: hidden; /* Initially locked */
+            box-shadow: 0 0 50px rgba(0,0,0,0.9);
+            overflow-y: hidden; /* Locked initially */
             scroll-snap-type: y mandatory;
             scroll-behavior: smooth;
         }
@@ -51,7 +52,7 @@
             overflow-y: scroll;
         }
 
-        /* Canvas Overlay for Petals */
+        /* White Lotus Canvas Overlay */
         #fxCanvas {
             position: fixed;
             top: 0;
@@ -81,7 +82,7 @@
 
         /* Page 1 Cover */
         #sec1 {
-            background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.55)), 
+            background: linear-gradient(rgba(10, 25, 18, 0.65), rgba(10, 25, 18, 0.75)), 
                         url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1000&auto=format&fit=crop') center/cover;
             color: white;
         }
@@ -89,22 +90,24 @@
         /* Typography */
         .hero-title {
             font-family: 'Great Vibes', cursive;
-            font-size: 3.5rem;
+            font-size: 3.8rem;
             color: #ffffff;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
         .couple-name {
             font-family: 'Cinzel', serif;
             font-size: 1.8rem;
-            letter-spacing: 4px;
+            letter-spacing: 5px;
             margin: 15px 0;
             line-height: 1.4;
+            color: var(--light-gold);
         }
 
         .gold-divider {
-            width: 60px;
+            width: 70px;
             height: 1px;
-            background: var(--accent-gold);
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
             margin: 15px auto;
         }
 
@@ -112,26 +115,28 @@
             font-family: 'Cinzel', serif;
             font-size: 0.75rem;
             letter-spacing: 3px;
-            color: #777;
-            margin-bottom: 10px;
+            color: var(--accent-gold);
+            margin-bottom: 8px;
+            font-weight: 600;
         }
 
         .guest-title {
             font-family: 'Great Vibes', cursive;
-            font-size: 2.8rem;
+            font-size: 3rem;
             color: var(--primary-green);
             margin: 10px 0;
         }
 
-        /* Details Card */
+        /* Elegant Card Frame */
         .details-card {
             background: rgba(255, 255, 255, 0.95);
-            border: 1px solid #e0d8c3;
+            border: 1px solid rgba(212, 175, 55, 0.4);
             padding: 22px 18px;
-            border-radius: 12px;
+            border-radius: 15px;
             width: 100%;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             margin-top: 10px;
+            position: relative;
         }
 
         .detail-title {
@@ -139,8 +144,8 @@
             font-size: 0.75rem;
             letter-spacing: 2px;
             color: var(--primary-green);
-            margin-top: 8px;
-            font-weight: 600;
+            margin-top: 10px;
+            font-weight: 700;
         }
 
         .detail-value {
@@ -152,40 +157,39 @@
 
         /* Buttons */
         .btn-action {
-            background-color: var(--primary-green);
-            color: white;
-            border: none;
-            padding: 12px 28px;
-            border-radius: 25px;
+            background: linear-gradient(135deg, var(--primary-green), #0f241a);
+            color: var(--light-gold);
+            border: 1px solid var(--accent-gold);
+            padding: 13px 30px;
+            border-radius: 30px;
             font-family: 'Cinzel', serif;
             letter-spacing: 2px;
             font-size: 0.8rem;
             text-decoration: none;
             margin-top: 18px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             cursor: pointer;
+            transition: all 0.3s ease;
         }
 
-        /* Wishes Input */
-        .wish-box {
+        /* Inputs & RSVP */
+        .input-field {
             width: 100%;
-            margin-top: 15px;
-        }
-
-        .wish-input {
-            width: 100%;
-            height: 90px;
-            border: 1px solid #c5a059;
-            border-radius: 8px;
             padding: 10px;
+            margin-top: 8px;
+            border: 1px solid #d4af37;
+            border-radius: 8px;
             font-family: 'Montserrat', sans-serif;
             font-size: 0.85rem;
             outline: none;
-            resize: none;
             background: #fff;
+        }
+
+        select.input-field {
+            height: 40px;
         }
 
         /* Timer Grid */
@@ -197,37 +201,38 @@
         }
 
         .timer-item {
-            border: 1px solid rgba(255,255,255,0.3);
+            border: 1px solid rgba(212, 175, 55, 0.5);
             padding: 10px;
-            border-radius: 8px;
+            border-radius: 10px;
             min-width: 65px;
-            background: rgba(255,255,255,0.08);
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(5px);
         }
 
-        /* Floating Controls */
+        /* Floating Audio Control */
         .music-btn {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background: white;
-            color: var(--primary-green);
-            width: 45px;
-            height: 45px;
+            background: var(--primary-green);
+            color: var(--accent-gold);
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
             cursor: pointer;
             z-index: 99;
-            border: 1px solid #ddd;
+            border: 1px solid var(--accent-gold);
         }
 
         .scroll-down {
             position: absolute;
             bottom: 20px;
             animation: bounce 2s infinite;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             letter-spacing: 2px;
             font-family: 'Cinzel', serif;
             color: var(--primary-green);
@@ -247,38 +252,38 @@
         <i class="fas fa-music" id="musicIcon"></i>
     </div>
     
-    <!-- Beautiful Romantic Wedding Instrumental Audio -->
+    <!-- Grand Piano & Violin Romantic Wedding Instrumental Audio -->
     <audio id="bgMusic" loop preload="auto">
-        <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-wedding-112188.mp3" type="audio/mpeg">
+        <source src="https://cdn.pixabay.com/download/audio/2021/09/06/audio_8217d8487e.mp3?filename=wedding-piano-violin-10332.mp3" type="audio/mpeg">
     </audio>
 
     <div class="mobile-frame" id="frame">
         <canvas id="fxCanvas"></canvas>
 
-        <!-- PAGE 1: Cover (Locked until button click) -->
+        <!-- PAGE 1: Cover (Locked Scroll) -->
         <div class="snap-section" id="sec1">
             <div class="hero-title">The Wedding of</div>
             <div class="couple-name">CHATHUMINI<br>&<br>HARSHA</div>
             <div class="gold-divider"></div>
-            <p style="font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 3px;">30 . 10 . 2026</p>
+            <p style="font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 3px; color: var(--light-gold);">30 . 10 . 2026</p>
             
             <button class="btn-action" onclick="unlockAndStart();">
-                VIEW INVITATION <i class="fas fa-heart"></i>
+                OPEN INVITATION <i class="fas fa-envelope-open-text"></i>
             </button>
         </div>
 
         <!-- PAGE 2: Guest Invitation -->
         <div class="snap-section" id="sec2">
             <div class="sub-heading">TOGETHER WITH OUR FAMILIES</div>
-            <p style="font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 1px; color: #555;">WE CORDIALLY INVITE</p>
+            <p style="font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 1px; color: #555;">WE CORDIALLY INVITE YOU</p>
             
-            <div class="guest-title" id="guestNameDisplay">DEAR GUEST</div>
+            <div class="guest-title" id="guestNameDisplay">Special Guest</div>
             
-            <p style="font-size: 0.8rem; color: #555; line-height: 1.7; text-transform: uppercase; letter-spacing: 1px;">
-                TO CELEBRATE THE JOYOUS MARRIAGE OF OUR CHILDREN
+            <p style="font-size: 0.80rem; color: #555; line-height: 1.8; text-transform: uppercase; letter-spacing: 1px;">
+                TO CELEBRATE THE JOYOUS WEDDING CEREMONY OF
             </p>
             <div class="gold-divider"></div>
-            <div style="font-family: 'Cinzel', serif; font-size: 1.2rem; color: var(--primary-green); font-weight: 600;">CHATHUMINI & HARSHA</div>
+            <div style="font-family: 'Cinzel', serif; font-size: 1.3rem; color: var(--primary-green); font-weight: 700;">CHATHUMINI & HARSHA</div>
             
             <div class="scroll-down">SCROLL DOWN <span>↓</span></div>
         </div>
@@ -295,69 +300,95 @@
 
                 <div class="detail-title">LOCATION</div>
                 <div class="detail-value">Ligness Green Odyssey</div>
-                <div style="font-size: 0.75rem; color: #777; margin-top: 2px;">Wanduramba Road, Galle</div>
+                <div style="font-size: 0.75rem; color: #666; margin-top: 2px;">Wanduramba Road, Galle</div>
 
                 <a href="https://maps.app.goo.gl/cx6cqKQioFv8L9QH7" target="_blank" class="btn-action" style="margin-top: 15px; font-size: 0.7rem;">
-                    <i class="fas fa-map-marker-alt"></i> GOOGLE MAPS LOCATION
+                    <i class="fas fa-map-marker-alt"></i> GET LOCATION MAP
                 </a>
             </div>
             <div class="scroll-down">SAVE THE DATE <span>↓</span></div>
         </div>
 
-        <!-- PAGE 4: Save the Date & Live Countdown -->
+        <!-- PAGE 4: Save the Date & Countdown -->
         <div class="snap-section" id="sec4" style="background: var(--primary-green); color: white;">
-            <div class="sub-heading" style="color: #ddd;">SAVE THE DATE</div>
-            <div style="font-family: 'Great Vibes', cursive; font-size: 3rem; color: var(--accent-gold);">30 . 10 . 2026</div>
+            <div class="sub-heading">SAVE THE DATE</div>
+            <div style="font-family: 'Great Vibes', cursive; font-size: 3.2rem; color: var(--accent-gold);">30 . 10 . 2026</div>
 
             <div class="timer-grid">
                 <div class="timer-item">
-                    <div style="font-family: 'Great Vibes', cursive; font-size: 2.2rem;" id="days">00</div>
-                    <div style="font-size: 0.6rem; letter-spacing: 1px;">DAYS</div>
+                    <div style="font-family: 'Great Vibes', cursive; font-size: 2.2rem; color: var(--light-gold);" id="days">00</div>
+                    <div style="font-size: 0.6rem; letter-spacing: 1px; color: var(--accent-gold);">DAYS</div>
                 </div>
                 <div class="timer-item">
-                    <div style="font-family: 'Great Vibes', cursive; font-size: 2.2rem;" id="hours">00</div>
-                    <div style="font-size: 0.6rem; letter-spacing: 1px;">HOURS</div>
+                    <div style="font-family: 'Great Vibes', cursive; font-size: 2.2rem; color: var(--light-gold);" id="hours">00</div>
+                    <div style="font-size: 0.6rem; letter-spacing: 1px; color: var(--accent-gold);">HOURS</div>
                 </div>
                 <div class="timer-item">
-                    <div style="font-family: 'Great Vibes', cursive; font-size: 2.2rem;" id="minutes">00</div>
-                    <div style="font-size: 0.6rem; letter-spacing: 1px;">MINS</div>
+                    <div style="font-family: 'Great Vibes', cursive; font-size: 2.2rem; color: var(--light-gold);" id="minutes">00</div>
+                    <div style="font-size: 0.6rem; letter-spacing: 1px; color: var(--accent-gold);">MINS</div>
                 </div>
                 <div class="timer-item">
-                    <div style="font-family: 'Great Vibes', cursive; font-size: 2.2rem;" id="seconds">00</div>
-                    <div style="font-size: 0.6rem; letter-spacing: 1px;">SECS</div>
+                    <div style="font-family: 'Great Vibes', cursive; font-size: 2.2rem; color: var(--light-gold);" id="seconds">00</div>
+                    <div style="font-size: 0.6rem; letter-spacing: 1px; color: var(--accent-gold);">SECS</div>
                 </div>
             </div>
 
-            <p style="margin-top: 30px; font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 2px; color: var(--accent-gold);">COUNTING DOWN TO OUR FOREVER</p>
-            <div class="scroll-down" style="color: white;">BEST WISHES <span>↓</span></div>
+            <p style="margin-top: 30px; font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 2px; color: var(--light-gold);">COUNTING DOWN TO OUR FOREVER</p>
+            <div class="scroll-down" style="color: white;">RSVP <span>↓</span></div>
         </div>
 
-        <!-- PAGE 5: Best Wishes Page -->
+        <!-- PAGE 5: RSVP Page -->
         <div class="snap-section" id="sec5">
-            <div class="sub-heading">SEND YOUR LOVE</div>
-            <div style="font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: var(--primary-green);">Best Wishes</div>
-            <p style="font-size: 0.75rem; color: #666; margin-bottom: 10px;">Send your blessings directly to the couple!</p>
+            <div class="sub-heading">R.S.V.P</div>
+            <div style="font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: var(--primary-green);">Confirm Attendance</div>
+            
+            <p style="font-size: 0.75rem; color: #c5221f; font-weight: 600; margin-top: 5px; letter-spacing: 0.5px;">
+                * Please confirm your presence before <br><strong>20th October 2026</strong>
+            </p>
 
-            <div class="wish-box">
-                <textarea id="wishText" class="wish-input" placeholder="Write your sweet message here..."></textarea>
-                <button class="btn-action" onclick="sendWishWhatsApp()" style="background: #25D366;">
-                    <i class="fab fa-whatsapp"></i> SEND VIA WHATSAPP
+            <div class="details-card" style="margin-top: 12px; padding: 15px;">
+                <label style="font-size: 0.7rem; font-family: 'Cinzel', serif; display: block; text-align: left; font-weight:600;">WILL YOU ATTEND?</label>
+                <select id="rsvpStatus" class="input-field">
+                    <option value="Joyfully Accepts">Joyfully Accepts</option>
+                    <option value="Regretfully Declines">Regretfully Declines</option>
+                </select>
+
+                <label style="font-size: 0.7rem; font-family: 'Cinzel', serif; display: block; text-align: left; margin-top: 10px; font-weight:600;">NUMBER OF GUESTS</label>
+                <input type="number" id="rsvpCount" class="input-field" value="1" min="1" max="5">
+
+                <button class="btn-action" onclick="sendRSVPWhatsApp()" style="background: #25D366; width: 100%; justify-content: center; margin-top: 15px;">
+                    <i class="fab fa-whatsapp"></i> CONFIRM VIA WHATSAPP
                 </button>
             </div>
-            <div class="scroll-down">FINAL MESSAGE <span>↓</span></div>
+            <div class="scroll-down">BEST WISHES <span>↓</span></div>
         </div>
 
-        <!-- PAGE 6: Thank You Page -->
+        <!-- PAGE 6: Best Wishes Page -->
         <div class="snap-section" id="sec6">
-            <div style="font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--primary-green);">Thank You!</div>
+            <div class="sub-heading">SEND YOUR LOVE</div>
+            <div style="font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: var(--primary-green);">Best Wishes</div>
+            <p style="font-size: 0.75rem; color: #666; margin-bottom: 5px;">Leave a heartwarming message for the couple!</p>
+
+            <div style="width: 100%;">
+                <textarea id="wishText" class="input-field" style="height: 90px; resize: none;" placeholder="Write your sweet blessing here..."></textarea>
+                <button class="btn-action" onclick="sendWishWhatsApp()" style="background: var(--primary-green); width: 100%; justify-content: center; margin-top: 10px;">
+                    <i class="fas fa-heart"></i> SEND BLESSINGS
+                </button>
+            </div>
+            <div class="scroll-down">THANK YOU <span>↓</span></div>
+        </div>
+
+        <!-- PAGE 7: Final Thank You Page -->
+        <div class="snap-section" id="sec7">
+            <div style="font-family: 'Great Vibes', cursive; font-size: 3.8rem; color: var(--primary-green);">Thank You</div>
             <div class="gold-divider"></div>
-            <p style="font-size: 0.85rem; color: #555; line-height: 1.8; max-width: 80%;">
-                YOUR PRESENCE AND BLESSINGS WOULD TRULY MEAN THE WORLD TO US AS WE BEGIN THIS BEAUTIFUL JOURNEY TOGETHER.
+            <p style="font-size: 0.85rem; color: #555; line-height: 1.8; max-width: 85%;">
+                YOUR PRESENCE AND PRAYERS WILL MAKE OUR SPECIAL DAY TRULY UNFORGETTABLE. WE CAN'T WAIT TO CELEBRATE WITH YOU!
             </p>
-            <div style="font-family: 'Cinzel', serif; font-size: 1.1rem; color: var(--primary-green); margin-top: 25px; font-weight: 600;">
+            <div style="font-family: 'Cinzel', serif; font-size: 1.1rem; color: var(--primary-green); margin-top: 25px; font-weight: 700;">
                 CHATHUMINI & HARSHA
             </div>
-            <button class="btn-action" onclick="scrollToSec('sec1')" style="background:#555; margin-top: 25px;">
+            <button class="btn-action" onclick="scrollToSec('sec1')" style="background:#444; margin-top: 25px; font-size: 0.7rem;">
                 <i class="fas fa-arrow-up"></i> BACK TO TOP
             </button>
         </div>
@@ -365,26 +396,25 @@
     </div>
 
     <script>
-        // Unlock Scroll and Start Music
+        // Unlock Scroll & Autoplay Music
         function unlockAndStart() {
             const frame = document.getElementById('frame');
             frame.classList.add('unlocked');
             scrollToSec('sec2');
             
-            // Start Music
+            // Audio Start
             const music = document.getElementById("bgMusic");
             music.play().then(() => {
                 isPlaying = true;
                 document.getElementById("musicIcon").className = "fas fa-pause";
-            }).catch(e => console.log("Audio play allowed"));
+            }).catch(e => console.log("Audio play blocked"));
         }
 
-        // Scroll to Section
         function scrollToSec(id) {
             document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
         }
 
-        // Dynamic Guest Name
+        // Dynamic Guest Name Handler
         const urlParams = new URLSearchParams(window.location.search);
         const prefix = urlParams.get('prefix') || '';
         const name = urlParams.get('name') || '';
@@ -396,7 +426,7 @@
             document.getElementById('guestNameDisplay').innerText = "Special Guest";
         }
 
-        // Countdown Timer
+        // Live Countdown
         const targetDate = new Date("October 30, 2026 09:00:00").getTime();
         setInterval(function() {
             const now = new Date().getTime();
@@ -426,19 +456,29 @@
             isPlaying = !isPlaying;
         }
 
-        // Send Wishes to WhatsApp
-        function sendWishWhatsApp() {
-            const wish = document.getElementById('wishText').value;
-            if (!wish.trim()) {
-                alert("Please write a wish message before sending!");
-                return;
-            }
+        // RSVP WhatsApp Sender
+        function sendRSVPWhatsApp() {
+            const status = document.getElementById('rsvpStatus').value;
+            const count = document.getElementById('rsvpCount').value;
             const guest = name ? (prefix + ' ' + name) : "Guest";
-            const text = encodeURIComponent(`Hi Chathumini & Harsha! 💖\n\n${wish}\n\nWith Love,\n${guest}`);
+            
+            const text = encodeURIComponent(`Hi Chathumini & Harsha! 💍\n\n*RSVP Confirmation*\n• Guest Name: ${guest}\n• Status: ${status}\n• Guest Count: ${count}\n\nLooking forward to the celebration!`);
             window.open(`https://wa.me/?text=${text}`, '_blank');
         }
 
-        // Particle FX Animation
+        // Send Wish WhatsApp
+        function sendWishWhatsApp() {
+            const wish = document.getElementById('wishText').value;
+            if (!wish.trim()) {
+                alert("Please enter a message before sending!");
+                return;
+            }
+            const guest = name ? (prefix + ' ' + name) : "Guest";
+            const text = encodeURIComponent(`Hi Chathumini & Harsha! 🌸\n\n${wish}\n\nWith Love,\n${guest}`);
+            window.open(`https://wa.me/?text=${text}`, '_blank');
+        }
+
+        // White Lotus Petals Falling Animation
         const canvas = document.getElementById('fxCanvas');
         const ctx = canvas.getContext('2d');
         
@@ -449,37 +489,55 @@
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
 
-        const particles = [];
-        for (let i = 0; i < 25; i++) {
-            particles.push({
+        const petals = [];
+        for (let i = 0; i < 20; i++) {
+            petals.push({
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,
-                size: Math.random() * 5 + 3,
-                speedY: Math.random() * 1.2 + 0.4,
-                speedX: Math.random() * 0.8 - 0.4,
-                opacity: Math.random() * 0.6 + 0.3
+                size: Math.random() * 8 + 6,
+                speedY: Math.random() * 1.0 + 0.3,
+                speedX: Math.random() * 0.6 - 0.3,
+                angle: Math.random() * 360,
+                spin: Math.random() * 0.02 - 0.01,
+                opacity: Math.random() * 0.5 + 0.4
             });
         }
 
-        function animateFX() {
+        function drawLotusPetal(x, y, size, angle, opacity) {
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.rotate(angle);
+            ctx.beginPath();
+            
+            // White Lotus Petal Oval Shape
+            ctx.ellipse(0, 0, size, size * 1.8, 0, 0, Math.PI * 2);
+            
+            // Pure White with subtle gold/pinkish glow
+            ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
+            ctx.shadowColor = 'rgba(212, 175, 55, 0.3)';
+            ctx.shadowBlur = 4;
+            ctx.fill();
+            
+            ctx.restore();
+        }
+
+        function animatePetals() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => {
-                ctx.beginPath();
-                ctx.fillStyle = `rgba(235, 175, 185, ${p.opacity})`;
-                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                ctx.fill();
+            petals.forEach(p => {
+                drawLotusPetal(p.x, p.y, p.size, p.angle, p.opacity);
 
                 p.y += p.speedY;
                 p.x += p.speedX;
+                p.angle += p.spin;
 
-                if (p.y > canvas.height) {
-                    p.y = -10;
+                if (p.y > canvas.height + 20) {
+                    p.y = -20;
                     p.x = Math.random() * canvas.width;
                 }
             });
-            requestAnimationFrame(animateFX);
+            requestAnimationFrame(animatePetals);
         }
-        animateFX();
+        animatePetals();
     </script>
 </body>
 </html>
