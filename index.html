@@ -260,8 +260,10 @@
     <div class="music-btn" onclick="toggleMusic(event)">
         <i class="fas fa-music" id="musicIcon"></i>
     </div>
+    
+    <!-- Updated Audio Source: Thu Visa Lowen -->
     <audio id="bgMusic" loop>
-        <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-wedding-112188.mp3" type="audio/mpeg">
+        <source src="https://archive.org/download/thu-visa-lowen/Thu%20Visa%20Lowen.mp3" type="audio/mpeg">
     </audio>
 
     <div class="mobile-frame" id="frame">
@@ -404,7 +406,7 @@
 
         function playMusic() {
             if(!isPlaying) {
-                music.play();
+                music.play().catch(e => console.log("Audio play allowed after click"));
                 isPlaying = true;
                 document.getElementById("musicIcon").className = "fas fa-pause";
             }
