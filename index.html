@@ -625,6 +625,7 @@
         WILL MAKE OUR SPECIAL DAY<br>
         TRULY UNFORGETTABLE
       </p>
+
       <div class="final-couple">CHATHUMINI<br><span>&</span><br>HARSHA</div>
       <button class="button" onclick="closeInvite()">↑ BACK TO COVER</button>
     </section>
@@ -637,7 +638,7 @@
   </div>
 
   <script>
-    // ================= GUEST NAME =================
+    // ================= GUEST NAME FROM URL =================
     let guestName = "Special Guest";
 
     window.addEventListener("load", () => {
@@ -652,43 +653,40 @@
       }
     });
 
-    // ================= REALISTIC SOFT WEDDING PIANO SYNTHESIZER =================
+    // ================= RICH PIANO CHORD SYNTHESIZER =================
     let audioCtx = null;
     let isMusicPlaying = false;
     let musicLoopId = null;
 
-    // Beautiful Romantic Wedding Melody
-    const melody = [
-      { f: 392.00, d: 1.2 }, // G4
-      { f: 440.00, d: 0.6 }, // A4
-      { f: 493.88, d: 1.2 }, // B4
-      { f: 523.25, d: 1.8 }, // C5
-      { f: 587.33, d: 1.2 }, // D5
-      { f: 659.25, d: 2.4 }, // E5
-      { f: 587.33, d: 1.2 }, // D5
-      { f: 523.25, d: 1.2 }, // C5
-      { f: 493.88, d: 2.4 }  // B4
+    // Harmonic Soft Piano Chords Melody
+    const chordsSequence = [
+      { notes: [261.63, 329.63, 392.00, 523.25], duration: 2.2 }, // C Major
+      { notes: [220.00, 261.63, 329.63, 440.00], duration: 2.2 }, // A Minor
+      { notes: [174.61, 220.00, 261.63, 349.23], duration: 2.2 }, // F Major
+      { notes: [196.00, 246.94, 293.66, 392.00], duration: 2.2 }  // G Major
     ];
 
-    function playPianoNote(freq, duration) {
+    function playChord(notes, duration) {
       if (!audioCtx) return;
 
-      let osc = audioCtx.createOscillator();
-      let gain = audioCtx.createGain();
+      notes.forEach((freq) => {
+        let osc = audioCtx.createOscillator();
+        let gain = audioCtx.createGain();
 
-      osc.type = "sine"; 
-      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
 
-      // Soft Piano Decay Envelope
-      gain.gain.setValueAtTime(0, audioCtx.currentTime);
-      gain.gain.linearRampToValueAtTime(0.12, audioCtx.currentTime + 0.05);
-      gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+        // Soft Piano Envelope
+        gain.gain.setValueAtTime(0, audioCtx.currentTime);
+        gain.gain.linearRampToValueAtTime(0.08, audioCtx.currentTime + 0.1);
+        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
 
-      osc.connect(gain);
-      gain.connect(audioCtx.destination);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
 
-      osc.start();
-      osc.stop(audioCtx.currentTime + duration);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+      });
     }
 
     function startMelody() {
@@ -708,10 +706,10 @@
 
       function step() {
         if (!isMusicPlaying) return;
-        let note = melody[index];
-        playPianoNote(note.f, note.d);
-        index = (index + 1) % melody.length;
-        musicLoopId = setTimeout(step, note.d * 750);
+        let chord = chordsSequence[index];
+        playChord(chord.notes, chord.duration);
+        index = (index + 1) % chordsSequence.length;
+        musicLoopId = setTimeout(step, chord.duration * 950);
       }
 
       step();
@@ -740,8 +738,6 @@
 
     function openInvite() {
       opened = true;
-
-      // Start Piano Tune
       startMelody();
 
       document.querySelector(".envelope").classList.add("open");
