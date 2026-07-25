@@ -3,357 +3,405 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chathumini & Harsha's Wedding Invitation</title>
+    <title>The Wedding of Chathumini & Harsha</title>
     
-    <!-- Google Fonts -->
+    <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
         :root {
-            --primary-bg: #1a1a1a;
-            --card-bg: #ffffff;
-            --text-dark: #222222;
-            --accent-gold: #c5a059;
-            --accent-green: #2e4a3b;
+            --sage-green: #2e4a3b;
+            --soft-cream: #fbf9f5;
+            --gold-accent: #c5a059;
+            --text-dark: #2b2b2b;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            scroll-behavior: smooth;
         }
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: var(--primary-bg);
+            background-color: #0d0d0d;
             color: var(--text-dark);
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            overflow: hidden;
         }
 
-        .mobile-container {
+        /* Mobile Viewport Container */
+        .app-container {
             width: 100%;
             max-width: 430px;
-            background: #fcfbf7;
-            min-height: 100vh;
+            height: 100vh;
+            background: var(--soft-cream);
             position: relative;
-            box-shadow: 0 0 25px rgba(0,0,0,0.6);
-            overflow-x: hidden;
+            box-shadow: 0 0 40px rgba(0,0,0,0.8);
+            overflow: hidden;
         }
 
-        /* Hero Landing Screen */
-        .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1000&auto=format&fit=crop') center/cover;
+        /* Falling Petals Animation Canvas */
+        #petalCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        /* Page Structure & Transitions */
+        .page {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 30px 25px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.8s ease-in-out;
+            transform: scale(0.95);
+            background: var(--soft-cream);
+            overflow-y: auto;
+        }
+
+        .page.active {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1);
+        }
+
+        /* Page 1: Intro Splash Screen */
+        #page1 {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1000&auto=format&fit=crop') center/cover;
             color: white;
         }
 
-        .hero-title {
-            font-family: 'Great Vibes', cursive;
-            font-size: 3rem;
-            margin-bottom: 10px;
+        /* Page 2: Floral Arch Intro */
+        #page2 {
+            background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.8)), 
+                        url('https://images.unsplash.com/photo-1526047932273-341f2a7631f9?q=80&w=1000&auto=format&fit=crop') center/cover;
         }
 
-        .couple-name {
-            font-family: 'Cinzel', serif;
-            font-size: 1.8rem;
-            letter-spacing: 4px;
-            margin: 15px 0;
-            text-transform: uppercase;
+        /* Page 5: Save Date (Sage Green) */
+        #page5 {
+            background: var(--sage-green);
+            color: white;
         }
 
-        .btn-open {
-            background-color: var(--accent-green);
+        /* Nav Buttons */
+        .btn-action {
+            background: var(--sage-green);
             color: white;
             border: none;
-            padding: 12px 28px;
-            border-radius: 25px;
+            padding: 14px 32px;
+            border-radius: 30px;
             font-family: 'Cinzel', serif;
             letter-spacing: 2px;
             font-size: 0.85rem;
-            text-decoration: none;
-            margin-top: 30px;
-            transition: 0.3s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            cursor: pointer;
+            margin-top: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
         }
 
-        /* Invitation Section */
-        .invitation-section {
-            padding: 40px 25px;
-            text-align: center;
+        .btn-action:active {
+            transform: scale(0.95);
         }
 
-        .guest-greeting {
-            font-family: 'Great Vibes', cursive;
-            font-size: 2.5rem;
-            color: var(--accent-green);
-            margin: 15px 0;
-        }
-
-        .invitation-body {
-            font-size: 0.85rem;
-            line-height: 1.8;
-            color: #555;
+        .btn-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            color: var(--text-dark);
+            border: none;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
             letter-spacing: 1px;
+            cursor: pointer;
+            z-index: 20;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Typography Styles */
+        .title-cursive {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.2rem;
+            color: var(--sage-green);
+        }
+
+        .title-cinzel {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 3px;
+            font-size: 1.5rem;
             text-transform: uppercase;
-            margin-bottom: 25px;
+            margin: 10px 0;
         }
 
-        .details-card {
-            background: #ffffff;
-            border: 1px solid #e8e2d5;
-            padding: 25px 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-            margin-top: 20px;
+        .gold-line {
+            width: 50px;
+            height: 1px;
+            background: var(--gold-accent);
+            margin: 15px auto;
         }
 
-        .detail-heading {
-            font-family: 'Cinzel', serif;
-            font-size: 0.85rem;
-            letter-spacing: 2px;
-            color: var(--accent-green);
+        /* Details Card */
+        .info-card {
+            background: rgba(255,255,255,0.9);
+            border: 1px solid #e2ebd8;
+            padding: 20px;
+            border-radius: 12px;
+            width: 100%;
             margin-top: 15px;
-            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
         }
 
-        .detail-text {
-            font-size: 0.95rem;
-            font-weight: 500;
-            margin-top: 4px;
-            color: #333;
-        }
-
-        .btn-map {
-            display: block;
-            background: var(--accent-green);
-            color: white;
-            text-decoration: none;
-            padding: 12px;
-            border-radius: 5px;
-            font-family: 'Cinzel', serif;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            margin-top: 20px;
-        }
-
-        .btn-whatsapp {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            background: #25D366;
-            color: white;
-            text-decoration: none;
-            padding: 12px 25px;
-            border-radius: 25px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            margin-top: 15px;
-        }
-
-        /* Countdown */
-        .countdown-box {
-            background: var(--accent-green);
-            color: white;
-            padding: 35px 20px;
-            text-align: center;
-        }
-
-        .timer-flex {
+        /* Countdown Grid */
+        .timer-grid {
             display: flex;
-            justify-content: space-around;
-            margin-top: 20px;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 25px;
         }
 
-        .timer-unit {
-            border: 1px solid rgba(255,255,255,0.25);
+        .timer-box {
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 8px;
             padding: 10px;
-            border-radius: 6px;
-            min-width: 65px;
+            min-width: 70px;
+            background: rgba(255,255,255,0.08);
         }
 
-        .timer-num {
-            font-family: 'Great Vibes', cursive;
-            font-size: 2rem;
-        }
-
-        .timer-lbl {
-            font-size: 0.6rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        /* Music Floating Control */
+        /* Floating Audio Control */
         .music-btn {
-            position: fixed;
+            position: absolute;
             bottom: 20px;
             right: 20px;
-            background: #ffffff;
-            color: var(--accent-green);
-            width: 42px;
-            height: 42px;
+            background: white;
+            color: var(--sage-green);
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
             cursor: pointer;
-            z-index: 999;
-            border: 1px solid #ddd;
+            z-index: 99;
         }
     </style>
 </head>
 <body>
 
-    <!-- Floating Audio Button -->
-    <div class="music-btn" id="musicToggle" onclick="toggleMusic()">
-        <i class="fas fa-music" id="musicIcon"></i>
-    </div>
-    <audio id="bgMusic" loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-    </audio>
+    <div class="app-container">
+        <!-- Canvas for Falling Flower Petals -->
+        <canvas id="petalCanvas"></canvas>
 
-    <div class="mobile-container">
-        <!-- Hero Screen -->
-        <div class="hero">
-            <div class="hero-title">Wedding Invitation</div>
-            <div class="couple-name">Chathumini<br>&<br>Harsha</div>
-            <a href="#invitation" class="btn-open" onclick="playMusic()">OPEN INVITATION</a>
+        <!-- Floating Music Player -->
+        <div class="music-btn" onclick="toggleMusic()">
+            <i class="fas fa-music" id="musicIcon"></i>
+        </div>
+        <!-- Wedding Instrumental Music -->
+        <audio id="bgMusic" loop>
+            <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-wedding-112188.mp3" type="audio/mpeg">
+        </audio>
+
+        <!-- PAGE 1: Intro Screen -->
+        <div class="page active" id="page1">
+            <div class="title-cursive" style="color: white;">The Wedding of</div>
+            <div class="title-cinzel" style="color: white; font-size: 1.8rem;">CHATHUMINI<br>&<br>HARSHA</div>
+            <button class="btn-action" onclick="goToPage(2); startMusic();">VIEW INVITATION</button>
+            <p style="font-size: 0.7rem; color: #ccc; margin-top: 15px; letter-spacing: 2px;">CLICK TO BEGIN</p>
         </div>
 
-        <!-- Main Card Details -->
-        <div id="invitation" class="invitation-section">
-            <p style="font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 3px; color: #777;">YOU ARE CORDIALLY INVITED</p>
+        <!-- PAGE 2: Floral Gateway Screen -->
+        <div class="page" id="page2">
+            <button class="btn-close" onclick="goToPage(1)">CLOSE</button>
+            <div class="title-cursive">Wedding Invitation</div>
+            <div class="gold-line"></div>
+            <div class="title-cinzel" style="font-size: 1.4rem;">CHATHUMINI<br>&<br>HARSHA</div>
+            <button class="btn-action" style="margin-top: 40px;" onclick="goToPage(3)">SKIP INTRO</button>
+        </div>
 
+        <!-- PAGE 3: Personal Invitation Screen -->
+        <div class="page" id="page3">
+            <button class="btn-close" onclick="goToPage(2)">CLOSE</button>
+            <p style="font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 2px;">TOGETHER WITH OUR FAMILIES</p>
+            
             <!-- Dynamic Guest Name -->
-            <div class="guest-greeting" id="guestNameDisplay">DEAR GUEST</div>
-
-            <p class="invitation-body">
-                WITH JOYFUL HEARTS, WE WARMLY INVITE YOU TO CELEBRATE ONE OF THE MOST SPECIAL DAYS OF OUR LIVES AS WE BEGIN OUR JOURNEY TOGETHER.
+            <div class="title-cursive" id="guestNameDisplay" style="font-size: 2.5rem; margin: 15px 0;">DEAR GUEST</div>
+            
+            <p style="font-size: 0.8rem; line-height: 1.8; color: #555; text-transform: uppercase; letter-spacing: 1px;">
+                WE WARMLY INVITE YOU TO CELEBRATE THE JOYOUS MARRIAGE OF OUR CHILDREN
             </p>
 
-            <div class="details-card">
-                <div class="detail-heading">BRIDE & GROOM</div>
-                <div class="detail-text" style="font-family: 'Great Vibes', cursive; font-size: 2rem; color: var(--accent-green);">
-                    Chathumini & Harsha
-                </div>
+            <div class="title-cinzel" style="color: var(--sage-green); margin-top: 15px;">CHATHUMINI & HARSHA</div>
+            
+            <button class="btn-action" onclick="goToPage(4)">VIEW DETAILS 👇</button>
+        </div>
 
-                <div class="detail-heading">DATE</div>
-                <div class="detail-text">Friday, 30th October 2026</div>
+        <!-- PAGE 4: Venue & Details -->
+        <div class="page" id="page4">
+            <button class="btn-close" onclick="goToPage(3)">CLOSE</button>
+            <div class="title-cursive" style="font-size: 2.2rem;">Event Details</div>
+            
+            <div class="info-card">
+                <p style="font-family: 'Cinzel', serif; font-size: 0.8rem; color: var(--sage-green); font-weight: 600;">DATE</p>
+                <p style="font-size: 0.95rem; margin-bottom: 12px;">Friday, 30th October 2026</p>
 
-                <div class="detail-heading">TIME</div>
-                <div class="detail-text">From 9:00 AM Onwards</div>
+                <p style="font-family: 'Cinzel', serif; font-size: 0.8rem; color: var(--sage-green); font-weight: 600;">TIME</p>
+                <p style="font-size: 0.95rem; margin-bottom: 12px;">From 9:00 AM Onwards</p>
 
-                <div class="detail-heading">LOCATION</div>
-                <div class="detail-text">Ligness Green Odyssey</div>
-                <div style="font-size: 0.8rem; color: #666; margin-top: 2px;">Wanduramba Road, Galle</div>
+                <p style="font-family: 'Cinzel', serif; font-size: 0.8rem; color: var(--sage-green); font-weight: 600;">VENUE</p>
+                <p style="font-size: 0.95rem;">Ligness Green Odyssey</p>
+                <p style="font-size: 0.8rem; color: #666;">Wanduramba Road, Galle</p>
 
-                <a href="https://maps.app.goo.gl/cx6cqKQioFv8L9QH7" target="_blank" class="btn-map">LOCATION MAP</a>
+                <a href="https://maps.app.goo.gl/cx6cqKQioFv8L9QH7" target="_blank" style="display: block; background: var(--sage-green); color: white; text-decoration: none; padding: 10px; border-radius: 5px; font-family: 'Cinzel', serif; font-size: 0.75rem; margin-top: 15px; letter-spacing: 1px;">LAUNCH DIGITAL MAP</a>
             </div>
+
+            <button class="btn-action" onclick="goToPage(5)">COUNTDOWN ⏳</button>
         </div>
 
-        <!-- RSVP -->
-        <div class="invitation-section" style="padding-top: 0;">
-            <p style="font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 2px;">CONFIRM ATTENDANCE</p>
-            <a href="https://wa.me/?text=Hi%20Chathumini%20%26%20Harsha,%20I%20will%20be%20attending%20your%20wedding!" target="_blank" class="btn-whatsapp">
-                <i class="fab fa-whatsapp"></i> RSVP VIA WHATSAPP
-            </a>
-        </div>
+        <!-- PAGE 5: Countdown & Save Date -->
+        <div class="page" id="page5">
+            <button class="btn-close" style="background: rgba(255,255,255,0.2); color: white;" onclick="goToPage(4)">CLOSE</button>
+            
+            <div class="title-cinzel" style="font-size: 1.2rem;">SAVE THE DATE</div>
+            <div style="font-family: 'Great Vibes', cursive; font-size: 2.8rem; color: var(--gold-accent);">30 . 10 . 2026</div>
 
-        <!-- Countdown -->
-        <div class="countdown-box">
-            <p style="font-family: 'Cinzel', serif; letter-spacing: 2px; font-size: 0.9rem;">COUNTDOWN TO THE BIG DAY</p>
-            <div class="timer-flex">
-                <div class="timer-unit">
-                    <div class="timer-num" id="days">00</div>
-                    <div class="timer-lbl">Days</div>
+            <div class="timer-grid">
+                <div class="timer-box">
+                    <div style="font-family: 'Great Vibes', cursive; font-size: 2rem;" id="days">00</div>
+                    <div style="font-size: 0.6rem; letter-spacing: 1px;">DAYS</div>
                 </div>
-                <div class="timer-unit">
-                    <div class="timer-num" id="hours">00</div>
-                    <div class="timer-lbl">Hours</div>
+                <div class="timer-box">
+                    <div style="font-family: 'Great Vibes', cursive; font-size: 2rem;" id="hours">00</div>
+                    <div style="font-size: 0.6rem; letter-spacing: 1px;">HOURS</div>
                 </div>
-                <div class="timer-unit">
-                    <div class="timer-num" id="minutes">00</div>
-                    <div class="timer-lbl">Mins</div>
+                <div class="timer-box">
+                    <div style="font-family: 'Great Vibes', cursive; font-size: 2rem;" id="minutes">00</div>
+                    <div style="font-size: 0.6rem; letter-spacing: 1px;">MINS</div>
                 </div>
-                <div class="timer-unit">
-                    <div class="timer-num" id="seconds">00</div>
-                    <div class="timer-lbl">Secs</div>
+                <div class="timer-box">
+                    <div style="font-family: 'Great Vibes', cursive; font-size: 2rem;" id="seconds">00</div>
+                    <div style="font-size: 0.6rem; letter-spacing: 1px;">SECS</div>
                 </div>
             </div>
+
+            <p style="margin-top: 30px; font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 2px;">WAIT FOR THE MAGIC</p>
         </div>
+
     </div>
 
-    <!-- Script for URL Parameters and Countdown -->
+    <!-- Script Logic -->
     <script>
-        function getQueryParam(param) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(param);
+        // Multi-Page Navigation Function
+        function goToPage(pageNum) {
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById('page' + pageNum).classList.add('active');
         }
 
-        const prefix = getQueryParam('prefix') || '';
-        const name = getQueryParam('name') || '';
+        // Dynamic Guest Name Logic
+        const urlParams = new URLSearchParams(window.location.search);
+        const prefix = urlParams.get('prefix') || '';
+        const name = urlParams.get('name') || '';
 
         if (name) {
-            const fullName = (prefix ? prefix + ' ' : '') + name;
-            document.getElementById('guestNameDisplay').innerText = "Dear " + fullName;
+            document.getElementById('guestNameDisplay').innerText = (prefix ? prefix + ' ' : '') + name;
         } else {
-            document.getElementById('guestNameDisplay').innerText = "Dear Honored Guest";
+            document.getElementById('guestNameDisplay').innerText = "Special Guest";
         }
 
-        // Countdown Logic
+        // Live Countdown Logic
         const targetDate = new Date("October 30, 2026 09:00:00").getTime();
-
         setInterval(function() {
             const now = new Date().getTime();
-            const difference = targetDate - now;
-
-            if (difference > 0) {
-                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-                document.getElementById("days").innerText = days;
-                document.getElementById("hours").innerText = hours;
-                document.getElementById("minutes").innerText = minutes;
-                document.getElementById("seconds").innerText = seconds;
+            const diff = targetDate - now;
+            if (diff > 0) {
+                document.getElementById("days").innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+                document.getElementById("hours").innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                document.getElementById("minutes").innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                document.getElementById("seconds").innerText = Math.floor((diff % (1000 * 60)) / 1000);
             }
         }, 1000);
 
         // Music Controls
         const music = document.getElementById("bgMusic");
-        let isPlaying = false;
+        let isMusicPlaying = false;
 
-        function playMusic() {
-            if(!isPlaying) {
+        function startMusic() {
+            if(!isMusicPlaying) {
                 music.play();
-                isPlaying = true;
+                isMusicPlaying = true;
                 document.getElementById("musicIcon").className = "fas fa-pause";
             }
         }
 
         function toggleMusic() {
-            if (isPlaying) {
+            if (isMusicPlaying) {
                 music.pause();
                 document.getElementById("musicIcon").className = "fas fa-music";
             } else {
                 music.play();
                 document.getElementById("musicIcon").className = "fas fa-pause";
             }
-            isPlaying = !isPlaying;
+            isMusicPlaying = !isMusicPlaying;
         }
+
+        // Falling Flower Petals Animation Effect
+        const canvas = document.getElementById('petalCanvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const petals = [];
+        for (let i = 0; i < 25; i++) {
+            petals.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                size: Math.random() * 8 + 5,
+                speedY: Math.random() * 1.5 + 0.5,
+                speedX: Math.random() * 1 - 0.5,
+                angle: Math.random() * 360
+            });
+        }
+
+        function drawPetals() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = 'rgba(255, 182, 193, 0.7)'; // Pink Petal Color
+
+            petals.forEach(p => {
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fill();
+
+                p.y += p.speedY;
+                p.x += p.speedX;
+
+                if (p.y > canvas.height) {
+                    p.y = -10;
+                    p.x = Math.random() * canvas.width;
+                }
+            });
+            requestAnimationFrame(drawPetals);
+        }
+        drawPetals();
     </script>
 </body>
 </html>
