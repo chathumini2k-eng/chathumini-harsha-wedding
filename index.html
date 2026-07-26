@@ -10,7 +10,7 @@
 <title>The Wedding of Chathumini & Harsha</title>
 
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -23,9 +23,11 @@
 :root{
 
 --green:#123524;
---dark:#07150d;
+
 --gold:#d4af37;
+
 --cream:#faf7f0;
+
 --whitegold:#f5e6a8;
 
 }
@@ -35,8 +37,18 @@
 *{
 
 margin:0;
+
 padding:0;
+
 box-sizing:border-box;
+
+}
+
+
+
+html{
+
+scroll-behavior:smooth;
 
 }
 
@@ -44,9 +56,15 @@ box-sizing:border-box;
 
 body{
 
-height:100vh;
 
 background:#020602;
+
+height:100vh;
+
+overflow:hidden;
+
+font-family:'Montserrat',sans-serif;
+
 
 display:flex;
 
@@ -54,15 +72,18 @@ justify-content:center;
 
 align-items:center;
 
-overflow:hidden;
-
-font-family:'Montserrat',sans-serif;
 
 }
 
 
 
+
+
+/* MAIN FRAME */
+
+
 .mobile-frame{
+
 
 width:100%;
 
@@ -70,13 +91,12 @@ max-width:430px;
 
 height:100vh;
 
-height:100dvh;
-
 background:var(--cream);
 
 overflow:hidden;
 
 position:relative;
+
 
 }
 
@@ -84,9 +104,12 @@ position:relative;
 
 .mobile-frame.opened{
 
+
 overflow-y:auto;
 
+
 }
+
 
 
 
@@ -94,59 +117,139 @@ overflow-y:auto;
 
 .section{
 
+
+min-height:100vh;
+
 height:100vh;
 
-min-height:100dvh;
 
 display:flex;
 
 flex-direction:column;
 
+
 justify-content:center;
 
 align-items:center;
 
+
 text-align:center;
+
 
 padding:30px 25px;
 
+
 position:relative;
 
+
 overflow:hidden;
+
 
 }
 
 
 
+
+
+
+
+/* BUTTON */
+
+
+.button{
+
+
+margin-top:20px;
+
+
+padding:14px 35px;
+
+
+border-radius:40px;
+
+
+border:1px solid var(--gold);
+
+
+background:
+
+linear-gradient(
+
+135deg,
+
+var(--green),
+
+#020702
+
+);
+
+
+
+color:var(--whitegold);
+
+
+font-family:'Cinzel',serif;
+
+
+font-size:.75rem;
+
+
+letter-spacing:2px;
+
+
+cursor:pointer;
+
+
+text-decoration:none;
+
+
+}
+
+
+
+
+
+
+
+/* TEXT */
 
 
 .heading{
 
+
 font-family:'Cinzel',serif;
+
 
 font-size:.75rem;
 
+
 letter-spacing:3px;
 
-font-weight:600;
 
 color:var(--green);
 
+
+font-weight:bold;
+
+
 }
-
-
 
 
 
 .main-title{
 
+
 font-family:'Great Vibes',cursive;
+
 
 font-size:3.5rem;
 
+
 color:white;
 
-text-shadow:0 5px 20px black;
+
+text-shadow:0 5px 20px #000;
+
 
 }
 
@@ -156,29 +259,38 @@ text-shadow:0 5px 20px black;
 
 .names{
 
+
 font-family:'Cinzel',serif;
+
 
 font-size:1.4rem;
 
+
 letter-spacing:5px;
+
 
 line-height:1.8;
 
+
 color:var(--whitegold);
+
 
 }
 
 
 
 
-
 .divider{
 
-width:100px;
 
 height:2px;
 
+
+width:100px;
+
+
 margin:15px auto;
+
 
 background:linear-gradient(
 
@@ -192,7 +304,10 @@ transparent
 
 );
 
+
 }
+
+
 
 
 
@@ -200,13 +315,18 @@ transparent
 
 .small-text{
 
+
 font-family:'Cinzel',serif;
+
 
 font-size:.7rem;
 
+
 letter-spacing:3px;
 
+
 color:var(--whitegold);
+
 
 }
 
@@ -214,69 +334,53 @@ color:var(--whitegold);
 
 
 
-.button{
-
-margin-top:20px;
-
-padding:14px 35px;
-
-border-radius:40px;
-
-border:1px solid var(--gold);
-
-background:linear-gradient(
-
-135deg,
-
-var(--green),
-
-#020702
-
-);
-
-color:var(--whitegold);
-
-font-family:'Cinzel',serif;
-
-font-size:.75rem;
-
-letter-spacing:2px;
-
-cursor:pointer;
-
-}
 
 
-
+/* CLOSE BUTTON */
 
 
 #closeBtn{
 
+
 display:none;
+
 
 position:fixed;
 
+
 top:18px;
+
 
 right:18px;
 
+
 width:45px;
+
 
 height:45px;
 
+
 border-radius:50%;
+
 
 background:var(--green);
 
+
 border:2px solid var(--gold);
+
 
 color:var(--gold);
 
+
 font-size:25px;
 
-z-index:300;
+
+z-index:200;
+
 
 }
+
+
 
 
 
@@ -287,7 +391,9 @@ z-index:300;
 
 #cover{
 
+
 background:
+
 
 linear-gradient(
 
@@ -297,12 +403,14 @@ rgba(5,20,12,.85)
 
 ),
 
+
 url("https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200")
+
 
 center/cover;
 
-}
 
+}
 
 
 
@@ -314,79 +422,113 @@ center/cover;
 
 .envelope{
 
+
 width:230px;
+
 
 height:150px;
 
+
 background:var(--green);
+
 
 border-radius:12px;
 
+
 position:relative;
+
 
 margin:30px;
 
+
 cursor:pointer;
 
-box-shadow:0 20px 50px rgba(0,0,0,.6);
+
+box-shadow:
+
+0 20px 50px rgba(0,0,0,.6);
+
 
 }
 
 
 
-.paper{
+.envelope .paper{
+
 
 position:absolute;
+
 
 width:170px;
 
+
 height:110px;
+
 
 background:white;
 
+
 top:25px;
+
 
 left:30px;
 
+
 border-radius:5px;
+
 
 display:flex;
 
-justify-content:center;
 
 align-items:center;
 
+
+justify-content:center;
+
+
 font-size:40px;
+
 
 }
 
 
 
 
+.envelope .flap{
 
-.flap{
 
 position:absolute;
 
+
 top:0;
+
 
 left:0;
 
+
 width:0;
+
 
 height:0;
 
+
 border-left:115px solid transparent;
+
 
 border-right:115px solid transparent;
 
+
 border-top:85px solid var(--gold);
+
 
 transform-origin:top;
 
+
 transition:1s;
 
+
 z-index:2;
+
 
 }
 
@@ -394,11 +536,11 @@ z-index:2;
 
 .envelope.open .flap{
 
+
 transform:rotateX(180deg);
 
+
 }
-
-
 
 
 
@@ -410,7 +552,9 @@ transform:rotateX(180deg);
 
 #welcome{
 
+
 background:
+
 
 linear-gradient(
 
@@ -420,44 +564,54 @@ rgba(255,255,255,.85)
 
 ),
 
+
 url("https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=1200")
+
 
 center/cover;
 
+
 }
-
-
 
 
 
 
 .guest-name{
 
+
 font-family:'Great Vibes',cursive;
+
 
 font-size:3.2rem;
 
+
 color:var(--green);
 
+
 margin:15px;
+
 
 }
 
 
 
-
-
 .description{
+
 
 font-size:.75rem;
 
+
 line-height:2;
+
 
 letter-spacing:1px;
 
+
 font-weight:600;
 
+
 color:#444;
+
 
 }
 
@@ -472,18 +626,16 @@ color:#444;
 
 
 
-<button id="closeBtn" onclick="closeInvite()">×</button>
+<button id="closeBtn" onclick="closeInvite()">
 
+×
+
+</button>
 
 
 
 <div class="mobile-frame" id="frame">
 
-
-
-
-
-<!-- COVER PAGE -->
 
 
 <section class="section" id="cover">
@@ -496,14 +648,11 @@ WITH LOVE AND BLESSINGS
 </div>
 
 
-
-
 <div class="main-title">
 
 Wedding Invitation
 
 </div>
-
 
 
 
@@ -523,12 +672,7 @@ HARSHA
 
 
 
-
-
 <div class="divider"></div>
-
-
-
 
 
 
@@ -540,7 +684,6 @@ HARSHA
 <div class="flap"></div>
 
 
-
 <div class="paper">
 
 💍
@@ -548,11 +691,7 @@ HARSHA
 </div>
 
 
-
 </div>
-
-
-
 
 
 
@@ -570,13 +709,6 @@ TAP TO OPEN INVITATION
 
 
 
-
-
-
-
-<!-- WELCOME PAGE -->
-
-
 <section class="section" id="welcome">
 
 
@@ -588,7 +720,6 @@ TOGETHER WITH OUR FAMILIES
 
 
 
-
 <div class="guest-name" id="guestDisplay">
 
 Special Guest
@@ -597,10 +728,7 @@ Special Guest
 
 
 
-
-
 <p class="description">
-
 
 WE CORDIALLY INVITE YOU
 
@@ -610,31 +738,27 @@ TO CELEBRATE THE WEDDING CEREMONY OF
 
 <br><br>
 
-
 <b>
 
 CHATHUMINI & HARSHA
 
 </b>
 
-
 </p>
 
 
 
+<button class="button"
 
-
-<button class="button" onclick="goPage('details')">
+onclick="goPage('details')">
 
 NEXT →
 
 </button>
 
 
-
-
 </section>
-<!-- ================= WEDDING DETAILS ================= -->
+<!-- ================= DETAILS ================= -->
 
 
 <section class="section" id="details">
@@ -660,13 +784,11 @@ WEDDING DETAILS
 </div>
 
 
-
 <div class="detail-title">
 
 DATE
 
 </div>
-
 
 
 <div class="detail-value">
@@ -680,12 +802,7 @@ Friday<br>
 
 
 
-
-
-
 <hr>
-
-
 
 
 
@@ -697,14 +814,11 @@ Friday<br>
 </div>
 
 
-
 <div class="detail-title">
 
 TIME
 
 </div>
-
-
 
 
 <div class="detail-value">
@@ -716,12 +830,7 @@ TIME
 
 
 
-
-
-
 <hr>
-
-
 
 
 
@@ -733,17 +842,11 @@ TIME
 </div>
 
 
-
-
-
 <div class="detail-title">
 
 VENUE
 
 </div>
-
-
-
 
 
 <div class="detail-value">
@@ -773,12 +876,9 @@ Galle
 
 onclick="goPage('location')">
 
-
 📍 VIEW LOCATION
 
-
 </button>
-
 
 
 
@@ -792,12 +892,10 @@ onclick="goPage('location')">
 
 
 
-<!-- ================= LOCATION PAGE ================= -->
-
+<!-- ================= LOCATION ================= -->
 
 
 <section class="section" id="location">
-
 
 
 <div class="heading">
@@ -805,7 +903,6 @@ onclick="goPage('location')">
 WEDDING LOCATION
 
 </div>
-
 
 
 
@@ -819,10 +916,7 @@ Find Us
 
 
 
-
-
 <div class="map-container">
-
 
 
 <iframe
@@ -831,13 +925,11 @@ src="https://www.google.com/maps?q=Ligness%20Green%20Odyssey%20Galle&output=embe
 
 loading="lazy">
 
-
 </iframe>
 
 
 
 </div>
-
 
 
 
@@ -859,17 +951,13 @@ OPEN GOOGLE MAPS
 
 
 
-
 <button class="button"
 
 onclick="goPage('countdown')">
 
-
 CONTINUE →
 
-
 </button>
-
 
 
 
@@ -887,21 +975,18 @@ CONTINUE →
 <!-- ================= COUNTDOWN ================= -->
 
 
-
 <section class="section" id="countdown">
 
 
+<div class="heading"
 
-<div class="heading" style="color:#d4af37">
+style="color:#d4af37">
 
 
 SAVE THE DATE
 
 
 </div>
-
-
-
 
 
 
@@ -922,12 +1007,12 @@ style="color:#d4af37">
 
 
 
-
 <div class="timer">
 
 
 
 <div class="time-box">
+
 
 <div id="days">
 
@@ -951,6 +1036,7 @@ DAYS
 
 
 <div class="time-box">
+
 
 <div id="hours">
 
@@ -976,6 +1062,7 @@ HOURS
 
 <div class="time-box">
 
+
 <div id="minutes">
 
 00
@@ -999,6 +1086,7 @@ MINS
 
 
 <div class="time-box">
+
 
 <div id="seconds">
 
@@ -1042,14 +1130,12 @@ COUNTING DOWN TO OUR FOREVER
 
 
 
-
 <button class="button"
 
 onclick="goPage('program')">
 
 
 VIEW PROGRAM →
-
 
 </button>
 
@@ -1069,7 +1155,8 @@ VIEW PROGRAM →
 <style>
 
 
-/* CARD */
+
+/* DETAILS CARD */
 
 
 .card{
@@ -1077,36 +1164,41 @@ VIEW PROGRAM →
 
 width:100%;
 
+
 background:white;
+
 
 padding:25px;
 
+
 border-radius:20px;
 
+
 border:1px solid rgba(212,175,55,.5);
+
 
 box-shadow:
 
 0 15px 40px rgba(0,0,0,.15);
 
+
 }
 
 
 
-
-
-.detail-icon{
+.detail-icon i{
 
 
 font-size:30px;
 
+
 color:#d4af37;
+
 
 margin-top:8px;
 
+
 }
-
-
 
 
 
@@ -1115,17 +1207,20 @@ margin-top:8px;
 
 font-family:'Cinzel',serif;
 
+
 font-size:.7rem;
+
 
 font-weight:bold;
 
+
 color:#123524;
+
 
 margin-top:8px;
 
+
 }
-
-
 
 
 
@@ -1134,13 +1229,14 @@ margin-top:8px;
 
 font-size:.85rem;
 
+
 line-height:1.6;
+
 
 color:#555;
 
+
 }
-
-
 
 
 
@@ -1149,9 +1245,12 @@ hr{
 
 border:0;
 
+
 border-top:1px solid #eee;
 
+
 margin:15px 0;
+
 
 }
 
@@ -1161,15 +1260,14 @@ margin:15px 0;
 
 
 
-
-
-/* BACKGROUND IMAGES */
+/* BACKGROUNDS */
 
 
 #details{
 
 
 background:
+
 
 linear-gradient(
 
@@ -1179,13 +1277,14 @@ rgba(250,247,240,.95)
 
 ),
 
-url("https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1200")
+
+url("https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?q=80&w=1200")
+
 
 center/cover;
 
+
 }
-
-
 
 
 
@@ -1196,6 +1295,7 @@ center/cover;
 
 background:
 
+
 linear-gradient(
 
 rgba(255,255,255,.82),
@@ -1204,12 +1304,14 @@ rgba(250,247,240,.95)
 
 ),
 
-url("https://images.unsplash.com/photo-1507504031003-b417219a0fde?q=80&w=1200")
+
+url("https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=1200")
+
 
 center/cover;
 
-}
 
+}
 
 
 
@@ -1221,6 +1323,7 @@ center/cover;
 
 background:
 
+
 linear-gradient(
 
 rgba(10,30,20,.88),
@@ -1229,21 +1332,16 @@ rgba(10,30,20,.95)
 
 ),
 
-url("https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?q=80&w=1200")
+
+url("https://images.unsplash.com/photo-1507504031003-b417219a0fde?q=80&w=1200")
+
 
 center/cover;
+
 
 }
 
 
-
-
-
-
-
-
-
-/* MAP */
 
 
 .map-container{
@@ -1251,10 +1349,11 @@ center/cover;
 
 width:100%;
 
+
 margin:15px 0;
 
-}
 
+}
 
 
 
@@ -1264,21 +1363,21 @@ margin:15px 0;
 
 width:100%;
 
-height:250px;
+
+height:260px;
+
 
 border:0;
 
+
 border-radius:20px;
+
 
 }
 
 
 
 
-
-
-
-/* TIMER */
 
 
 .timer{
@@ -1286,12 +1385,14 @@ border-radius:20px;
 
 display:flex;
 
+
 gap:8px;
+
 
 margin-top:20px;
 
-}
 
+}
 
 
 
@@ -1301,14 +1402,17 @@ margin-top:20px;
 
 width:65px;
 
+
 padding:12px 5px;
+
 
 border:1px solid #d4af37;
 
+
 border-radius:12px;
 
-}
 
+}
 
 
 
@@ -1318,13 +1422,14 @@ border-radius:12px;
 
 font-family:'Great Vibes';
 
+
 font-size:2rem;
+
 
 color:#f5e6a8;
 
+
 }
-
-
 
 
 
@@ -1333,16 +1438,19 @@ color:#f5e6a8;
 
 font-size:.55rem;
 
+
 color:#d4af37;
 
+
 letter-spacing:1px;
+
 
 }
 
 
 
 </style>
-<!-- ================= WEDDING PROGRAM ================= -->
+<!-- ================= PROGRAM ================= -->
 
 
 <section class="section" id="program">
@@ -1362,6 +1470,7 @@ WEDDING PROGRAM
 Our Special Day
 
 </div>
+
 
 
 
@@ -1405,6 +1514,7 @@ Wedding ceremony begins with blessings
 </p>
 
 
+
 </div>
 
 
@@ -1425,7 +1535,6 @@ Wedding ceremony begins with blessings
 09:58 AM
 
 </div>
-
 
 
 
@@ -1455,11 +1564,11 @@ Traditional Sinhala Poruwa ceremony with blessings and rituals
 </p>
 
 
-</div>
-
 
 </div>
 
+
+</div>
 
 
 
@@ -1495,6 +1604,7 @@ Lunch Reception
 </h3>
 
 
+
 <p>
 
 Celebrate this beautiful day with family and friends
@@ -1502,11 +1612,11 @@ Celebrate this beautiful day with family and friends
 </p>
 
 
-</div>
-
 
 </div>
 
+
+</div>
 
 
 
@@ -1542,11 +1652,13 @@ Going Away
 </h3>
 
 
+
 <p>
 
 Beginning a new chapter of our forever journey
 
 </p>
+
 
 
 </div>
@@ -1578,9 +1690,7 @@ RSVP →
 
 
 
-
 </section>
-
 
 
 
@@ -1593,7 +1703,6 @@ RSVP →
 <!-- ================= RSVP ================= -->
 
 
-
 <section class="section" id="rsvp">
 
 
@@ -1603,7 +1712,6 @@ RSVP →
 R.S.V.P
 
 </div>
-
 
 
 
@@ -1639,9 +1747,8 @@ Please confirm before
 
 
 
+
 <div class="card">
-
-
 
 
 
@@ -1650,8 +1757,6 @@ Please confirm before
 ATTENDANCE
 
 </div>
-
-
 
 
 
@@ -1689,7 +1794,6 @@ Regretfully Declines
 NUMBER OF GUESTS
 
 </div>
-
 
 
 
@@ -1742,8 +1846,6 @@ CONFIRM VIA WHATSAPP
 
 
 
-
-
 <button class="button"
 
 onclick="goPage('wishes')">
@@ -1767,16 +1869,10 @@ SEND WISHES →
 
 
 
-
-
-
-
 <!-- ================= WISHES ================= -->
 
 
-
 <section class="section" id="wishes">
-
 
 
 <div class="heading">
@@ -1789,12 +1885,12 @@ SEND YOUR LOVE
 
 
 
-
 <div class="guest-name">
 
 Best Wishes
 
 </div>
+
 
 
 
@@ -1837,9 +1933,7 @@ placeholder="Write your beautiful message here...">
 onclick="sendWish()">
 
 
-
 ❤️ SEND BLESSINGS
-
 
 
 </button>
@@ -1856,7 +1950,6 @@ onclick="goPage('thankyou')">
 
 
 CONTINUE →
-
 
 </button>
 
@@ -1885,6 +1978,7 @@ CONTINUE →
 
 background:
 
+
 linear-gradient(
 
 rgba(250,247,240,.88),
@@ -1894,7 +1988,7 @@ rgba(250,247,240,.95)
 ),
 
 
-url("https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200")
+url("https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1200")
 
 
 center/cover;
@@ -1904,40 +1998,6 @@ center/cover;
 
 
 
-
-
-
-#rsvp,
-
-#wishes{
-
-
-background:
-
-linear-gradient(
-
-rgba(255,255,255,.85),
-
-rgba(250,247,240,.95)
-
-),
-
-
-url("https://images.unsplash.com/photo-1519167758481-83f550bb49b3?q=80&w=1200")
-
-
-center/cover;
-
-
-}
-
-
-
-
-
-
-
-/* TIMELINE */
 
 
 .timeline{
@@ -1945,7 +2005,9 @@ center/cover;
 
 width:100%;
 
+
 position:relative;
+
 
 margin-top:20px;
 
@@ -2010,7 +2072,6 @@ margin-bottom:25px;
 
 
 
-
 .time{
 
 
@@ -2033,9 +2094,6 @@ color:#123524;
 
 
 }
-
-
-
 
 
 
@@ -2072,8 +2130,10 @@ justify-self:center;
 
 
 
-
 .poruwa-dot{
+
+
+background:white;
 
 
 width:25px;
@@ -2082,23 +2142,19 @@ width:25px;
 height:25px;
 
 
-background:white;
-
-
 display:flex;
 
 
-align-items:center;
-
-
 justify-content:center;
+
+
+align-items:center;
 
 
 font-size:12px;
 
 
 }
-
 
 
 
@@ -2125,7 +2181,6 @@ border:1px solid rgba(212,175,55,.4);
 
 
 }
-
 
 
 
@@ -2193,6 +2248,38 @@ border:2px solid #d4af37;
 
 
 
+/* RSVP & WISH BACKGROUND */
+
+
+#rsvp,
+
+#wishes{
+
+
+background:
+
+
+linear-gradient(
+
+rgba(255,255,255,.85),
+
+rgba(250,247,240,.95)
+
+),
+
+
+url("https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200")
+
+
+center/cover;
+
+
+}
+
+
+
+
+
 .input-box{
 
 
@@ -2218,7 +2305,6 @@ outline:none;
 
 
 }
-
 
 
 
@@ -2256,9 +2342,9 @@ border:none;
 <section class="section" id="thankyou">
 
 
-<div class="heading" style="color:#d4af37">
+<div class="guest-name">
 
-THANK YOU
+Thank You
 
 </div>
 
@@ -2292,18 +2378,25 @@ TRULY UNFORGETTABLE
 
 
 
+
 <div class="final-couple">
 
 
 CHATHUMINI
 
-<br>
-
-<span>&</span>
 
 <br>
+
+
+<span>
+
+&
+
+</span>
+
 
 HARSHA
+
 
 
 </div>
@@ -2351,11 +2444,7 @@ onclick="closeInvite()">
 
 
 
-
 <style>
-
-
-/* THANK YOU BACKGROUND */
 
 
 #thankyou{
@@ -2363,9 +2452,10 @@ onclick="closeInvite()">
 
 background:
 
+
 linear-gradient(
 
-rgba(5,20,12,.82),
+rgba(5,20,12,.80),
 
 rgba(5,20,12,.95)
 
@@ -2384,46 +2474,33 @@ center/cover;
 
 
 
-/* PREMIUM COUPLE NAME */
+/* FINAL NAME SIZE */
 
 
-#thankyou .final-couple{
-
-
-font-family:'Cinzel',serif;
-
-font-weight:600;
-
-font-size:1.45rem;
-
-letter-spacing:6px;
-
-line-height:1.8;
-
-color:#f5e6a8;
-
-margin-top:25px;
-
-text-shadow:
-
-0 0 12px rgba(212,175,55,.7);
-
-}
-
-
-
-
-
-#thankyou .final-couple span{
+.final-couple{
 
 
 font-family:'Great Vibes',cursive;
 
-font-size:2rem;
+
+font-size:2.5rem;
+
+
+color:#d4af37;
+
+
+line-height:1.2;
+
+
+margin-top:25px;
+
 
 letter-spacing:2px;
 
-color:#d4af37;
+
+text-shadow:
+
+0 0 15px rgba(212,175,55,.7);
 
 
 }
@@ -2431,11 +2508,22 @@ color:#d4af37;
 
 
 
+.final-couple span{
+
+
+font-family:'Cinzel',serif;
+
+
+font-size:1.3rem;
+
+
+color:white;
+
+
+}
 
 
 
-
-/* MUSIC BUTTON */
 
 
 #musicBtn{
@@ -2465,142 +2553,25 @@ background:#123524;
 color:#d4af37;
 
 
-border:2px solid #d4af37;
-
-
 display:flex;
-
-
-justify-content:center;
 
 
 align-items:center;
 
 
+justify-content:center;
+
+
+border:2px solid #d4af37;
+
+
 font-size:20px;
 
 
-z-index:300;
+z-index:200;
 
 
 cursor:pointer;
-
-
-}
-
-
-
-
-
-
-
-
-
-/* JASMINE PETALS */
-
-
-.jasmine-petal{
-
-
-position:fixed;
-
-
-top:-40px;
-
-
-background:
-
-radial-gradient(
-
-circle,
-
-#ffffff,
-
-#f1eee5
-
-);
-
-
-border-radius:
-
-80% 20% 80% 20%;
-
-
-box-shadow:
-
-0 0 8px rgba(255,255,255,.8);
-
-
-opacity:.9;
-
-
-z-index:250;
-
-
-pointer-events:none;
-
-
-animation:jasmineFall linear infinite;
-
-
-}
-
-
-
-
-
-@keyframes jasmineFall{
-
-
-0%{
-
-
-transform:
-
-translateY(-50px)
-
-translateX(0)
-
-rotate(0deg);
-
-
-}
-
-
-
-50%{
-
-
-transform:
-
-translateY(50vh)
-
-translateX(var(--swing))
-
-rotate(180deg);
-
-
-}
-
-
-
-100%{
-
-
-transform:
-
-translateY(110vh)
-
-translateX(0)
-
-rotate(360deg);
-
-
-opacity:.1;
-
-
-}
-
 
 
 }
@@ -2620,7 +2591,9 @@ opacity:.1;
 <script>
 
 
-// ================= GUEST NAME =================
+// ===============================
+// GUEST NAME
+// ===============================
 
 
 let guestName="Special Guest";
@@ -2630,7 +2603,9 @@ let guestName="Special Guest";
 window.addEventListener("load",()=>{
 
 
-let params=new URLSearchParams(window.location.search);
+let params=new URLSearchParams(
+window.location.search
+);
 
 
 
@@ -2666,8 +2641,9 @@ display.innerHTML=guestName;
 
 
 
-// ================= OPEN INVITATION =================
-
+// ===============================
+// OPEN INVITATION
+// ===============================
 
 
 let opened=false;
@@ -2706,8 +2682,11 @@ goPage("welcome");
 
 
 
-},800);
+playMusic();
 
+
+
+},800);
 
 
 }
@@ -2720,15 +2699,15 @@ goPage("welcome");
 
 
 
-// ================= CLOSE =================
-
+// ===============================
+// CLOSE
+// ===============================
 
 
 function closeInvite(){
 
 
 opened=false;
-
 
 
 document.getElementById("frame")
@@ -2756,8 +2735,9 @@ goPage("cover");
 
 
 
-// ================= PAGE SCROLL =================
-
+// ===============================
+// PAGE MOVE
+// ===============================
 
 
 function goPage(id){
@@ -2782,10 +2762,9 @@ behavior:"smooth"
 
 
 
-// ================= MUSIC =================
-
-
-// User click starts music (browser safe)
+// ===============================
+// MUSIC
+// ===============================
 
 
 let musicPlaying=false;
@@ -2794,7 +2773,9 @@ let musicPlaying=false;
 let music=new Audio();
 
 
-music.src="https://cdn.pixabay.com/audio/2023/06/15/audio_8c5e6d4c4c.mp3";
+
+music.src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8b1b2f7d6.mp3";
+
 
 
 music.loop=true;
@@ -2807,8 +2788,86 @@ music.volume=0;
 
 
 
-function startMusic(){
 
+function fadeIn(){
+
+
+let vol=0;
+
+
+let timer=setInterval(()=>{
+
+
+if(vol<0.35){
+
+
+vol+=0.02;
+
+
+music.volume=vol;
+
+
+}
+
+else{
+
+
+clearInterval(timer);
+
+
+}
+
+
+},200);
+
+
+}
+
+
+
+
+
+
+function fadeOut(){
+
+
+let timer=setInterval(()=>{
+
+
+if(music.volume>0.02){
+
+
+music.volume-=0.02;
+
+
+}
+
+else{
+
+
+music.pause();
+
+
+clearInterval(timer);
+
+
+}
+
+
+},200);
+
+
+
+}
+
+
+
+
+
+
+
+
+function playMusic(){
 
 
 music.play()
@@ -2819,27 +2878,7 @@ music.play()
 musicPlaying=true;
 
 
-let fade=setInterval(()=>{
-
-
-if(music.volume<0.35){
-
-
-music.volume+=0.02;
-
-
-}
-
-else{
-
-
-clearInterval(fade);
-
-
-}
-
-
-},300);
+fadeIn();
 
 
 
@@ -2848,19 +2887,21 @@ document.querySelector("#musicBtn i")
 .className="fas fa-pause";
 
 
-
 })
+
 
 .catch(()=>{
 
 
-console.log("Music blocked");
+console.log("Click music button to start");
 
 
 });
 
 
 }
+
+
 
 
 
@@ -2874,7 +2915,7 @@ function toggleMusic(){
 if(musicPlaying){
 
 
-music.pause();
+fadeOut();
 
 
 musicPlaying=false;
@@ -2892,12 +2933,25 @@ document.querySelector("#musicBtn i")
 else{
 
 
-startMusic();
+music.play();
+
+
+fadeIn();
+
+
+musicPlaying=true;
+
+
+
+document.querySelector("#musicBtn i")
+
+.className="fas fa-pause";
 
 
 }
 
 
+
 }
 
 
@@ -2908,8 +2962,9 @@ startMusic();
 
 
 
-// ================= COUNTDOWN =================
-
+// ===============================
+// COUNTDOWN
+// ===============================
 
 
 let weddingDate=
@@ -2917,7 +2972,6 @@ let weddingDate=
 new Date("October 30, 2026 09:00:00")
 
 .getTime();
-
 
 
 
@@ -2935,6 +2989,7 @@ let distance=weddingDate-now;
 if(distance>0){
 
 
+
 document.getElementById("days").innerHTML=
 
 Math.floor(distance/(1000*60*60*24));
@@ -2943,41 +2998,19 @@ Math.floor(distance/(1000*60*60*24));
 
 document.getElementById("hours").innerHTML=
 
-Math.floor(
-
-(distance%(1000*60*60*24))
-
-/
-
-(1000*60*60)
-
-);
+Math.floor((distance%(1000*60*60*24))/(1000*60*60));
 
 
 
 document.getElementById("minutes").innerHTML=
 
-Math.floor(
-
-(distance%(1000*60*60))
-
-/
-
-(1000*60)
-
-);
+Math.floor((distance%(1000*60*60))/(1000*60));
 
 
 
 document.getElementById("seconds").innerHTML=
 
-Math.floor(
-
-(distance%(1000*60))
-
-/1000
-
-);
+Math.floor((distance%(1000*60))/1000);
 
 
 }
@@ -2994,12 +3027,12 @@ Math.floor(
 
 
 
-// ================= RSVP =================
-
+// ===============================
+// RSVP
+// ===============================
 
 
 function sendRSVP(){
-
 
 
 let message=`
@@ -3021,9 +3054,10 @@ Attendance:
 ${document.getElementById("status").value}
 
 
-Number of Guests:
+Guests:
 
 ${document.getElementById("guestCount").value}
+
 
 
 Looking forward to celebrating with you ❤️
@@ -3052,12 +3086,12 @@ window.open(
 
 
 
-// ================= WISH =================
-
+// ===============================
+// WISHES
+// ===============================
 
 
 function sendWish(){
-
 
 
 let wish=document.getElementById("wish").value;
@@ -3074,6 +3108,7 @@ return;
 
 
 }
+
 
 
 
@@ -3104,6 +3139,7 @@ window.open(
 );
 
 
+
 }
 
 
@@ -3114,101 +3150,88 @@ window.open(
 
 
 
-// ================= JASMINE PETALS =================
+// ===============================
+// PETALS
+// ===============================
+
+
+function createPetal(){
+
+
+if(!opened)return;
 
 
 
-function createJasmine(){
+let p=document.createElement("div");
 
 
-
-if(!opened) return;
-
-
-
-let petal=document.createElement("div");
-
-
-petal.className="jasmine-petal";
-
+p.className="jasmine-petal";
 
 
 let size=8+Math.random()*12;
 
 
-
-petal.style.width=size+"px";
-
-
-petal.style.height=size+"px";
+p.style.width=size+"px";
 
 
-
-petal.style.left=Math.random()*100+"%";
-
+p.style.height=size+"px";
 
 
-petal.style.animationDuration=
-
-(7+Math.random()*6)+"s";
+p.style.left=Math.random()*100+"%";
 
 
-
-petal.style.setProperty(
-
-"--swing",
-
-(Math.random()*80-40)+"px"
-
-);
+p.style.animationDuration=(7+Math.random()*6)+"s";
 
 
-
-document.body.appendChild(petal);
+document.body.appendChild(p);
 
 
 
 setTimeout(()=>{
 
-
-petal.remove();
-
+p.remove();
 
 },14000);
 
 
-}
-
-
-
-setInterval(createJasmine,500);
-
-
-
-
-
-
-
-// Start music after first interaction
-
-document.addEventListener("click",function firstClick(){
-
-
-if(opened && !musicPlaying){
-
-
-startMusic();
-
 
 }
 
 
-document.removeEventListener("click",firstClick);
+
+setInterval(createPetal,500);
 
 
-});
 
 
+
+
+
+
+// ===============================
+// COVER LOCK
+// ===============================
+
+
+document.addEventListener(
+
+"wheel",
+
+(e)=>{
+
+
+if(!opened){
+
+e.preventDefault();
+
+}
+
+
+},
+
+{passive:false}
+
+);
 
 
 
@@ -3220,8 +3243,6 @@ document.removeEventListener("click",firstClick);
 
 </div>
 
-
 </body>
-
 
 </html>
