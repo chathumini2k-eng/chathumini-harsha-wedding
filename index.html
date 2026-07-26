@@ -2,2798 +2,875 @@
 <html lang="en">
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Wedding of Chathumini & Harsha</title>
 
-<meta charset="UTF-8">
+  <!-- Google Fonts & FontAwesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --navy: #07182b;
+      --royal: #0b2740;
+      --gold: #d4af37;
+      --champagne: #f5e6a8;
+      --ivory: #faf7f0;
+      --white: #ffffff;
+    }
 
-<title>The Wedding of Chathumini & Harsha</title>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
+    body {
+      height: 100vh;
+      background: #02070c;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Montserrat', sans-serif;
+      overflow: hidden;
+    }
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    .mobile-frame {
+      width: 100%;
+      max-width: 430px;
+      height: 100vh;
+      height: 100dvh;
+      overflow: hidden;
+      background: var(--ivory);
+      position: relative;
+    }
 
+    .mobile-frame.opened {
+      overflow-y: auto;
+    }
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    .section {
+      min-height: 100vh;
+      padding: 30px 25px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
 
+    /* ================= COVER ================= */
+    .cover {
+      background: linear-gradient(rgba(7, 24, 43, .75), rgba(7, 24, 43, .9)),
+        url("https://images.unsplash.com/photo-1519741497674-611481863552") center/cover;
+      color: white;
+    }
 
-<link rel="stylesheet" href="style.css">
+    .floral-arch {
+      width: 330px;
+      height: 430px;
+      border-radius: 180px 180px 0 0;
+      border: 5px solid var(--gold);
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 0 40px rgba(212, 175, 55, .5);
+    }
 
+    .flower {
+      position: absolute;
+      font-size: 45px;
+      filter: drop-shadow(0 0 10px white);
+    }
 
+    .left-flower {
+      left: -25px;
+      top: 40px;
+    }
+
+    .right-flower {
+      right: -25px;
+      top: 40px;
+    }
+
+    .arch-center {
+      z-index: 2;
+    }
+
+    .small-title {
+      font-family: 'Cinzel', serif;
+      letter-spacing: 3px;
+      font-size: .7rem;
+      color: var(--champagne);
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3.5rem;
+      font-weight: 400;
+      color: white;
+      margin: 20px 0;
+    }
+
+    .couple-name {
+      font-family: 'Cinzel', serif;
+      font-size: 1.5rem;
+      letter-spacing: 6px;
+      line-height: 2;
+      color: var(--champagne);
+    }
+
+    .couple-name span {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.5rem;
+      color: var(--gold);
+    }
+
+    .divider {
+      width: 100px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 20px auto;
+    }
+
+    .enter-btn,
+    .gold-btn {
+      margin-top: 20px;
+      padding: 14px 35px;
+      border-radius: 40px;
+      border: 1px solid var(--gold);
+      background: linear-gradient(135deg, #132f4c, #07182b);
+      color: var(--champagne);
+      font-family: 'Cinzel', serif;
+      letter-spacing: 2px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .enter-btn:hover,
+    .gold-btn:hover {
+      box-shadow: 0 0 20px var(--gold);
+    }
+
+    /* ================= GLASS CARD ================= */
+    .glass-card {
+      width: 100%;
+      padding: 25px;
+      border-radius: 25px;
+      background: rgba(255, 255, 255, .85);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(212, 175, 55, .5);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, .2);
+    }
+
+    .heading {
+      font-family: 'Cinzel', serif;
+      font-size: .75rem;
+      letter-spacing: 4px;
+      color: #123524;
+    }
+
+    .guest-name {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      color: #123524;
+      margin: 20px;
+    }
+
+    .description,
+    p {
+      font-size: .8rem;
+      line-height: 1.8;
+      color: #555;
+    }
+
+    /* ================= BACKGROUNDS ================= */
+    .welcome {
+      background: linear-gradient(rgba(255, 255, 255, .8), rgba(250, 247, 240, .95)),
+        url("https://images.unsplash.com/photo-1519225421980-715cb0215aed") center/cover;
+    }
+
+    .details {
+      background: linear-gradient(rgba(250, 247, 240, .85), rgba(250, 247, 240, .95)),
+        url("https://images.unsplash.com/photo-1511285560929-80b456fea0bc") center/cover;
+    }
+
+    .location {
+      background: linear-gradient(rgba(255, 255, 255, .85), rgba(250, 247, 240, .95)),
+        url("https://images.unsplash.com/photo-1507504031003-b417219a0fde") center/cover;
+    }
+
+    .countdown {
+      background: linear-gradient(rgba(7, 24, 43, .85), rgba(7, 24, 43, .95)),
+        url("https://images.unsplash.com/photo-1464366400600-7168b8af9bc3") center/cover;
+    }
+
+    .countdown .heading,
+    .countdown p {
+      color: white;
+    }
+
+    /* DETAILS ICONS */
+    .detail-icon {
+      font-size: 32px;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .detail-item {
+      padding: 15px 0;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .detail-item h3 {
+      font-family: 'Cinzel', serif;
+      font-size: .8rem;
+      color: #123524;
+    }
+
+    /* MAP */
+    .map-container iframe {
+      width: 100%;
+      height: 240px;
+      border: 0;
+      border-radius: 20px;
+      margin: 15px 0;
+    }
+
+    /* TIMER */
+    .timer {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin: 20px 0;
+    }
+
+    .time-box {
+      width: 65px;
+      padding: 12px 5px;
+      border: 1px solid var(--gold);
+      border-radius: 15px;
+    }
+
+    .time-box strong {
+      font-family: 'Great Vibes';
+      font-size: 2rem;
+      color: var(--gold);
+    }
+
+    .time-box span {
+      font-size: .55rem;
+      color: #555;
+    }
+
+    .countdown .time-box span {
+      color: var(--champagne);
+    }
+
+    /* PROGRAM */
+    .timeline {
+      margin-top: 20px;
+    }
+
+    .event {
+      display: grid;
+      grid-template-columns: 80px 25px 1fr;
+      gap: 10px;
+      margin-bottom: 25px;
+      align-items: center;
+    }
+
+    .event-dot {
+      width: 16px;
+      height: 16px;
+      background: var(--gold);
+      border-radius: 50%;
+      justify-self: center;
+    }
+
+    .flower-dot {
+      background: none;
+      font-size: 14px;
+    }
+
+    .event-content {
+      background: white;
+      padding: 12px;
+      border-radius: 15px;
+      text-align: left;
+      border: 1px solid #ddd;
+    }
+
+    .event-content h3 {
+      font-family: 'Cinzel', serif;
+      font-size: .75rem;
+      color: #123524;
+    }
+
+    /* FORM */
+    label {
+      display: block;
+      text-align: left;
+      font-family: 'Cinzel', serif;
+      font-size: .7rem;
+      color: #123524;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    select,
+    input,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0 15px 0;
+      border-radius: 12px;
+      border: 1px solid var(--gold);
+      font-family: 'Montserrat';
+      outline: none;
+    }
+
+    textarea {
+      height: 120px;
+      resize: none;
+    }
+
+    .whatsapp {
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: white;
+      border: none;
+    }
+
+    /* THANK YOU */
+    .thankyou {
+      background: linear-gradient(rgba(7, 24, 43, .85), rgba(7, 24, 43, .95)),
+        url("https://images.unsplash.com/photo-1519741497674-611481863552") center/cover;
+    }
+
+    .thank-card {
+      color: white;
+    }
+
+    .thank-card p {
+      color: white;
+    }
+
+    .final-names {
+      font-family: 'Cinzel', serif;
+      font-size: 1.4rem;
+      letter-spacing: 6px;
+      line-height: 2;
+      color: var(--champagne);
+      margin: 25px;
+    }
+
+    .final-names span {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.5rem;
+      color: var(--gold);
+    }
+
+    /* MUSIC BUTTON */
+    #musicBtn {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background: #123524;
+      color: var(--gold);
+      border: 2px solid var(--gold);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      z-index: 200;
+      cursor: pointer;
+    }
+
+    /* GOLDEN SPARKLES ANIMATION */
+    .golden-sparkle {
+      position: fixed;
+      top: -20px;
+      background: radial-gradient(circle, #ffe066 20%, #d4af37 80%, transparent 100%);
+      border-radius: 50%;
+      box-shadow: 0 0 10px #ffd700, 0 0 15px #d4af37;
+      opacity: 0.9;
+      z-index: 150;
+      pointer-events: none;
+      animation: sparkleFall linear infinite;
+    }
+
+    @keyframes sparkleFall {
+      0% {
+        transform: translateY(-20px) scale(0.5);
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+        transform: translateY(20vh) scale(1.2);
+      }
+      80% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(105vh) scale(0.3);
+        opacity: 0;
+      }
+    }
+  </style>
 </head>
-
 
 <body>
 
-
-<div class="mobile-frame" id="frame">
-
-
-<!-- ================= FLORAL ARCH COVER ================= -->
-
-
-<section class="section cover" id="cover">
-
-
-<div class="gold-glow"></div>
-
-
-<div class="floral-arch">
-
-
-<div class="flower left-flower">
-
-🌿🌸🌿
-
-</div>
-
-
-<div class="arch-center">
-
-
-<div class="small-title">
-
-WITH LOVE AND BLESSINGS
-
-</div>
-
-
-
-<h1>
-
-Wedding Invitation
-
-</h1>
-
-
-
-<div class="couple-name">
-
-
-CHATHUMINI
-
-<br>
-
-<span>&</span>
-
-<br>
-
-HARSHA
-
-
-</div>
-
-
-
-<div class="divider"></div>
-
-
-
-<button class="enter-btn" onclick="openInvitation()">
-
-🌸 TAP TO ENTER 🌸
-
-</button>
-
-
-</div>
-
-
-
-<div class="flower right-flower">
-
-🌿🌸🌿
-
-</div>
-
-
-</div>
-
-
-<div class="light-particles"></div>
-
-
-</section>
-
-
-
-
-
-
-<!-- ================= WELCOME PAGE ================= -->
-
-
-<section class="section welcome" id="welcome">
-
-
-<div class="glass-card">
-
-
-<div class="heading">
-
-TOGETHER WITH OUR FAMILIES
-
-</div>
-
-
-
-<div class="guest-name" id="guestDisplay">
-
-Special Guest
-
-</div>
-
-
-
-
-<p>
-
-WE CORDIALLY INVITE YOU
-
-<br>
-
-TO CELEBRATE THE WEDDING CEREMONY OF
-
-<br><br>
-
-
-<b>
-
-CHATHUMINI & HARSHA
-
-</b>
-
-
-</p>
-
-
-
-<button class="gold-btn" onclick="goPage('details')">
-
-NEXT →
-
-</button>
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-<!-- Remaining pages will continue in Part 2 -->
-
-
-</div>
-
-
-
-</body>
-
-</html>
-<!-- ================= WEDDING DETAILS ================= -->
-
-
-<section class="section details" id="details">
-
-
-<div class="glass-card">
-
-
-<div class="heading">
-
-WEDDING DETAILS
-
-</div>
-
-
-
-
-<div class="detail-item">
-
-<div class="detail-icon">
-
-<i class="fa-solid fa-calendar-days"></i>
-
-</div>
-
-
-<h3>DATE</h3>
-
-
-<p>
-
-Friday<br>
-
-30th October 2026
-
-</p>
-
-</div>
-
-
-
-
-
-<div class="detail-item">
-
-<div class="detail-icon">
-
-<i class="fa-solid fa-clock"></i>
-
-</div>
-
-
-<h3>TIME</h3>
-
-
-<p>
-
-9:00 AM Onwards
-
-</p>
-
-</div>
-
-
-
-
-
-
-<div class="detail-item">
-
-<div class="detail-icon">
-
-<i class="fa-solid fa-location-dot"></i>
-
-</div>
-
-
-<h3>VENUE</h3>
-
-
-<p>
-
-Ligness Green Odyssey
-
-<br>
-
-Wanduramba Road,
-
-<br>
-
-Galle
-
-</p>
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-<button class="gold-btn"
-
-onclick="goPage('location')">
-
-📍 VIEW LOCATION
-
-</button>
-
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- ================= LOCATION ================= -->
-
-
-
-<section class="section location" id="location">
-
-
-<div class="glass-card">
-
-
-<div class="heading">
-
-WEDDING LOCATION
-
-</div>
-
-
-
-
-<div class="guest-name">
-
-Find Us
-
-</div>
-
-
-
-
-
-<div class="map-container">
-
-
-<iframe
-
-src="https://www.google.com/maps?q=Ligness%20Green%20Odyssey%20Galle&output=embed"
-
-loading="lazy">
-
-</iframe>
-
-
-</div>
-
-
-
-
-<a href="https://maps.google.com/?q=Ligness+Green+Odyssey+Galle"
-
-target="_blank"
-
-class="gold-btn">
-
-
-OPEN GOOGLE MAPS
-
-
-</a>
-
-
-
-<button class="gold-btn"
-
-onclick="goPage('countdown')">
-
-CONTINUE →
-
-</button>
-
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- ================= COUNTDOWN ================= -->
-
-
-
-<section class="section countdown" id="countdown">
-
-
-
-<div class="glass-card">
-
-
-<div class="heading">
-
-SAVE THE DATE
-
-</div>
-
-
-
-
-
-<div class="date-display">
-
-30 . 10 . 2026
-
-</div>
-
-
-
-
-
-
-
-<div class="timer">
-
-
-
-<div class="time-box">
-
-<strong id="days">
-
-00
-
-</strong>
-
-<span>
-
-DAYS
-
-</span>
-
-</div>
-
-
-
-
-
-<div class="time-box">
-
-<strong id="hours">
-
-00
-
-</strong>
-
-<span>
-
-HOURS
-
-</span>
-
-</div>
-
-
-
-
-
-<div class="time-box">
-
-<strong id="minutes">
-
-00
-
-</strong>
-
-<span>
-
-MINS
-
-</span>
-
-</div>
-
-
-
-
-
-<div class="time-box">
-
-<strong id="seconds">
-
-00
-
-</strong>
-
-<span>
-
-SECS
-
-</span>
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-
-
-<p>
-
-COUNTING DOWN TO OUR FOREVER
-
-</p>
-
-
-
-
-
-<button class="gold-btn"
-
-onclick="goPage('program')">
-
-VIEW PROGRAM →
-
-</button>
-
-
-
-</div>
-
-
-</section>
-<!-- ================= WEDDING PROGRAM ================= -->
-
-
-<section class="section program" id="program">
-
-
-<div class="glass-card">
-
-
-<div class="heading">
-
-WEDDING PROGRAM
-
-</div>
-
-
-
-
-<div class="guest-name">
-
-Our Special Day
-
-</div>
-
-
-
-
-
-
-<div class="timeline">
-
-
-
-<div class="event">
-
-
-<div class="event-time">
-
-09:00 AM
-
-</div>
-
-
-
-<div class="event-dot"></div>
-
-
-
-<div class="event-content">
-
-
-<h3>
-
-Wedding Ceremony
-
-</h3>
-
-
-<p>
-
-Wedding ceremony begins with blessings
-
-</p>
-
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<div class="event">
-
-
-<div class="event-time">
-
-09:58 AM
-
-</div>
-
-
-
-<div class="event-dot flower-dot">
-
-🌸
-
-</div>
-
-
-
-<div class="event-content">
-
-
-<h3>
-
-Poruwa Ceremony
-
-</h3>
-
-
-<p>
-
-Traditional Sinhala Poruwa ceremony with blessings and rituals
-
-</p>
-
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<div class="event">
-
-
-<div class="event-time">
-
-12:30 PM
-
-</div>
-
-
-
-<div class="event-dot"></div>
-
-
-
-<div class="event-content">
-
-
-<h3>
-
-Lunch Reception
-
-</h3>
-
-
-<p>
-
-Celebrate this beautiful day with family and friends
-
-</p>
-
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<div class="event">
-
-
-<div class="event-time">
-
-03:36 PM
-
-</div>
-
-
-
-<div class="event-dot"></div>
-
-
-
-<div class="event-content">
-
-
-<h3>
-
-Going Away
-
-</h3>
-
-
-<p>
-
-Beginning a new chapter of our forever journey
-
-</p>
-
-
-</div>
-
-
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-
-<button class="gold-btn"
-
-onclick="goPage('rsvp')">
-
-RSVP →
-
-</button>
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- ================= RSVP ================= -->
-
-
-
-<section class="section rsvp" id="rsvp">
-
-
-<div class="glass-card">
-
-
-<div class="heading">
-
-R.S.V.P
-
-</div>
-
-
-
-
-<div class="guest-name">
-
-Confirm Attendance
-
-</div>
-
-
-
-
-
-
-<p>
-
-Please confirm before
-
-<br>
-
-20th October 2026
-
-</p>
-
-
-
-
-
-
-
-<label>
-
-Attendance
-
-</label>
-
-
-
-<select id="status">
-
-
-<option>
-
-Joyfully Accepts
-
-</option>
-
-
-<option>
-
-Regretfully Declines
-
-</option>
-
-
-</select>
-
-
-
-
-
-
-
-<label>
-
-Number of Guests
-
-</label>
-
-
-
-<input
-
-id="guestCount"
-
-type="number"
-
-value="1"
-
-min="1"
-
-max="5"
-
->
-
-
-
-
-
-
-<button class="gold-btn whatsapp"
-
-onclick="sendRSVP()">
-
-
-<i class="fab fa-whatsapp"></i>
-
-CONFIRM VIA WHATSAPP
-
-
-</button>
-
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- ================= WISHES ================= -->
-
-
-
-<section class="section wishes" id="wishes">
-
-
-<div class="glass-card">
-
-
-<div class="heading">
-
-SEND YOUR LOVE
-
-</div>
-
-
-
-
-
-
-<div class="guest-name">
-
-Best Wishes
-
-</div>
-
-
-
-
-
-
-<p>
-
-Leave your heartwarming blessing
-
-</p>
-
-
-
-
-
-
-<textarea
-
-id="wish"
-
-placeholder="Write your beautiful message here...">
-
-</textarea>
-
-
-
-
-
-
-
-<button class="gold-btn"
-
-onclick="sendWish()">
-
-
-❤️ SEND BLESSINGS
-
-</button>
-
-
-
-
-
-<button class="gold-btn"
-
-onclick="goPage('thankyou')">
-
-
-CONTINUE →
-
-</button>
-
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- ================= THANK YOU ================= -->
-
-
-
-<section class="section thankyou" id="thankyou">
-
-
-
-<div class="thank-card">
-
-
-
-<div class="heading">
-
-THANK YOU
-
-</div>
-
-
-
-
-
-<div class="divider"></div>
-
-
-
-
-
-
-
-<p>
-
-YOUR PRESENCE AND BLESSINGS
-
-<br>
-
-WILL MAKE OUR SPECIAL DAY
-
-<br>
-
-TRULY UNFORGETTABLE
-
-</p>
-
-
-
-
-
-
-
-<div class="final-names">
-
-
-CHATHUMINI
-
-<br>
-
-
-<span>
-
-&
-
-</span>
-
-
-<br>
-
-
-HARSHA
-
-
-</div>
-
-
-
-
-
-
-<button class="gold-btn"
-
-onclick="closeInvite()">
-
-
-↑ BACK TO COVER
-
-
-</button>
-
-
-
-
-</div>
-
-
-
-</section>
-
-
-
-
-
-<!-- MUSIC BUTTON -->
-
-
-<div id="musicBtn" onclick="toggleMusic()">
-
-
-<i class="fas fa-music"></i>
-
-
-</div>
-:root{
-
---navy:#07182b;
---royal:#0b2740;
---gold:#d4af37;
---champagne:#f5e6a8;
---ivory:#faf7f0;
---white:#ffffff;
-
-}
-
-
-*{
-
-margin:0;
-padding:0;
-box-sizing:border-box;
-
-}
-
-
-
-body{
-
-height:100vh;
-
-background:#02070c;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-font-family:'Montserrat',sans-serif;
-
-overflow:hidden;
-
-}
-
-
-
-
-
-.mobile-frame{
-
-width:100%;
-
-max-width:430px;
-
-height:100vh;
-
-height:100dvh;
-
-overflow:hidden;
-
-background:var(--ivory);
-
-position:relative;
-
-}
-
-
-
-.mobile-frame.opened{
-
-overflow-y:auto;
-
-}
-
-
-
-
-
-
-
-.section{
-
-min-height:100vh;
-
-padding:30px 25px;
-
-display:flex;
-
-flex-direction:column;
-
-justify-content:center;
-
-align-items:center;
-
-text-align:center;
-
-position:relative;
-
-overflow:hidden;
-
-}
-
-
-
-
-
-/* ================= COVER ================= */
-
-
-
-.cover{
-
-
-background:
-
-linear-gradient(
-
-rgba(7,24,43,.75),
-
-rgba(7,24,43,.9)
-
-),
-
-url("https://images.unsplash.com/photo-1519741497674-611481863552")
-
-center/cover;
-
-
-color:white;
-
-}
-
-
-
-
-
-.floral-arch{
-
-
-width:330px;
-
-height:430px;
-
-border-radius:180px 180px 0 0;
-
-border:5px solid var(--gold);
-
-position:relative;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-box-shadow:
-
-0 0 40px rgba(212,175,55,.5);
-
-
-}
-
-
-
-
-
-.flower{
-
-
-position:absolute;
-
-font-size:45px;
-
-filter:drop-shadow(0 0 10px white);
-
-}
-
-
-
-.left-flower{
-
-left:-25px;
-
-top:40px;
-
-}
-
-
-
-.right-flower{
-
-right:-25px;
-
-top:40px;
-
-}
-
-
-
-
-
-
-.arch-center{
-
-
-z-index:2;
-
-}
-
-
-
-
-
-.small-title{
-
-font-family:'Cinzel',serif;
-
-letter-spacing:3px;
-
-font-size:.7rem;
-
-color:var(--champagne);
-
-}
-
-
-
-
-
-h1{
-
-
-font-family:'Great Vibes',cursive;
-
-font-size:3.5rem;
-
-font-weight:400;
-
-color:white;
-
-margin:20px 0;
-
-
-}
-
-
-
-
-
-.couple-name{
-
-
-font-family:'Cinzel',serif;
-
-font-size:1.5rem;
-
-letter-spacing:6px;
-
-line-height:2;
-
-color:var(--champagne);
-
-}
-
-
-
-
-
-.couple-name span{
-
-
-font-family:'Great Vibes',cursive;
-
-font-size:2.5rem;
-
-color:var(--gold);
-
-}
-
-
-
-
-
-.divider{
-
-width:100px;
-
-height:2px;
-
-background:linear-gradient(
-
-90deg,
-
-transparent,
-
-var(--gold),
-
-transparent
-
-);
-
-margin:20px auto;
-
-}
-
-
-
-
-
-.enter-btn,
-.gold-btn{
-
-
-margin-top:20px;
-
-padding:14px 35px;
-
-border-radius:40px;
-
-border:1px solid var(--gold);
-
-background:
-
-linear-gradient(
-
-135deg,
-
-#132f4c,
-
-#07182b
-
-);
-
-
-color:var(--champagne);
-
-font-family:'Cinzel',serif;
-
-letter-spacing:2px;
-
-cursor:pointer;
-
-text-decoration:none;
-
-}
-
-
-
-
-
-.enter-btn:hover,
-.gold-btn:hover{
-
-
-box-shadow:
-
-0 0 20px var(--gold);
-
-
-}
-
-
-
-
-
-
-
-
-
-/* ================= GLASS CARD ================= */
-
-
-
-.glass-card{
-
-
-width:100%;
-
-padding:25px;
-
-border-radius:25px;
-
-
-background:
-
-rgba(255,255,255,.85);
-
-
-backdrop-filter:blur(10px);
-
-
-border:
-
-1px solid rgba(212,175,55,.5);
-
-
-box-shadow:
-
-0 20px 50px rgba(0,0,0,.2);
-
-
-}
-
-
-
-
-
-.heading{
-
-
-font-family:'Cinzel',serif;
-
-font-size:.75rem;
-
-letter-spacing:4px;
-
-color:#123524;
-
-}
-
-
-
-
-
-.guest-name{
-
-
-font-family:'Great Vibes',cursive;
-
-font-size:3rem;
-
-color:#123524;
-
-margin:20px;
-
-}
-
-
-
-
-
-.description,
-p{
-
-
-font-size:.8rem;
-
-line-height:1.8;
-
-color:#555;
-
-}
-
-
-
-
-
-
-
-
-
-/* ================= BACKGROUNDS ================= */
-
-
-
-.welcome{
-
-
-background:
-
-linear-gradient(
-
-rgba(255,255,255,.8),
-
-rgba(250,247,240,.95)
-
-),
-
-url("https://images.unsplash.com/photo-1519225421980-715cb0215aed")
-
-center/cover;
-
-}
-
-
-
-
-
-.details{
-
-
-background:
-
-linear-gradient(
-
-rgba(250,247,240,.85),
-
-rgba(250,247,240,.95)
-
-),
-
-url("https://images.unsplash.com/photo-1511285560929-80b456fea0bc")
-
-center/cover;
-
-}
-
-
-
-
-
-.location{
-
-
-background:
-
-linear-gradient(
-
-rgba(255,255,255,.85),
-
-rgba(250,247,240,.95)
-
-),
-
-url("https://images.unsplash.com/photo-1507504031003-b417219a0fde")
-
-center/cover;
-
-}
-
-
-
-
-
-
-.countdown{
-
-
-background:
-
-linear-gradient(
-
-rgba(7,24,43,.85),
-
-rgba(7,24,43,.95)
-
-),
-
-url("https://images.unsplash.com/photo-1464366400600-7168b8af9bc3")
-
-center/cover;
-
-}
-
-
-
-
-
-
-.countdown .heading,
-.countdown p{
-
-color:white;
-
-}
-
-
-
-
-
-
-
-
-/* DETAILS ICONS */
-
-
-
-.detail-icon{
-
-font-size:32px;
-
-color:var(--gold);
-
-margin-bottom:8px;
-
-}
-
-
-
-.detail-item{
-
-padding:15px 0;
-
-border-bottom:1px solid #ddd;
-
-}
-
-
-
-
-.detail-item h3{
-
-
-font-family:'Cinzel',serif;
-
-font-size:.8rem;
-
-color:#123524;
-
-}
-
-
-
-
-
-
-
-
-
-/* MAP */
-
-
-
-.map-container iframe{
-
-
-width:100%;
-
-height:240px;
-
-border:0;
-
-border-radius:20px;
-
-}
-
-
-
-
-
-/* TIMER */
-
-
-
-.timer{
-
-display:flex;
-
-gap:8px;
-
-justify-content:center;
-
-margin:20px 0;
-
-}
-
-
-
-.time-box{
-
-
-width:65px;
-
-padding:12px 5px;
-
-border:1px solid var(--gold);
-
-border-radius:15px;
-
-}
-
-
-
-
-
-.time-box strong{
-
-
-font-family:'Great Vibes';
-
-font-size:2rem;
-
-color:var(--gold);
-
-}
-
-
-
-
-
-.time-box span{
-
-
-font-size:.55rem;
-
-color:#555;
-
-}
-
-
-
-
-
-
-
-/* PROGRAM */
-
-
-
-.timeline{
-
-
-margin-top:20px;
-
-}
-
-
-
-.event{
-
-
-display:grid;
-
-grid-template-columns:80px 25px 1fr;
-
-gap:10px;
-
-margin-bottom:25px;
-
-align-items:center;
-
-
-}
-
-
-
-
-
-.event-dot{
-
-
-width:16px;
-
-height:16px;
-
-background:var(--gold);
-
-border-radius:50%;
-
-}
-
-
-
-.event-content{
-
-
-background:white;
-
-padding:12px;
-
-border-radius:15px;
-
-text-align:left;
-
-border:1px solid #ddd;
-
-}
-
-
-
-
-
-
-
-
-
-/* FORM */
-
-
-
-select,
-input,
-textarea{
-
-
-width:100%;
-
-padding:12px;
-
-margin:10px 0;
-
-border-radius:12px;
-
-border:1px solid var(--gold);
-
-font-family:'Montserrat';
-
-}
-
-
-
-textarea{
-
-
-height:120px;
-
-resize:none;
-
-}
-
-
-
-
-
-
-
-
-
-/* THANK YOU */
-
-
-
-.thankyou{
-
-
-background:
-
-linear-gradient(
-
-rgba(7,24,43,.85),
-
-rgba(7,24,43,.95)
-
-),
-
-url("https://images.unsplash.com/photo-1519741497674-611481863552")
-
-center/cover;
-
-
-}
-
-
-
-
-
-.thank-card{
-
-
-color:white;
-
-}
-
-
-
-
-
-.thank-card p{
-
-color:white;
-
-}
-
-
-
-
-
-.final-names{
-
-
-font-family:'Cinzel',serif;
-
-font-size:1.4rem;
-
-letter-spacing:6px;
-
-line-height:2;
-
-color:var(--champagne);
-
-margin:25px;
-
-}
-
-
-
-
-
-.final-names span{
-
-
-font-family:'Great Vibes',cursive;
-
-font-size:2.5rem;
-
-color:var(--gold);
-
-}
-
-
-
-
-
-
-
-
-
-/* MUSIC BUTTON */
-
-
-
-#musicBtn{
-
-
-position:fixed;
-
-right:20px;
-
-bottom:20px;
-
-width:55px;
-
-height:55px;
-
-border-radius:50%;
-
-background:#123524;
-
-color:var(--gold);
-
-border:2px solid var(--gold);
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-font-size:20px;
-
-z-index:200;
-
-}
-
-
-
-
-
-
-
-/* JASMINE PETALS */
-
-
-
-.jasmine-petal{
-
-
-position:fixed;
-
-top:-40px;
-
-background:white;
-
-width:15px;
-
-height:15px;
-
-border-radius:80% 20% 80% 20%;
-
-box-shadow:0 0 10px white;
-
-animation:fall 10s linear infinite;
-
-z-index:150;
-
-
-}
-
-
-
-
-@keyframes fall{
-
-
-from{
-
-transform:translateY(-50px) rotate(0deg);
-
-}
-
-
-to{
-
-
-transform:translateY(110vh) rotate(360deg);
-
-
-opacity:.2;
-
-
-}
-
-
-}
-// ===============================
-// GUEST NAME SYSTEM
-// ===============================
-
-let guestName = "Special Guest";
-
-
-window.addEventListener("load",()=>{
-
-
-const params = new URLSearchParams(
-window.location.search
-);
-
-
-let name = params.get("guest");
-
-
-if(name){
-
-guestName = name.replace(/\+/g," ");
-
-}
-
-
-let display = document.getElementById("guestDisplay");
-
-
-if(display){
-
-display.innerHTML = guestName;
-
-}
-
-
-});
-
-
-
-
-
-// ===============================
-// OPEN INVITATION
-// ===============================
-
-
-let opened=false;
-
-
-function openInvitation(){
-
-
-opened=true;
-
-
-document
-.getElementById("frame")
-.classList.add("opened");
-
-
-
-setTimeout(()=>{
-
-
-goPage("welcome");
-
-
-startMusic();
-
-
-
-},1200);
-
-
-
-}
-
-
-
-
-
-
-// ===============================
-// PAGE NAVIGATION
-// ===============================
-
-
-function goPage(id){
-
-
-document
-.getElementById(id)
-.scrollIntoView({
-
-behavior:"smooth"
-
-});
-
-
-}
-
-
-
-
-
-
-// ===============================
-// CLOSE INVITATION
-// ===============================
-
-
-function closeInvite(){
-
-
-opened=false;
-
-
-document
-.getElementById("frame")
-.classList.remove("opened");
-
-
-
-goPage("cover");
-
-
-}
-
-
-
-
-
-
-
-
-
-// ===============================
-// BACKGROUND MUSIC
-// ===============================
-
-
-let musicPlaying=false;
-
-
-let music = new Audio();
-
-
-
-/*
- Calm royalty free piano music
- You can replace this URL later
- */
-
-
-music.src =
-"https://cdn.pixabay.com/download/audio/2022/03/15/audio_7a3c4b9c6c.mp3";
-
-
-music.loop=true;
-
-
-music.volume=0;
-
-
-
-
-
-
-function startMusic(){
-
-
-if(musicPlaying) return;
-
-
-
-music.play()
-
-.then(()=>{
-
-
-musicPlaying=true;
-
-
-let fade=setInterval(()=>{
-
-
-if(music.volume < 0.35){
-
-
-music.volume +=0.02;
-
-
-}
-
-else{
-
-
-clearInterval(fade);
-
-
-}
-
-
-},300);
-
-
-
-let icon=document.querySelector("#musicBtn i");
-
-
-if(icon){
-
-icon.className="fas fa-pause";
-
-}
-
-
-
-})
-
-.catch(()=>{
-
-
-console.log("Music waiting for interaction");
-
-
-});
-
-
-
-}
-
-
-
-
-
-
-
-
-function toggleMusic(){
-
-
-
-if(musicPlaying){
-
-
-music.pause();
-
-
-musicPlaying=false;
-
-
-
-document.querySelector("#musicBtn i")
-.className="fas fa-music";
-
-
-
-}
-
-else{
-
-
-startMusic();
-
-
-}
-
-
-
-}
-
-
-
-
-
-
-
-
-
-// ===============================
-// COUNTDOWN
-// ===============================
-
-
-let weddingDate =
-new Date(
-"October 30, 2026 09:00:00"
-)
-.getTime();
-
-
-
-
-
-setInterval(()=>{
-
-
-let now =
-new Date().getTime();
-
-
-let distance =
-weddingDate-now;
-
-
-
-if(distance>0){
-
-
-
-document.getElementById("days").innerHTML =
-Math.floor(
-distance/(1000*60*60*24)
-);
-
-
-
-document.getElementById("hours").innerHTML =
-Math.floor(
-(distance%(1000*60*60*24))
-/
-(1000*60*60)
-);
-
-
-
-document.getElementById("minutes").innerHTML =
-Math.floor(
-(distance%(1000*60*60))
-/
-(1000*60)
-);
-
-
-
-document.getElementById("seconds").innerHTML =
-Math.floor(
-(distance%(1000*60))
-/1000
-);
-
-
-
-}
-
-
-
-},1000);
-
-
-
-
-
-
-
-
-
-// ===============================
-// WHATSAPP RSVP
-// ===============================
-
-
-function sendRSVP(){
-
-
-
-let status =
-document.getElementById("status").value;
-
-
-
-let count =
-document.getElementById("guestCount").value;
-
-
-
-
-let message=`
-
+  <div class="mobile-frame" id="frame">
+
+    <!-- ================= COVER PAGE ================= -->
+    <section class="section cover" id="cover">
+      <div class="gold-glow"></div>
+      <div class="floral-arch">
+        <div class="flower left-flower">🌿✨🌿</div>
+        <div class="arch-center">
+          <div class="small-title">WITH LOVE AND BLESSINGS</div>
+          <h1>Wedding Invitation</h1>
+          <div class="couple-name">
+            CHATHUMINI<br>
+            <span>&</span><br>
+            HARSHA
+          </div>
+          <div class="divider"></div>
+          <button class="enter-btn" onclick="openInvitation()">✨ TAP TO ENTER ✨</button>
+        </div>
+        <div class="flower right-flower">🌿✨🌿</div>
+      </div>
+    </section>
+
+    <!-- ================= WELCOME PAGE ================= -->
+    <section class="section welcome" id="welcome">
+      <div class="glass-card">
+        <div class="heading">TOGETHER WITH OUR FAMILIES</div>
+        <div class="guest-name" id="guestDisplay">Special Guest</div>
+        <p>
+          WE CORDIALLY INVITE YOU<br>
+          TO CELEBRATE THE WEDDING CEREMONY OF<br><br>
+          <b>CHATHUMINI & HARSHA</b>
+        </p>
+        <button class="gold-btn" onclick="goPage('details')">NEXT →</button>
+      </div>
+    </section>
+
+    <!-- ================= WEDDING DETAILS ================= -->
+    <section class="section details" id="details">
+      <div class="glass-card">
+        <div class="heading">WEDDING DETAILS</div>
+
+        <div class="detail-item">
+          <div class="detail-icon"><i class="fa-solid fa-calendar-days"></i></div>
+          <h3>DATE</h3>
+          <p>Friday<br>30th October 2026</p>
+        </div>
+
+        <div class="detail-item">
+          <div class="detail-icon"><i class="fa-solid fa-clock"></i></div>
+          <h3>TIME</h3>
+          <p>9:00 AM Onwards</p>
+        </div>
+
+        <div class="detail-item">
+          <div class="detail-icon"><i class="fa-solid fa-location-dot"></i></div>
+          <h3>VENUE</h3>
+          <p>Ligness Green Odyssey<br>Wanduramba Road,<br>Galle</p>
+        </div>
+      </div>
+
+      <button class="gold-btn" onclick="goPage('location')">📍 VIEW LOCATION</button>
+    </section>
+
+    <!-- ================= LOCATION ================= -->
+    <section class="section location" id="location">
+      <div class="glass-card">
+        <div class="heading">WEDDING LOCATION</div>
+        <div class="guest-name">Find Us</div>
+
+        <div class="map-container">
+          <iframe src="https://www.google.com/maps?q=Ligness%20Green%20Odyssey%20Galle&output=embed" loading="lazy"></iframe>
+        </div>
+
+        <a href="https://maps.google.com/?q=Ligness+Green+Odyssey+Galle" target="_blank" class="gold-btn">OPEN GOOGLE MAPS</a>
+        <br>
+        <button class="gold-btn" onclick="goPage('countdown')">CONTINUE →</button>
+      </div>
+    </section>
+
+    <!-- ================= COUNTDOWN ================= -->
+    <section class="section countdown" id="countdown">
+      <div class="glass-card" style="background: rgba(7, 24, 43, 0.65);">
+        <div class="heading">SAVE THE DATE</div>
+        <div class="guest-name" style="color: var(--champagne); font-size: 2.2rem;">30 . 10 . 2026</div>
+
+        <div class="timer">
+          <div class="time-box">
+            <strong id="days">00</strong>
+            <span>DAYS</span>
+          </div>
+          <div class="time-box">
+            <strong id="hours">00</strong>
+            <span>HOURS</span>
+          </div>
+          <div class="time-box">
+            <strong id="minutes">00</strong>
+            <span>MINS</span>
+          </div>
+          <div class="time-box">
+            <strong id="seconds">00</strong>
+            <span>SECS</span>
+          </div>
+        </div>
+
+        <p>COUNTING DOWN TO OUR FOREVER</p>
+        <button class="gold-btn" onclick="goPage('program')">VIEW PROGRAM →</button>
+      </div>
+    </section>
+
+    <!-- ================= WEDDING PROGRAM ================= -->
+    <section class="section welcome" id="program">
+      <div class="glass-card">
+        <div class="heading">WEDDING PROGRAM</div>
+        <div class="guest-name">Our Special Day</div>
+
+        <div class="timeline">
+          <div class="event">
+            <div class="event-time" style="font-weight: bold; color: #123524; font-size: .75rem;">09:00 AM</div>
+            <div class="event-dot"></div>
+            <div class="event-content">
+              <h3>Wedding Ceremony</h3>
+              <p>Wedding ceremony begins with blessings</p>
+            </div>
+          </div>
+
+          <div class="event">
+            <div class="event-time" style="font-weight: bold; color: #123524; font-size: .75rem;">09:58 AM</div>
+            <div class="event-dot flower-dot">🪷</div>
+            <div class="event-content" style="border: 1px solid var(--gold); background: #fffdf5;">
+              <h3>Poruwa Ceremony</h3>
+              <p>Traditional Sinhala Poruwa ceremony with blessings and rituals</p>
+            </div>
+          </div>
+
+          <div class="event">
+            <div class="event-time" style="font-weight: bold; color: #123524; font-size: .75rem;">12:30 PM</div>
+            <div class="event-dot"></div>
+            <div class="event-content">
+              <h3>Lunch Reception</h3>
+              <p>Celebrate this beautiful day with family and friends</p>
+            </div>
+          </div>
+
+          <div class="event">
+            <div class="event-time" style="font-weight: bold; color: #123524; font-size: .75rem;">03:36 PM</div>
+            <div class="event-dot"></div>
+            <div class="event-content">
+              <h3>Going Away</h3>
+              <p>Beginning a new chapter of our forever journey</p>
+            </div>
+          </div>
+        </div>
+
+        <button class="gold-btn" onclick="goPage('rsvp')">RSVP →</button>
+      </div>
+    </section>
+
+    <!-- ================= RSVP ================= -->
+    <section class="section details" id="rsvp">
+      <div class="glass-card">
+        <div class="heading">R.S.V.P</div>
+        <div class="guest-name">Confirm Attendance</div>
+        <p>Please confirm before<br>20th October 2026</p>
+
+        <label for="status">Attendance</label>
+        <select id="status">
+          <option>Joyfully Accepts</option>
+          <option>Regretfully Declines</option>
+        </select>
+
+        <label for="guestCount">Number of Guests</label>
+        <input id="guestCount" type="number" value="1" min="1" max="5">
+
+        <button class="gold-btn whatsapp" onclick="sendRSVP()">
+          <i class="fab fa-whatsapp"></i> CONFIRM VIA WHATSAPP
+        </button>
+        <br>
+        <button class="gold-btn" onclick="goPage('wishes')">SEND WISHES →</button>
+      </div>
+    </section>
+
+    <!-- ================= WISHES ================= -->
+    <section class="section welcome" id="wishes">
+      <div class="glass-card">
+        <div class="heading">SEND YOUR LOVE</div>
+        <div class="guest-name">Best Wishes</div>
+        <p>Leave your heartwarming blessing</p>
+
+        <textarea id="wish" placeholder="Write your beautiful message here..."></textarea>
+
+        <button class="gold-btn" onclick="sendWish()">❤️ SEND BLESSINGS</button>
+        <br>
+        <button class="gold-btn" onclick="goPage('thankyou')">CONTINUE →</button>
+      </div>
+    </section>
+
+    <!-- ================= THANK YOU ================= -->
+    <section class="section thankyou" id="thankyou">
+      <div class="thank-card">
+        <div class="heading" style="color: var(--gold);">THANK YOU</div>
+        <div class="divider"></div>
+        <p>
+          YOUR PRESENCE AND BLESSINGS<br>
+          WILL MAKE OUR SPECIAL DAY<br>
+          TRULY UNFORGETTABLE
+        </p>
+
+        <div class="final-names">
+          CHATHUMINI<br>
+          <span>&</span><br>
+          HARSHA
+        </div>
+
+        <button class="gold-btn" onclick="closeInvite()">↑ BACK TO COVER</button>
+      </div>
+    </section>
+
+    <!-- MUSIC BUTTON -->
+    <div id="musicBtn" onclick="toggleMusic()">
+      <i class="fas fa-music"></i>
+    </div>
+
+  </div>
+
+  <script>
+    // ================= GUEST NAME SYSTEM =================
+    let guestName = "Special Guest";
+
+    window.addEventListener("load", () => {
+      const params = new URLSearchParams(window.location.search);
+      let name = params.get("guest");
+      if (name) {
+        guestName = name.replace(/\+/g, " ");
+      }
+      let display = document.getElementById("guestDisplay");
+      if (display) {
+        display.innerHTML = guestName;
+      }
+    });
+
+    // ================= OPEN INVITATION =================
+    let opened = false;
+
+    function openInvitation() {
+      opened = true;
+      document.getElementById("frame").classList.add("opened");
+
+      setTimeout(() => {
+        goPage("welcome");
+        startMusic();
+      }, 800);
+    }
+
+    // ================= PAGE NAVIGATION =================
+    function goPage(id) {
+      document.getElementById(id).scrollIntoView({
+        behavior: "smooth"
+      });
+    }
+
+    // ================= CLOSE INVITATION =================
+    function closeInvite() {
+      opened = false;
+      document.getElementById("frame").classList.remove("opened");
+      goPage("cover");
+    }
+
+    // ================= BACKGROUND MUSIC (Audio Synthesizer) =================
+    let audioCtx = null;
+    let musicPlaying = false;
+    let musicLoopId = null;
+
+    const fastMelody = [
+      { f: 523.25, d: 0.25 },
+      { f: 659.25, d: 0.25 },
+      { f: 783.99, d: 0.25 },
+      { f: 1046.50, d: 0.5 },
+      { f: 440.00, d: 0.25 },
+      { f: 523.25, d: 0.25 },
+      { f: 659.25, d: 0.25 },
+      { f: 880.00, d: 0.5 },
+      { f: 349.23, d: 0.25 },
+      { f: 440.00, d: 0.25 },
+      { f: 523.25, d: 0.25 },
+      { f: 698.46, d: 0.5 },
+      { f: 392.00, d: 0.25 },
+      { f: 493.88, d: 0.25 },
+      { f: 587.33, d: 0.25 },
+      { f: 783.99, d: 0.5 }
+    ];
+
+    function playFastNote(freq, duration) {
+      if (!audioCtx) return;
+
+      let osc = audioCtx.createOscillator();
+      let gain = audioCtx.createGain();
+
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+
+      gain.gain.setValueAtTime(0, audioCtx.currentTime);
+      gain.gain.linearRampToValueAtTime(0.08, audioCtx.currentTime + 0.02);
+      gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+
+      osc.start();
+      osc.stop(audioCtx.currentTime + duration);
+    }
+
+    function startMusic() {
+      if (musicPlaying) return;
+
+      if (!audioCtx) {
+        let AudioContext = window.AudioContext || window.webkitAudioContext;
+        audioCtx = new AudioContext();
+      }
+
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+
+      musicPlaying = true;
+      let index = 0;
+
+      function step() {
+        if (!musicPlaying) return;
+        let note = fastMelody[index];
+        playFastNote(note.f, note.d + 0.15);
+        index = (index + 1) % fastMelody.length;
+        musicLoopId = setTimeout(step, note.d * 1000);
+      }
+
+      step();
+
+      let icon = document.querySelector("#musicBtn i");
+      if (icon) icon.className = "fas fa-pause";
+    }
+
+    function toggleMusic() {
+      if (musicPlaying) {
+        musicPlaying = false;
+        if (musicLoopId) clearTimeout(musicLoopId);
+        document.querySelector("#musicBtn i").className = "fas fa-music";
+      } else {
+        startMusic();
+      }
+    }
+
+    // ================= COUNTDOWN =================
+    let weddingDate = new Date("October 30, 2026 09:00:00").getTime();
+
+    setInterval(() => {
+      let now = new Date().getTime();
+      let distance = weddingDate - now;
+
+      if (distance > 0) {
+        document.getElementById("days").innerHTML = Math.floor(distance / (1000 * 60 * 60 * 24));
+        document.getElementById("hours").innerHTML = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        document.getElementById("minutes").innerHTML = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        document.getElementById("seconds").innerHTML = Math.floor((distance % (1000 * 60)) / 1000);
+      }
+    }, 1000);
+
+    // ================= WHATSAPP RSVP =================
+    function sendRSVP() {
+      let status = document.getElementById("status").value;
+      let count = document.getElementById("guestCount").value;
+
+      let message = `
 Hi Chathumini & Harsha 💍
 
-
 RSVP Confirmation
-
 
 Guest Name:
 ${guestName}
 
-
 Attendance:
 ${status}
-
 
 Number of Guests:
 ${count}
 
-
 Looking forward to celebrating with you ❤️
-
 `;
 
+      window.open("https://wa.me/?text=" + encodeURIComponent(message), "_blank");
+    }
 
+    // ================= WISH MESSAGE =================
+    function sendWish() {
+      let wish = document.getElementById("wish").value;
 
+      if (wish.trim() == "") {
+        alert("Please write your blessing message");
+        return;
+      }
 
-window.open(
-
-"https://wa.me/?text="+
-encodeURIComponent(message),
-
-"_blank"
-
-);
-
-
-
-}
-
-
-
-
-
-
-
-
-
-// ===============================
-// WISH MESSAGE
-// ===============================
-
-
-function sendWish(){
-
-
-let wish =
-document.getElementById("wish").value;
-
-
-
-if(wish.trim()==""){
-
-
-alert(
-"Please write your blessing message"
-);
-
-
-return;
-
-
-}
-
-
-
-let message=`
-
-
+      let message = `
 Hi Chathumini & Harsha ❤️
-
 
 ${wish}
 
-
-
 With Love,
-
 ${guestName}
-
 `;
 
+      window.open("https://wa.me/?text=" + encodeURIComponent(message), "_blank");
+    }
 
+    // ================= GOLD SPARKLES ANIMATION =================
+    function createSparkle() {
+      if (!opened) return;
 
-window.open(
+      let sparkle = document.createElement("div");
+      sparkle.className = "golden-sparkle";
 
-"https://wa.me/?text="+
-encodeURIComponent(message),
+      let size = 4 + Math.random() * 8;
+      sparkle.style.width = size + "px";
+      sparkle.style.height = size + "px";
 
-"_blank"
+      sparkle.style.left = Math.random() * 100 + "%";
+      sparkle.style.animationDuration = (3 + Math.random() * 4) + "s";
 
-);
+      document.body.appendChild(sparkle);
 
+      setTimeout(() => {
+        sparkle.remove();
+      }, 7000);
+    }
 
+    setInterval(createSparkle, 250);
 
-}
+    // User Interaction Fallback for Audio
+    document.addEventListener("click", () => {
+      if (opened && !musicPlaying) {
+        startMusic();
+      }
+    }, { once: false });
+  </script>
 
+</body>
 
-
-
-
-
-
-
-
-// ===============================
-// JASMINE PETALS
-// ===============================
-
-
-function createPetal(){
-
-
-if(!opened) return;
-
-
-
-let petal =
-document.createElement("div");
-
-
-
-petal.className="jasmine-petal";
-
-
-
-petal.style.left =
-Math.random()*100+"%";
-
-
-
-let size =
-8+Math.random()*12;
-
-
-
-petal.style.width=size+"px";
-
-petal.style.height=size+"px";
-
-
-
-petal.style.animationDuration =
-(6+Math.random()*6)+"s";
-
-
-
-document.body.appendChild(petal);
-
-
-
-
-setTimeout(()=>{
-
-
-petal.remove();
-
-
-},12000);
-
-
-
-}
-
-
-
-setInterval(
-createPetal,
-500
-);
-
-
-
-
-
-
-
-
-
-// ===============================
-// GOLD SPARKLES
-// ===============================
-
-
-function createSparkle(){
-
-
-if(!opened) return;
-
-
-
-let sparkle =
-document.createElement("div");
-
-
-
-sparkle.style.position="fixed";
-
-sparkle.style.width="5px";
-
-sparkle.style.height="5px";
-
-sparkle.style.background="#d4af37";
-
-sparkle.style.borderRadius="50%";
-
-sparkle.style.boxShadow=
-"0 0 15px #d4af37";
-
-sparkle.style.left=
-Math.random()*100+"%";
-
-
-sparkle.style.top=
-Math.random()*100+"%";
-
-
-
-sparkle.style.zIndex="200";
-
-
-
-document.body.appendChild(sparkle);
-
-
-
-setTimeout(()=>{
-
-
-sparkle.remove();
-
-
-},3000);
-
-
-
-}
-
-
-
-setInterval(
-createSparkle,
-700
-);
-
-
-
-
-
-
-
-
-
-// ===============================
-// START MUSIC AFTER USER TAP
-// ===============================
-
-
-document.addEventListener(
-"click",
-()=>{
-
-
-if(opened && !musicPlaying){
-
-
-startMusic();
-
-
-}
-
-
-},
-{
-once:false
-}
-
-);
+</html>
